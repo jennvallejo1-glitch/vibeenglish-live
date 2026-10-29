@@ -1,0 +1,19 @@
+{
+  "name": "curso-ingles-frontend",
+  "version": "1.0.0",
+  "description": "Plataforma interactiva de aprendizaje de inglés con niveles, práctica oral, pronunciación con IA y evaluaciones",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "english-learning",
+    "frontend",
+    "speaking",
+    "pronunciation",
+    "interactive"
+  ],
+  "author": "",
+  "license": "MIT"
+}

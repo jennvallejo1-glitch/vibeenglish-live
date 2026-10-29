@@ -1,0 +1,24 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno y secretos (NUNCA publicar en GitHub)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Archivos de sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Logs y directorios de despliegue
+*.log
+npm-debug.log*
+.vercel/
+.netlify/
