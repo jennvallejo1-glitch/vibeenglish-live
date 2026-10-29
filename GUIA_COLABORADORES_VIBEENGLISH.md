@@ -13,7 +13,7 @@ Documento técnico descargable y compartible para el equipo de desarrollo del pr
 
 | Tipo de Enlace | URL Oficial | Propósito |
 | :--- | :--- | :--- |
-| **1. Repositorio Privado de Código (GitHub)** | https://github.com/jennvallejo1-glitch/InglesPasoAPaso | Aloja el código fuente privado del proyecto. **Solo accesible para la propietaria y los colaboradores autorizados en GitHub.** |
+| **1. Repositorio Privado de Código (GitHub)** | https://github.com/jennvallejo1-glitch/VibeEnglish | Aloja el código fuente privado del proyecto. **Solo accesible para la propietaria y los colaboradores autorizados en GitHub.** |
 | **2. Aplicación Frontend Desplegada (En Vivo)** | https://vibeenglish-paso-a-paso.netlify.app | Ejecuta y muestra la plataforma **VibeEnglish** en el navegador (Google Chrome en PC o móvil) tal como funciona en entorno local, sin instalar nada. |
 
 ---
@@ -23,14 +23,14 @@ Documento técnico descargable y compartible para el equipo de desarrollo del pr
 Como el repositorio **`jennvallejo1-glitch/InglesPasoAPaso`** es **privado**, únicamente las personas invitadas podrán verlo, clonarlo o subir ramas:
 
 1. Iniciá sesión en GitHub y abrí el repositorio:
-   👉 https://github.com/jennvallejo1-glitch/InglesPasoAPaso
+   👉 https://github.com/jennvallejo1-glitch/VibeEnglish
 2. En la barra superior del repositorio, hacé clic en **Settings** (Configuración).
 3. En el menú lateral izquierdo, seleccioná **Collaborators** (dentro de la sección *Access*) o entrá directamente a:
-   👉 https://github.com/jennvallejo1-glitch/InglesPasoAPaso/settings/access
+   👉 https://github.com/jennvallejo1-glitch/VibeEnglish/settings/access
 4. Hacé clic en el botón verde **Add people**.
 5. Escribí el **nombre de usuario de GitHub** o el **correo electrónico** del colaborador.
 6. Seleccionalo de la lista y hacé clic en **Add to this repository**.
-7. El colaborador recibirá un correo de invitación (o podrá aceptarla entrando a `https://github.com/jennvallejo1-glitch/InglesPasoAPaso/invitations`).
+7. El colaborador recibirá un correo de invitación (o podrá aceptarla entrando a `https://github.com/jennvallejo1-glitch/VibeEnglish/invitations`).
 
 ---
 
@@ -45,7 +45,7 @@ Como el repositorio **`jennvallejo1-glitch/InglesPasoAPaso`** es **privado**, ú
 Abrí una terminal (PowerShell, CMD o Git Bash) y ejecutá:
 
 ```bash
-git clone https://github.com/jennvallejo1-glitch/InglesPasoAPaso.git
+git clone https://github.com/jennvallejo1-glitch/VibeEnglish.git
 cd InglesPasoAPaso
 ```
 
@@ -137,7 +137,7 @@ git push -u origin feature/nombre-de-tu-tarea
 ```
 
 ### 5. Crear un Pull Request (PR) en GitHub
-1. Entrá a https://github.com/jennvallejo1-glitch/InglesPasoAPaso.
+1. Entrá a https://github.com/jennvallejo1-glitch/VibeEnglish.
 2. Hacé clic en **Compare & pull request** sobre tu rama recién subida.
 3. Describí los cambios realizados y solicitá revisión antes de fusionar (`Merge`) hacia `main`.
 
@@ -177,3 +177,4 @@ En `app.js` están señalizados con comentarios `// TODO [DEV]:` todos los punto
 | **6. Motor de Conversación Interactiva** | `selectConversationScenario()`, `startConversation()`, `recordConversationVoice()`, `sendConversationResponse()`, `restartConversation()` | Conectar motor de diálogo o IA conversacional en `#conversation` para responder en tiempo real según el escenario elegido. |
 | **7. Persistencia del Foro de Estudiantes** | `publishForumPost()` (`#forum-Input`, `#forum-posts-list`) | Crear endpoints `GET /api/forum/posts` y `POST /api/forum/posts` para guardar y listar las publicaciones reales de la comunidad en base de datos. |
 | **8. Progreso Académico, Logros y Certificados PDF** | `#progress`, `#achievements`, `previewCertificate(level)`, `downloadCertificate(level)` | Guardar el avance de lecciones por usuario en base de datos, desbloquear logros dinámicamente y generar los certificados descargables en PDF para los niveles Principiante, Intermedio y Avanzado. |
+

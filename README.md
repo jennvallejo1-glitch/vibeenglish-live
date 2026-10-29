@@ -8,7 +8,7 @@ Plataforma interactiva de aprendizaje de inglés con arquitectura frontend compl
 
 | Recurso | Enlace | Descripción |
 | :--- | :--- | :--- |
-| **Repositorio Privado en GitHub** | https://github.com/jennvallejo1-glitch/InglesPasoAPaso | Código fuente privado del proyecto para la propietaria y colaboradores autorizados. |
+| **Repositorio Privado en GitHub** | https://github.com/jennvallejo1-glitch/VibeEnglish | Código fuente privado del proyecto para la propietaria y colaboradores autorizados. |
 | **Aplicación Frontend Desplegada (En Vivo)** | https://vibeenglish-paso-a-paso.netlify.app | Enlace público funcional donde se ejecuta y visualiza el frontend desde cualquier navegador o dispositivo. |
 
 ---
@@ -17,7 +17,7 @@ Plataforma interactiva de aprendizaje de inglés con arquitectura frontend compl
 
 ### 1. Clonar el repositorio privado
 ```bash
-git clone https://github.com/jennvallejo1-glitch/InglesPasoAPaso.git
+git clone https://github.com/jennvallejo1-glitch/VibeEnglish.git
 cd InglesPasoAPaso
 ```
 
