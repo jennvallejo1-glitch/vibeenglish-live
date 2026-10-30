@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body class="dark-mode">
   <!-- Contenedor de Notificaciones Visuales -->
@@ -48,23 +48,38 @@
     <!-- 1. PRIMERA PANTALLA: INICIO / HOME FLOTANTE (#screen-home) -->
     <!-- ====================================================== -->
     <div id="screen-home" class="onboarding-screen vibe-home-screen">
-      <div class="vibe-home-hero-shell card">
-        
-        <!-- En la parte superior: Solamente el nombre VibeEnglish con el logo oficial -->
-        <div class="vibe-home-brand-header">
-          <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-brand-logo">
-          <h1 class="vibe-home-main-title">VibeEnglish</h1>
+      <div class="vibe-home-hero-shell card card-3d-tilt">
+
+        <!-- Título principal: SOLO VibeEnglish -->
+        <h1 class="vibe-home-main-title">VibeEnglish</h1>
+
+        <!-- Mockup visual: logo + elementos flotantes + badge -->
+        <div class="vibe-home-mockup-wrapper">
+          <!-- Decoradores flotantes -->
+          <span class="vibe-float-decor vibe-float-decor-1" aria-hidden="true">⭐</span>
+          <span class="vibe-float-decor vibe-float-decor-2" aria-hidden="true">🎧</span>
+          <span class="vibe-float-decor vibe-float-decor-3" aria-hidden="true">🍎</span>
+          <span class="vibe-float-decor vibe-float-decor-4" aria-hidden="true">💬</span>
+          <span class="vibe-float-decor vibe-float-decor-5" aria-hidden="true">✈️</span>
+          <span class="vibe-float-decor vibe-float-decor-6" aria-hidden="true">✨</span>
+
+          <!-- Marco del dispositivo -->
+          <div class="vibe-home-device-frame">
+            <!-- Badge card flotante -->
+            <div class="vibe-home-float-badge-card">
+              <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-badge-logo">
+              <div class="vibe-badge-chips">
+                <span class="vibe-badge-chip">🎧 Audio</span>
+                <span class="vibe-badge-chip">💬 Conversación</span>
+                <span class="vibe-badge-chip">🎙️ Pronunciación</span>
+              </div>
+              <p class="vibe-badge-brand">VibeEnglish</p>
+              <p class="vibe-badge-levels">3 NIVELES &nbsp; <small>PRINCIPIANTE · INTERMEDIO · AVANZADO</small></p>
+            </div>
+          </div>
         </div>
 
-        <!-- Debajo del nombre: Texto destacado «Aprende inglés» -->
-        <h2 class="vibe-home-subtitle-accent">Aprende inglés</h2>
-
-        <!-- Descripción breve -->
-        <p class="vibe-home-description">
-          Explora, practica y domina el inglés paso a paso con una plataforma interactiva diseñada para transformar tu fluidez y aprendizaje diario.
-        </p>
-
-        <!-- Funciones principales: Audio, Conversación y Pronunciación (visibles y organizadas) -->
+        <!-- Funciones principales: Audio, Conversación y Pronunciación -->
         <div class="vibe-home-features-bar" aria-label="Funciones principales">
           <div class="vibe-feature-pill">
             <span class="vibe-feature-icon" aria-hidden="true">🎧</span>
@@ -80,28 +95,28 @@
           </div>
         </div>
 
-        <!-- 3 Niveles de Aprendizaje (Principiante, Intermedio y Avanzado) colocados ANTES del botón Comenzar -->
+        <!-- 3 Niveles de Aprendizaje — clic directo ingresa al nivel -->
         <div class="vibe-home-levels-section" aria-label="Niveles de aprendizaje">
           <div class="vibe-levels-header-badge">
             <span class="vibe-levels-badge-tag">3 NIVELES</span>
             <span class="vibe-levels-badge-sub">DE APRENDIZAJE</span>
           </div>
           <div class="vibe-levels-grid">
-            <div class="vibe-level-item level-beginner">
+            <div class="vibe-level-item level-beginner" style="cursor:pointer" onclick="EnglishApp.openOnboardingScreen('welcome')" role="button" tabindex="0" aria-label="Nivel Principiante">
               <span class="vibe-level-indicator" aria-hidden="true">🟢</span>
               <div class="vibe-level-info">
                 <span class="vibe-level-name">Principiante</span>
                 <span class="vibe-level-sub">Bases y Vocabulario</span>
               </div>
             </div>
-            <div class="vibe-level-item level-intermediate">
+            <div class="vibe-level-item level-intermediate" style="cursor:pointer" onclick="EnglishApp.openOnboardingScreen('welcome')" role="button" tabindex="0" aria-label="Nivel Intermedio">
               <span class="vibe-level-indicator" aria-hidden="true">🟡</span>
               <div class="vibe-level-info">
                 <span class="vibe-level-name">Intermedio</span>
                 <span class="vibe-level-sub">Gramática y Fluidez</span>
               </div>
             </div>
-            <div class="vibe-level-item level-advanced">
+            <div class="vibe-level-item level-advanced" style="cursor:pointer" onclick="EnglishApp.openOnboardingScreen('welcome')" role="button" tabindex="0" aria-label="Nivel Avanzado">
               <span class="vibe-level-indicator" aria-hidden="true">🔵</span>
               <div class="vibe-level-info">
                 <span class="vibe-level-name">Avanzado</span>
@@ -109,13 +124,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Único Botón Principal Destacado: «COMENZAR» -->
-        <div class="vibe-home-cta-wrap">
-          <button type="button" class="btn btn-primary btn-lg vibe-home-cta-btn" id="btn-home-iniciar" onclick="EnglishApp.openOnboardingScreen('welcome')">
-            <span>COMENZAR</span>
-          </button>
         </div>
 
       </div>
@@ -141,24 +149,7 @@
           <!-- Columna Izquierda: Logotipo, Nombre, Espacio de Bienvenida y Botones de Acceso -->
           <div class="d-flex flex-column justify-between gap-4">
             <div>
-              <!-- Espacio para el logotipo existente y nombre de la plataforma -->
-              <div class="duo-mascot-row mb-4">
-                <div class="duo-mascot-avatar-wrap">
-                  <img src="assets/images/logo.jpg" alt="Logo" class="duo-mascot-img">
-                </div>
-                <div class="duo-brand-header">
-                  <h1 class="duo-brand-title">VibeEnglish</h1>
-                </div>
-              </div>
 
-              <!-- Espacio para el contenido de bienvenida (sin texto nuevo) -->
-              <div class="card-subtle p-4 mb-4">
-                <div class="empty-slot-title mb-3"></div>
-                <div class="empty-slot-line mb-2"></div>
-                <div class="empty-slot-line mb-2"></div>
-                <div class="empty-slot-line short mb-3"></div>
-                <div class="empty-slot-box"></div>
-              </div>
             </div>
 
             <!-- Botones de Opciones de Acceso, Autenticación y Suscripción -->
@@ -166,9 +157,7 @@
               <button type="button" class="btn btn-outline" id="btn-welcome-inicio" onclick="EnglishApp.enterPlatform('inicio')">
                 <span>🏠 Inicio</span>
               </button>
-              <button type="button" class="btn btn-primary" id="btn-welcome-aprender" onclick="EnglishApp.enterPlatform('manual')">
-                <span>▶ Comenzar a aprender</span>
-              </button>
+
               <button type="button" class="btn btn-secondary" id="btn-welcome-registro" onclick="EnglishApp.openOnboardingScreen('register')">
                 <span>✨ Crear cuenta</span>
               </button>
