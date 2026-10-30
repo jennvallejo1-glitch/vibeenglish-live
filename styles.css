@@ -86,9 +86,7 @@ body.dark-mode,
   --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ==========================================================================
-   MODO CLARO: "CRISP APPLE / LINEAR DAYLIGHT STUDIO"
-   ========================================================================== */
+/* --- MODO CLARO: "CRISP APPLE / LINEAR DAYLIGHT STUDIO" --- */
 body.light-mode,
 [data-theme="light"] {
   --bg-main: #F8FAFC;
@@ -141,9 +139,7 @@ body.light-mode,
   --shadow-glow: 0 10px 25px -5px rgba(79, 70, 229, 0.35);
 }
 
-/* ==========================================================================
-   MODO COLORIDO: "VIBRANT AURORA & DYNAMIC STUDIO" (TEMA 3)
-   ========================================================================== */
+/* --- MODO COLORIDO: "VIBRANT AURORA & DYNAMIC STUDIO" (TEMA 3) --- */
 body.colorful-mode,
 [data-theme="colorful"] {
   --bg-main: #130F2E;
@@ -263,9 +259,7 @@ h4,
   color: var(--text-primary);
 }
 
-/* ==========================================================================
-   BOTÓN FLOTANTE Y BOTÓN DE CABECERA PARA MODO OSCURO / CLARO
-   ========================================================================== */
+/* --- BOTÓN FLOTANTE Y BOTÓN DE CABECERA PARA MODO OSCURO / CLARO --- */
 .theme-toggle-floating {
   position: fixed;
   bottom: 24px;
@@ -324,9 +318,7 @@ h4,
   transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   TARJETAS GLASSMORPHISM CON BRILLO ESPECULAR SUPERIOR
-   ========================================================================== */
+/* --- TARJETAS GLASSMORPHISM CON BRILLO ESPECULAR SUPERIOR --- */
 .card {
   background: var(--bg-card);
   backdrop-filter: var(--glass-blur);
@@ -411,9 +403,7 @@ h4,
 .border-top { border-top: 1px solid var(--border-color); }
 .border-bottom { border-bottom: 1px solid var(--border-color); }
 
-/* ==========================================================================
-   BOTONES MODERNOS ESTILO CYBER-STUDIO (GLOW + GLASS SPECULAR)
-   ========================================================================== */
+/* --- BOTONES MODERNOS ESTILO CYBER-STUDIO (GLOW + GLASS SPECULAR) --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -429,21 +419,44 @@ h4,
   padding: 10px 18px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.28), var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.24);
   cursor: pointer;
   transition: var(--transition);
   text-decoration: none;
   user-select: none;
   white-space: normal;
   position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.45s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  left: 140%;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3), var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 .btn:active {
-  transform: translateY(0px) scale(0.98) !important;
+  transform: translateY(2px) scale(0.985) !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .btn-sm {
@@ -471,10 +484,8 @@ h4,
 }
 
 body.light-mode .btn-primary,
-body.light-mode .duo-btn-green {
-  color: #FFFFFF;
-  border-color: #4338CA;
-}
+body.light-mode .duo-btn-green { color: #FFFFFF;
+  border-color: #4338CA; }
 
 .btn-primary:hover,
 .duo-btn-green:hover {
@@ -496,10 +507,8 @@ body.light-mode .duo-btn-green {
   box-shadow: 0 12px 28px -5px rgba(6, 182, 212, 0.65);
 }
 
-body.light-mode .btn-secondary {
-  color: #FFFFFF;
-  border-color: #0284C7;
-}
+body.light-mode .btn-secondary { color: #FFFFFF;
+  border-color: #0284C7; }
 
 /* Botón Acento: Púrpura / Magenta Holográfico */
 .btn-accent {
@@ -515,9 +524,7 @@ body.light-mode .btn-secondary {
   box-shadow: 0 12px 28px -5px rgba(168, 85, 247, 0.65);
 }
 
-body.light-mode .btn-accent {
-  border-color: #7C3AED;
-}
+body.light-mode .btn-accent { border-color: #7C3AED; }
 
 /* Botón Peligro & Éxito */
 .btn-danger {
@@ -621,9 +628,7 @@ body.light-mode .btn-accent {
   transform: rotate(90deg);
 }
 
-/* ==========================================================================
-   ETIQUETAS / BADGES FUTURISTAS
-   ========================================================================== */
+/* --- ETIQUETAS / BADGES FUTURISTAS --- */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -643,9 +648,7 @@ body.light-mode .btn-accent {
   border: 1px solid rgba(99, 102, 241, 0.35);
 }
 
-body.light-mode .badge-primary {
-  color: var(--primary);
-}
+body.light-mode .badge-primary { color: var(--primary); }
 
 .badge-success {
   background: var(--success-light);
@@ -671,9 +674,7 @@ body.light-mode .badge-primary {
   border: 1px solid rgba(168, 85, 247, 0.35);
 }
 
-body.light-mode .badge-accent {
-  color: var(--accent);
-}
+body.light-mode .badge-accent { color: var(--accent); }
 
 .badge-outline {
   background: var(--bg-input);
@@ -681,12 +682,8 @@ body.light-mode .badge-accent {
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   INPUTS Y FORMULARIOS DE ESTUDIO
-   ========================================================================== */
-.form-group {
-  margin-bottom: 18px;
-}
+/* --- INPUTS Y FORMULARIOS DE ESTUDIO --- */
+.form-group { margin-bottom: 18px; }
 
 .form-label,
 .duo-form-label {
@@ -730,10 +727,8 @@ body.light-mode .badge-accent {
 }
 
 .select-modern,
-.duo-select {
-  padding-left: 16px;
-  cursor: pointer;
-}
+.duo-select { padding-left: 16px;
+  cursor: pointer; }
 
 .input-modern:focus,
 .select-modern:focus,
@@ -761,9 +756,7 @@ body.light-mode .badge-accent {
   padding: 4px;
 }
 
-/* ==========================================================================
-   PRIMERA PARTE: PORTAL DE ACCESO (#auth-section)
-   ========================================================================== */
+/* --- PRIMERA PARTE: PORTAL DE ACCESO (#auth-section) --- */
 .auth-section-wrapper,
 .duo-auth-section {
   position: relative;
@@ -775,174 +768,7 @@ body.light-mode .badge-accent {
   padding: 48px 24px;
 }
 
-.auth-portal-container,
-.duo-portal-container {
-  width: 100%;
-  max-width: 1080px;
-  display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 44px;
-  align-items: start;
-  margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-  .auth-portal-container,
-  .duo-portal-container {
-    grid-template-columns: 1fr;
-    max-width: 520px;
-    gap: 32px;
-  }
-}
-
-.duo-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.duo-mascot-row {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 18px 22px;
-  background: var(--bg-card);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-}
-
-.duo-mascot-img {
-  width: 66px;
-  height: 66px;
-  border-radius: 18px;
-  object-fit: cover;
-  border: 2px solid var(--primary);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
-}
-
-.duo-brand-title {
-  font-size: 2.3rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--text-primary) 20%, #818CF8 65%, #38BDF8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0;
-  line-height: 1.08;
-}
-
-.duo-add-info-btn {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: 1px dashed rgba(99, 102, 241, 0.5);
-  background: var(--primary-light);
-  color: #818CF8;
-  box-shadow: none;
-}
-
-body.light-mode .duo-add-info-btn {
-  color: var(--primary);
-}
-
-.duo-add-info-btn:hover {
-  background: var(--primary);
-  color: #FFFFFF;
-  border-style: solid;
-}
-
-.user-custom-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--primary);
-  border-radius: 14px;
-  padding: 14px 18px;
-  box-shadow: var(--shadow-sm);
-}
-
-.user-custom-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
-.duo-auth-card {
-  width: 100%;
-  background: var(--bg-card);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-xl);
-  padding: 38px 34px;
-  box-shadow: var(--shadow-lg);
-}
-
-.duo-form-title {
-  font-size: 1.85rem;
-  margin-bottom: 6px;
-}
-
-.duo-nav-tabs,
-.auth-nav-tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--bg-input);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 5px;
-  gap: 6px;
-  margin-bottom: 24px;
-}
-
-.duo-tab-btn,
-.auth-tab-btn {
-  background: transparent;
-  border: none;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700;
-  font-size: 0.86rem;
-  color: var(--text-secondary);
-  border-radius: 9px;
-  padding: 10px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.duo-tab-btn.active,
-.auth-tab-btn.active {
-  background: var(--primary-gradient);
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-}
-
-.duo-forgot-link {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--warning);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.recover-icon-circle {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: var(--primary-light);
-  border: 1px solid var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-}
-
-/* ==========================================================================
-   SEGUNDA PARTE: CABECERA FLOTANTE ESTILO "CYBER ISLAND DOCK"
-   ========================================================================== */
+/* --- SEGUNDA PARTE: CABECERA FLOTANTE ESTILO "CYBER ISLAND DOCK" --- */
 .duo-header,
 .platform-header {
   background: var(--bg-header);
@@ -1103,9 +929,7 @@ body.light-mode .duo-add-info-btn {
   white-space: nowrap !important;
 }
 
-/* ==========================================================================
-   BOTÓN Y MENÚ DESPLEGABLE DE INDICADORES Y TEMA (HEADER DROPDOWN)
-   ========================================================================== */
+/* --- BOTÓN Y MENÚ DESPLEGABLE DE INDICADORES Y TEMA (HEADER DROPDOWN) --- */
 .header-dropdown-wrap {
   position: relative;
   display: inline-flex;
@@ -1124,14 +948,10 @@ body.light-mode .duo-add-info-btn {
   white-space: nowrap;
 }
 
-.dropdown-caret {
-  font-size: 0.78rem;
-  transition: transform 0.2s ease;
-}
+.dropdown-caret { font-size: 0.78rem;
+  transition: transform 0.2s ease; }
 
-.header-dropdown-trigger.open .dropdown-caret {
-  transform: rotate(180deg);
-}
+.header-dropdown-trigger.open .dropdown-caret { transform: rotate(180deg); }
 
 .header-dropdown-menu {
   position: absolute;
@@ -1177,10 +997,8 @@ body.light-mode .duo-add-info-btn {
   gap: 8px;
 }
 
-.header-dropdown-stats-grid .duo-stat-pill {
-  width: 100%;
-  justify-content: center;
-}
+.header-dropdown-stats-grid .duo-stat-pill { width: 100%;
+  justify-content: center; }
 
 .header-dropdown-divider {
   height: 1px;
@@ -1195,14 +1013,10 @@ body.light-mode .duo-add-info-btn {
 }
 
 .header-dropdown-actions .duo-super-pill,
-.header-dropdown-actions .duo-theme-btn {
-  width: 100%;
-  justify-content: center;
-}
+.header-dropdown-actions .duo-theme-btn { width: 100%;
+  justify-content: center; }
 
-/* ==========================================================================
-   MAPA DE RUTA INTERACTIVO (THE SNAKE LEARNING PATH)
-   ========================================================================== */
+/* --- MAPA DE RUTA INTERACTIVO (THE SNAKE LEARNING PATH) --- */
 .duo-learning-path-card {
   background:
     radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
@@ -1240,9 +1054,7 @@ body.light-mode .duo-add-info-btn {
   border-radius: 999px;
 }
 
-body.light-mode .duo-unit-badge {
-  color: var(--primary);
-}
+body.light-mode .duo-unit-badge { color: var(--primary); }
 
 .duo-unit-guide-btn {
   background: var(--bg-card) !important;
@@ -1270,10 +1082,8 @@ body.light-mode .duo-unit-badge {
 
 .node-pos-center,
 .node-pos-right,
-.node-pos-left {
-  transform: none;
-  margin: 0 auto;
-}
+.node-pos-left { transform: none;
+  margin: 0 auto; }
 
 .duo-node-btn {
   width: 74px;
@@ -1365,9 +1175,7 @@ body.light-mode .duo-unit-badge {
   z-index: 4;
 }
 
-.callout-arrow {
-  display: none;
-}
+.callout-arrow { display: none; }
 
 .duo-connector {
   width: 2px;
@@ -1381,9 +1189,7 @@ body.light-mode .duo-unit-badge {
 .duo-stats-strip,
 .payment-form-box,
 .level-desc,
-.module-count {
-  display: none !important;
-}
+.module-count { display: none !important; }
 
 .duo-buttons-grid,
 .chatgpt-dashboard-buttons-grid {
@@ -1394,28 +1200,20 @@ body.light-mode .duo-unit-badge {
 }
 
 .duo-buttons-grid .btn,
-.chatgpt-dashboard-buttons-grid .btn {
-  width: 100%;
-  height: 100%;
-}
+.chatgpt-dashboard-buttons-grid .btn { width: 100%;
+  height: 100%; }
 
 @media (max-width: 960px) {
   .duo-buttons-grid,
-  .chatgpt-dashboard-buttons-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .chatgpt-dashboard-buttons-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 540px) {
   .duo-buttons-grid,
-  .chatgpt-dashboard-buttons-grid {
-    grid-template-columns: 1fr;
-  }
+  .chatgpt-dashboard-buttons-grid { grid-template-columns: 1fr; }
 }
 
-/* ==========================================================================
-   MODALES GLASSMORPHISM
-   ========================================================================== */
+/* --- MODALES GLASSMORPHISM --- */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1443,9 +1241,7 @@ body.light-mode .duo-unit-badge {
   color: var(--text-primary);
 }
 
-.subscription-modal-card {
-  max-width: 780px;
-}
+.subscription-modal-card { max-width: 780px; }
 
 .modal-header {
   display: flex;
@@ -1455,14 +1251,10 @@ body.light-mode .duo-unit-badge {
   border-bottom: 1px solid var(--border-color);
 }
 
-.modal-body {
-  padding: 22px 0;
-}
+.modal-body { padding: 22px 0; }
 
-.modal-footer {
-  padding-top: 18px;
-  border-top: 1px solid var(--border-color);
-}
+.modal-footer { padding-top: 18px;
+  border-top: 1px solid var(--border-color); }
 
 .subscription-plans-grid {
   display: grid;
@@ -1490,10 +1282,8 @@ body.light-mode .duo-unit-badge {
   box-shadow: var(--shadow-md);
 }
 
-.plan-card.selected {
-  border: 2px solid var(--primary);
-  background: var(--primary-light);
-}
+.plan-card.selected { border: 2px solid var(--primary);
+  background: var(--primary-light); }
 
 .plan-card.featured-plan.selected {
   border: 2px solid var(--primary);
@@ -1567,9 +1357,7 @@ body.light-mode .duo-unit-badge {
   border-color: transparent;
 }
 
-/* ==========================================================================
-   CONTENEDOR PRINCIPAL Y TARJETAS DE NIVELES
-   ========================================================================== */
+/* --- CONTENEDOR PRINCIPAL Y TARJETAS DE NIVELES --- */
 .course-platform-wrapper {
   position: relative;
   z-index: 2;
@@ -1585,10 +1373,8 @@ body.light-mode .duo-unit-badge {
   padding: 32px 20px 90px 20px;
 }
 
-.section-title {
-  font-size: 1.75rem;
-  margin-bottom: 6px;
-}
+.section-title { font-size: 1.75rem;
+  margin-bottom: 6px; }
 
 .levels-grid {
   display: grid;
@@ -1628,9 +1414,7 @@ body.light-mode .duo-unit-badge {
   transition: transform 0.5s ease;
 }
 
-.level-card:hover .level-cover {
-  transform: scale(1.06);
-}
+.level-card:hover .level-cover { transform: scale(1.06); }
 
 .level-pill {
   position: absolute;
@@ -1651,9 +1435,7 @@ body.light-mode .duo-unit-badge {
   flex: 1;
 }
 
-/* ==========================================================================
-   EL MANUAL & LABORATORIO DE PRONUNCIACIÓN (AI VOICE STUDIO)
-   ========================================================================== */
+/* --- EL MANUAL & LABORATORIO DE PRONUNCIACIÓN (AI VOICE STUDIO) --- */
 .target-phrase-card {
   background:
     radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.16) 0%, transparent 70%),
@@ -1749,9 +1531,7 @@ body.light-mode .duo-unit-badge {
   opacity: 0.4;
 }
 
-.audio-wave-visualizer.active {
-  opacity: 1;
-}
+.audio-wave-visualizer.active { opacity: 1; }
 
 .audio-wave-visualizer span {
   display: block;
@@ -1785,16 +1565,12 @@ body.light-mode .duo-unit-badge {
 }
 
 .chatgpt-10-buttons-grid .btn,
-.chatgpt-progress-buttons-grid .btn {
-  width: 100%;
-  height: 100%;
-}
+.chatgpt-progress-buttons-grid .btn { width: 100%;
+  height: 100%; }
 
 @media (max-width: 768px) {
   .chatgpt-10-buttons-grid,
-  .chatgpt-progress-buttons-grid {
-    grid-template-columns: 1fr;
-  }
+  .chatgpt-progress-buttons-grid { grid-template-columns: 1fr; }
 }
 
 .buttons-grid-label {
@@ -1838,9 +1614,7 @@ body.light-mode .duo-unit-badge {
   color: var(--text-primary);
 }
 
-/* ==========================================================================
-   EL PROGRESO, MÉTRICAS & TABLA MODERNA
-   ========================================================================== */
+/* --- EL PROGRESO, MÉTRICAS & TABLA MODERNA --- */
 .metrics-dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1901,10 +1675,8 @@ body.light-mode .duo-unit-badge {
   transition: width 0.4s ease;
 }
 
-.metric-foot {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
+.metric-foot { font-size: 0.8rem;
+  color: var(--text-secondary); }
 
 .metric-sub-bar {
   font-size: 0.85rem;
@@ -1949,12 +1721,8 @@ body.light-mode .duo-unit-badge {
   background: var(--bg-card-hover);
 }
 
-/* ==========================================================================
-   DIPLOMA & CERTIFICADO OFICIAL
-   ========================================================================== */
-.certificate-modal-dialog {
-  max-width: 820px;
-}
+/* --- DIPLOMA & CERTIFICADO OFICIAL --- */
+.certificate-modal-dialog { max-width: 820px; }
 
 .diploma-frame {
   background: linear-gradient(135deg, #0B1021 0%, #131B36 100%);
@@ -1965,10 +1733,8 @@ body.light-mode .duo-unit-badge {
   box-shadow: var(--shadow-lg);
 }
 
-body.light-mode .diploma-frame {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
-  color: #0F172A;
-}
+body.light-mode .diploma-frame { background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
+  color: #0F172A; }
 
 .diploma-inner-border {
   border: 1px solid rgba(99, 102, 241, 0.4);
@@ -1992,9 +1758,7 @@ body.light-mode .diploma-frame {
   letter-spacing: 0.04em;
 }
 
-body.light-mode .diploma-title {
-  color: var(--primary);
-}
+body.light-mode .diploma-title { color: var(--primary); }
 
 .diploma-student-name {
   font-family: 'Outfit', sans-serif;
@@ -2014,9 +1778,7 @@ body.light-mode .diploma-title {
   margin: 10px 0 24px 0;
 }
 
-body.light-mode .diploma-course-name {
-  color: #4338CA;
-}
+body.light-mode .diploma-course-name { color: #4338CA; }
 
 .diploma-footer {
   display: flex;
@@ -2074,14 +1836,10 @@ body.light-mode .diploma-course-name {
   box-shadow: var(--shadow-sm);
 }
 
-.badge-icon {
-  font-size: 2.3rem;
-  margin-bottom: 8px;
-}
+.badge-icon { font-size: 2.3rem;
+  margin-bottom: 8px; }
 
-/* ==========================================================================
-   TOAST NOTIFICATIONS
-   ========================================================================== */
+/* --- TOAST NOTIFICATIONS --- */
 .toast-container {
   position: fixed;
   top: 24px;
@@ -2115,9 +1873,7 @@ body.light-mode .diploma-course-name {
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* ==========================================================================
-   AUDIOS, FOROS Y CONVERSACIÓN INTERACTIVA
-   ========================================================================== */
+/* --- AUDIOS, FOROS Y CONVERSACIÓN INTERACTIVA --- */
 .audio-tracks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -2153,9 +1909,7 @@ body.light-mode .diploma-course-name {
 }
 
 @media (max-width: 520px) {
-  .audio-player-controls {
-    grid-template-columns: 1fr;
-  }
+  .audio-player-controls { grid-template-columns: 1fr; }
 }
 
 .audio-transcript-box {
@@ -2207,10 +1961,8 @@ body.light-mode .diploma-course-name {
   overflow: hidden;
 }
 
-.conv-partner-header {
-  background: var(--bg-subtle);
-  border-bottom: 1px solid var(--border-color);
-}
+.conv-partner-header { background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-color); }
 
 .conv-partner-avatar {
   width: 46px;
@@ -2302,10 +2054,8 @@ body.light-mode .diploma-course-name {
 .conv-user-row .conv-en-text { color: #FFFFFF; }
 .conv-user-row .conv-es-text { color: #E0E7FF; }
 
-.conv-recording-bar {
-  background: var(--bg-card);
-  border-top: 1px solid var(--border-color);
-}
+.conv-recording-bar { background: var(--bg-card);
+  border-top: 1px solid var(--border-color); }
 
 .conv-suggestion-chip {
   background: var(--bg-subtle);
@@ -2340,20 +2090,14 @@ body.light-mode .diploma-course-name {
   width: 100%;
 }
 
-.conv-action-buttons-row .btn {
-  width: 100%;
-  height: 100%;
-}
+.conv-action-buttons-row .btn { width: 100%;
+  height: 100%; }
 
 @media (max-width: 640px) {
-  .conv-action-buttons-row {
-    grid-template-columns: 1fr;
-  }
+  .conv-action-buttons-row { grid-template-columns: 1fr; }
 }
 
-/* ==========================================================================
-   LESSON RUNNER ("PARTE POR PARTE")
-   ========================================================================== */
+/* --- LESSON RUNNER ("PARTE POR PARTE") --- */
 .lesson-runner-header {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
@@ -2410,15 +2154,11 @@ body.light-mode .diploma-course-name {
   margin-bottom: 10px;
 }
 
-.runner-step-title {
-  font-size: 1.75rem;
-  margin-bottom: 8px;
-}
+.runner-step-title { font-size: 1.75rem;
+  margin-bottom: 8px; }
 
-.runner-step-lead {
-  color: var(--text-secondary);
-  margin-bottom: 18px;
-}
+.runner-step-lead { color: var(--text-secondary);
+  margin-bottom: 18px; }
 
 .runner-sample-banner {
   display: flex;
@@ -2523,10 +2263,8 @@ body.light-mode .diploma-course-name {
   transform: translateY(-2px);
 }
 
-.runner-option-btn.selected {
-  border-color: var(--primary);
-  background: var(--primary-light);
-}
+.runner-option-btn.selected { border-color: var(--primary);
+  background: var(--primary-light); }
 
 .runner-option-btn.correct-choice {
   border-color: var(--success) !important;
@@ -2594,13 +2332,9 @@ body.light-mode .diploma-course-name {
   box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.5);
 }
 
-.runner-feedback-sheet.feedback-correct {
-  border-top-color: var(--success);
-}
+.runner-feedback-sheet.feedback-correct { border-top-color: var(--success); }
 
-.runner-feedback-sheet.feedback-wrong {
-  border-top-color: var(--danger);
-}
+.runner-feedback-sheet.feedback-wrong { border-top-color: var(--danger); }
 
 .feedback-icon-large {
   width: 44px;
@@ -2652,90 +2386,7 @@ body.light-mode .diploma-course-name {
   box-shadow: var(--shadow-sm);
 }
 
-/* ==========================================================================
-   MANUAL DE USO DE LA PLATAFORMA (ESTILO CYBER STUDIO)
-   ========================================================================== */
-.duo-manual-guide-card {
-  background: var(--bg-card);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  padding: 24px;
-}
-
-.duo-guide-step-item {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 13px 16px;
-  transition: var(--transition);
-}
-
-.duo-guide-step-item:hover {
-  border-color: var(--primary);
-  transform: translateX(4px);
-}
-
-.guide-step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  border-radius: 10px;
-  background: var(--primary-gradient);
-  color: #FFFFFF;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: 0.85rem;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
-}
-
-.guide-step-title {
-  margin: 0 0 3px 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.guide-step-desc {
-  margin: 0;
-  font-size: 0.83rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
-}
-
-.guide-step-desc strong {
-  color: var(--text-primary);
-}
-
-.guide-step-desc em {
-  font-style: normal;
-  color: var(--warning);
-  font-weight: 700;
-}
-
-@media (max-width: 960px) {
-  .platform-header {
-    flex-direction: column;
-    border-radius: 24px;
-    gap: 12px;
-    padding: 16px;
-  }
-
-  .course-main-nav {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 16px;
-  }
-}
-
-/* ==========================================================================
-   EFECTOS 3D SUTILES, BOTONES DINÁMICOS, SELECTOR DE 3 TEMAS Y MANUAL DE USO
-   ========================================================================== */
+/* --- EFECTOS 3D SUTILES, BOTONES DINÁMICOS, SELECTOR DE 3 TEMAS Y MANUAL DE USO --- */
 
 /* Barra Flotante de 3 Temas (Claro / Oscuro / Colorido) */
 .theme-floating-dock {
@@ -2749,9 +2400,7 @@ body.light-mode .diploma-course-name {
   gap: 8px;
 }
 
-.theme-floating-dock .theme-toggle-floating {
-  position: static;
-}
+.theme-floating-dock .theme-toggle-floating { position: static; }
 
 .theme-quick-pills {
   display: inline-flex;
@@ -2828,53 +2477,6 @@ body.light-mode .diploma-course-name {
   box-shadow: 0 6px 16px -4px rgba(99, 102, 241, 0.5);
 }
 
-/* Profundidad 3D Sutil en Botones Interactivos */
-.btn {
-  overflow: hidden;
-  transform-style: preserve-3d;
-  box-shadow:
-    0 4px 0 rgba(0, 0, 0, 0.28),
-    var(--shadow-sm),
-    inset 0 1px 0 rgba(255, 255, 255, 0.24);
-}
-
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 65%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.22),
-    transparent
-  );
-  transform: skewX(-20deg);
-  transition: left 0.45s ease;
-  pointer-events: none;
-}
-
-.btn:hover::before {
-  left: 140%;
-}
-
-.btn:hover {
-  transform: translateY(-3px) scale(1.015);
-  box-shadow:
-    0 6px 0 rgba(0, 0, 0, 0.3),
-    var(--shadow-glow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.32);
-}
-
-.btn:active {
-  transform: translateY(2px) scale(0.985) !important;
-  box-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.25),
-    inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-}
-
 /* Profundidad 3D Sutil en Tarjetas de Niveles, Lecciones y Actividades */
 .card-3d-tilt,
 .level-card,
@@ -2898,9 +2500,7 @@ body.light-mode .diploma-course-name {
   margin: 0;
 }
 
-.level-card-sub {
-  line-height: 1.4;
-}
+.level-card-sub { line-height: 1.4; }
 
 /* Transición Fluida al Cambiar de Sección */
 .platform-view:not(.hidden) {
@@ -2918,9 +2518,7 @@ body.light-mode .diploma-course-name {
   }
 }
 
-/* ==========================================================================
-   SECCIÓN INDEPENDIENTE: «MANUAL DE USO» (#view-manual-uso)
-   ========================================================================== */
+/* --- SECCIÓN INDEPENDIENTE: «MANUAL DE USO» (#view-manual-uso) --- */
 .manual-uso-hero-card {
   background:
     radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.18) 0%, transparent 50%),
@@ -2942,14 +2540,10 @@ body.light-mode .diploma-course-name {
   border-radius: var(--radius-lg);
 }
 
-.manual-uso-card-wide {
-  grid-column: 1 / -1;
-}
+.manual-uso-card-wide { grid-column: 1 / -1; }
 
 @media (max-width: 860px) {
-  .manual-uso-grid {
-    grid-template-columns: 1fr;
-  }
+  .manual-uso-grid { grid-template-columns: 1fr; }
 }
 
 .manual-uso-card-head {
@@ -3025,9 +2619,7 @@ body.light-mode .diploma-course-name {
 }
 
 @media (max-width: 780px) {
-  .manual-themes-showcase-grid {
-    grid-template-columns: 1fr;
-  }
+  .manual-themes-showcase-grid { grid-template-columns: 1fr; }
 }
 
 .manual-theme-preview-box {
@@ -3041,9 +2633,7 @@ body.light-mode .diploma-course-name {
   box-shadow: var(--shadow-sm);
 }
 
-/* ==========================================================================
-   ESTRUCTURA VISUAL DE TARJETAS VACÍAS Y GUÍA EXTENSA DE UNIDADES
-   ========================================================================== */
+/* --- ESTRUCTURA VISUAL DE TARJETAS VACÍAS Y GUÍA EXTENSA DE UNIDADES --- */
 .units-guide-container {
   display: flex;
   flex-direction: column;
@@ -3114,9 +2704,7 @@ body.light-mode .diploma-course-name {
   opacity: 0.65;
 }
 
-.empty-slot-line.short {
-  width: 62%;
-}
+.empty-slot-line.short { width: 62%; }
 
 .empty-slot-box {
   min-height: 88px;
@@ -3148,9 +2736,7 @@ body.light-mode .diploma-course-name {
   opacity: 0.75;
 }
 
-/* ==========================================================================
-   PANTALLAS DE BIENVENIDA, REGISTRO, INICIO DE SESIÓN Y SUSCRIPCIONES
-   ========================================================================== */
+/* --- PANTALLAS DE BIENVENIDA, REGISTRO, INICIO DE SESIÓN Y SUSCRIPCIONES --- */
 .onboarding-screen {
   width: 100%;
   max-width: 1120px;
@@ -3158,10 +2744,8 @@ body.light-mode .diploma-course-name {
   animation: viewFadeSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.welcome-card-shell {
-  padding: 36px;
-  border-radius: var(--radius-xl);
-}
+.welcome-card-shell { padding: 36px;
+  border-radius: var(--radius-xl); }
 
 .welcome-layout-grid {
   display: grid;
@@ -3171,13 +2755,9 @@ body.light-mode .diploma-course-name {
 }
 
 @media (max-width: 860px) {
-  .welcome-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .welcome-card-shell {
-    padding: 24px;
-  }
+  .welcome-layout-grid { grid-template-columns: 1fr;
+    gap: 24px; }
+  .welcome-card-shell { padding: 24px; }
 }
 
 .welcome-illustration-slot {
@@ -3222,18 +2802,12 @@ body.light-mode .diploma-course-name {
 }
 
 @media (max-width: 680px) {
-  .register-fields-grid {
-    grid-template-columns: 1fr;
-  }
+  .register-fields-grid { grid-template-columns: 1fr; }
   .auth-single-card,
-  .auth-login-card {
-    padding: 22px;
-  }
+  .auth-login-card { padding: 22px; }
 }
 
-.input-no-icon {
-  padding-left: 16px !important;
-}
+.input-no-icon { padding-left: 16px !important; }
 
 .legal-check-row {
   display: flex;
@@ -3266,9 +2840,7 @@ body.light-mode .diploma-course-name {
 
 @media (max-width: 920px) {
   .subscription-plans-empty-grid,
-  .subscription-info-grid {
-    grid-template-columns: 1fr;
-  }
+  .subscription-info-grid { grid-template-columns: 1fr; }
 }
 
 .sub-plan-empty-card {
@@ -3325,9 +2897,7 @@ body.light-mode .diploma-course-name {
   }
 }
 
-/* ==========================================================================
-   ADAPTACIÓN RESPONSIVA PARA TELÉFONOS CELULARES (SIN ALTERAR VERSIÓN DE PC)
-   ========================================================================== */
+/* --- ADAPTACIÓN RESPONSIVA PARA TELÉFONOS CELULARES (SIN ALTERAR VERSIÓN DE PC) --- */
 @media (hover: none) and (pointer: coarse) {
   .card-3d-tilt,
   .level-card,
@@ -3335,9 +2905,7 @@ body.light-mode .diploma-course-name {
   .audio-track-card,
   .manual-uso-card,
   .lesson-empty-card,
-  .achievement-card {
-    transform: none !important;
-  }
+  .achievement-card { transform: none !important; }
 }
 
 @media (max-width: 768px) {
@@ -3363,10 +2931,8 @@ body.light-mode .diploma-course-name {
     width: 100%;
   }
 
-  .duo-mascot-row {
-    padding: 14px 16px;
-    gap: 12px;
-  }
+  .duo-mascot-row { padding: 14px 16px;
+    gap: 12px; }
 
   .duo-mascot-img {
     width: 54px;
@@ -3374,18 +2940,12 @@ body.light-mode .diploma-course-name {
     border-radius: 14px;
   }
 
-  .duo-brand-title {
-    font-size: 1.75rem;
-  }
+  .duo-brand-title { font-size: 1.75rem; }
 
-  .duo-form-title {
-    font-size: 1.4rem;
-  }
+  .duo-form-title { font-size: 1.4rem; }
 
-  .welcome-illustration-slot {
-    min-height: 200px;
-    padding: 20px 16px;
-  }
+  .welcome-illustration-slot { min-height: 200px;
+    padding: 20px 16px; }
 
   /* Cabecera principal adaptada para pantallas de celular */
   .duo-header,
@@ -3399,10 +2959,8 @@ body.light-mode .diploma-course-name {
     gap: 10px;
   }
 
-  .platform-brand {
-    width: 100%;
-    justify-content: center;
-  }
+  .platform-brand { width: 100%;
+    justify-content: center; }
 
   .duo-main-nav,
   .course-main-nav {
@@ -3429,20 +2987,14 @@ body.light-mode .diploma-course-name {
     gap: 8px;
   }
 
-  .platform-actions > .btn {
-    flex: 1 1 calc(50% - 6px);
-    min-width: 130px;
-  }
+  .platform-actions > .btn { flex: 1 1 calc(50% - 6px);
+    min-width: 130px; }
 
-  .header-dropdown-wrap {
-    width: 100%;
-    justify-content: center;
-  }
+  .header-dropdown-wrap { width: 100%;
+    justify-content: center; }
 
-  .header-dropdown-trigger {
-    width: 100%;
-    justify-content: center;
-  }
+  .header-dropdown-trigger { width: 100%;
+    justify-content: center; }
 
   .header-dropdown-menu {
     left: 50%;
@@ -3452,9 +3004,7 @@ body.light-mode .diploma-course-name {
   }
 
   /* Contenedor principal y tarjetas en teléfonos celulares */
-  .platform-main-container {
-    padding: 18px 12px 110px 12px;
-  }
+  .platform-main-container { padding: 18px 12px 110px 12px; }
 
   .card,
   .duo-learning-path-card,
@@ -3463,14 +3013,10 @@ body.light-mode .diploma-course-name {
   .manual-uso-card,
   .audio-track-card,
   .forum-thread-card,
-  .metric-card {
-    padding: 18px 16px;
-    border-radius: 18px;
-  }
+  .metric-card { padding: 18px 16px;
+    border-radius: 18px; }
 
-  .section-title {
-    font-size: 1.4rem;
-  }
+  .section-title { font-size: 1.4rem; }
 
   /* Ruta de aprendizaje y niveles en Inicio */
   .duo-unit-banner {
@@ -3482,20 +3028,14 @@ body.light-mode .diploma-course-name {
     margin-bottom: 20px;
   }
 
-  .duo-unit-guide-btn {
-    width: 100%;
-  }
+  .duo-unit-guide-btn { width: 100%; }
 
   .levels-grid,
   .unit-lessons-grid,
-  .audio-tracks-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+  .audio-tracks-grid { grid-template-columns: 1fr;
+    gap: 16px; }
 
-  .level-img-wrap {
-    height: 160px;
-  }
+  .level-img-wrap { height: 160px; }
 
   /* Guía de unidades y ejecutor de lecciones */
   .unit-guide-header {
@@ -3509,22 +3049,14 @@ body.light-mode .diploma-course-name {
     min-width: 0 !important;
   }
 
-  .lesson-runner-card {
-    padding: 20px 16px;
-  }
+  .lesson-runner-card { padding: 20px 16px; }
 
-  .lesson-runner-header {
-    padding: 12px 14px;
-  }
+  .lesson-runner-header { padding: 12px 14px; }
 
-  .runner-step-title {
-    font-size: 1.35rem;
-  }
+  .runner-step-title { font-size: 1.35rem; }
 
   .runner-sample-en,
-  .target-phrase-text {
-    font-size: 1.35rem;
-  }
+  .target-phrase-text { font-size: 1.35rem; }
 
   /* Conversación y pronunciación en móviles */
   .conv-partner-header > div {
@@ -3542,28 +3074,18 @@ body.light-mode .diploma-course-name {
     padding: 14px !important;
   }
 
-  .conv-msg-row {
-    max-width: 94%;
-  }
+  .conv-msg-row { max-width: 94%; }
 
-  .conv-recording-bar {
-    padding: 14px !important;
-  }
+  .conv-recording-bar { padding: 14px !important; }
 
   /* Progreso, tabla y logros */
-  .metrics-dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
+  .metrics-dashboard-grid { grid-template-columns: repeat(2, 1fr);
+    gap: 14px; }
 
-  .metric-big-num {
-    font-size: 1.85rem;
-  }
+  .metric-big-num { font-size: 1.85rem; }
 
-  .achievements-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr);
+    gap: 12px; }
 
   .modern-table th,
   .modern-table td {
@@ -3573,9 +3095,7 @@ body.light-mode .diploma-course-name {
   }
 
   /* Modales y barra flotante de temas */
-  .modal-backdrop {
-    padding: 12px;
-  }
+  .modal-backdrop { padding: 12px; }
 
   .modal-dialog {
     padding: 20px 16px;
@@ -3583,21 +3103,13 @@ body.light-mode .diploma-course-name {
     max-height: 92vh;
   }
 
-  .diploma-frame {
-    padding: 16px;
-  }
+  .diploma-frame { padding: 16px; }
 
-  .diploma-inner-border {
-    padding: 20px 14px;
-  }
+  .diploma-inner-border { padding: 20px 14px; }
 
-  .diploma-title {
-    font-size: 1.5rem;
-  }
+  .diploma-title { font-size: 1.5rem; }
 
-  .diploma-student-name {
-    font-size: 1.65rem;
-  }
+  .diploma-student-name { font-size: 1.65rem; }
 
   .toast-container {
     top: 12px;
@@ -3620,15 +3132,11 @@ body.light-mode .diploma-course-name {
     pointer-events: auto;
   }
 
-  .theme-floating-dock .theme-toggle-floating {
-    padding: 9px 14px;
-    font-size: 0.78rem;
-  }
+  .theme-floating-dock .theme-toggle-floating { padding: 9px 14px;
+    font-size: 0.78rem; }
 
-  .theme-pill-btn {
-    padding: 5px 9px;
-    font-size: 0.7rem;
-  }
+  .theme-pill-btn { padding: 5px 9px;
+    font-size: 0.7rem; }
 }
 
 @media (max-width: 480px) {
@@ -3637,10 +3145,8 @@ body.light-mode .diploma-course-name {
   .achievements-grid,
   .eval-metrics-grid,
   .celebration-stats-grid,
-  .runner-vocab-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+  .runner-vocab-grid { grid-template-columns: 1fr;
+    gap: 10px; }
 
   .duo-node-btn {
     width: 64px;
@@ -3653,10 +3159,8 @@ body.light-mode .diploma-course-name {
   #screen-subscription .border-top,
   .runner-step-footer,
   .conv-text-fallback,
-  .modal-footer {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  .modal-footer { flex-direction: column;
+    align-items: stretch; }
 
   #form-register .border-top > div,
   #screen-subscription .border-top > div {
@@ -3668,16 +3172,12 @@ body.light-mode .diploma-course-name {
   #screen-subscription .border-top .btn,
   .runner-step-footer .btn,
   .conv-text-fallback .btn,
-  .modal-footer .btn {
-    width: 100%;
-    margin-left: 0;
-  }
+  .modal-footer .btn { width: 100%;
+    margin-left: 0; }
 
   .duo-audio-categories .btn,
   .duo-forum-filter-bar .btn,
-  #scenario-pills-row .btn {
-    flex: 1 1 calc(50% - 6px);
-  }
+  #scenario-pills-row .btn { flex: 1 1 calc(50% - 6px); }
 
   .theme-floating-dock {
     flex-direction: column;
@@ -3819,9 +3319,7 @@ body.light-mode .diploma-course-name {
   border-color: var(--primary);
 }
 
-.vibe-feature-icon {
-  font-size: 1.05rem;
-}
+.vibe-feature-icon { font-size: 1.05rem; }
 
 /* 3 Niveles de Aprendizaje colocados antes del boton Comenzar */
 .vibe-home-levels-section {
@@ -3884,10 +3382,8 @@ body.light-mode .diploma-course-name {
   border-color: var(--primary);
 }
 
-.vibe-level-indicator {
-  font-size: 1.15rem;
-  margin-bottom: 4px;
-}
+.vibe-level-indicator { font-size: 1.15rem;
+  margin-bottom: 4px; }
 
 .vibe-level-info {
   display: flex;
@@ -3952,9 +3448,7 @@ body.light-mode .diploma-course-name {
   transform: translateY(1px) scale(0.99);
 }
 
-/* ==========================================================================
-   ADAPTACION RESPONSIVA Y ULTRA FLUIDA PARA CELULARES
-   ========================================================================== */
+/* --- ADAPTACION RESPONSIVA Y ULTRA FLUIDA PARA CELULARES --- */
 @media (max-width: 600px) {
   .vibe-home-hero-shell {
     padding: 26px 16px 22px 16px;
@@ -3963,19 +3457,13 @@ body.light-mode .diploma-course-name {
     animation: none; /* En pantallas pequenas se desactiva la animacion infinita para ahorrar GPU y bateria */
   }
 
-  .vibe-home-brand-logo {
-    width: 32px;
-    height: 32px;
-  }
+  .vibe-home-brand-logo { width: 32px;
+    height: 32px; }
 
-  .vibe-home-main-title {
-    font-size: 1.95rem;
-  }
+  .vibe-home-main-title { font-size: 1.95rem; }
 
-  .vibe-home-subtitle-accent {
-    font-size: 1.48rem;
-    margin: 2px 0 10px 0;
-  }
+  .vibe-home-subtitle-accent { font-size: 1.48rem;
+    margin: 2px 0 10px 0; }
 
   .vibe-home-description {
     font-size: 0.88rem;
@@ -3983,10 +3471,8 @@ body.light-mode .diploma-course-name {
     margin-bottom: 16px;
   }
 
-  .vibe-home-features-bar {
-    gap: 6px;
-    margin-bottom: 18px;
-  }
+  .vibe-home-features-bar { gap: 6px;
+    margin-bottom: 18px; }
 
   .vibe-feature-pill {
     padding: 6px 12px;
@@ -3994,9 +3480,7 @@ body.light-mode .diploma-course-name {
     gap: 5px;
   }
 
-  .vibe-feature-icon {
-    font-size: 0.95rem;
-  }
+  .vibe-feature-icon { font-size: 0.95rem; }
 
   .vibe-home-levels-section {
     padding: 12px 10px 14px 10px;
@@ -4004,28 +3488,18 @@ body.light-mode .diploma-course-name {
     margin-bottom: 18px;
   }
 
-  .vibe-levels-grid {
-    gap: 6px;
-  }
+  .vibe-levels-grid { gap: 6px; }
 
-  .vibe-level-item {
-    padding: 8px 4px;
-    border-radius: 10px;
-  }
+  .vibe-level-item { padding: 8px 4px;
+    border-radius: 10px; }
 
-  .vibe-level-indicator {
-    font-size: 1rem;
-    margin-bottom: 2px;
-  }
+  .vibe-level-indicator { font-size: 1rem;
+    margin-bottom: 2px; }
 
-  .vibe-level-name {
-    font-size: 0.78rem;
-  }
+  .vibe-level-name { font-size: 0.78rem; }
 
-  .vibe-level-sub {
-    font-size: 0.60rem;
-    display: none;
-  }
+  .vibe-level-sub { font-size: 0.60rem;
+    display: none; }
 
   .vibe-home-cta-btn {
     min-height: 48px;
@@ -4033,4 +3507,3 @@ body.light-mode .diploma-course-name {
     padding: 12px 24px;
   }
 }
-
