@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body class="dark-mode">
   <!-- Contenedor de Notificaciones Visuales -->
@@ -45,7 +45,7 @@
   <section id="auth-section" class="auth-section-wrapper duo-auth-section">
 
     <!-- ====================================================== -->
-    <!-- 1. PRIMERA PANTALLA: INICIO / HOME (#screen-home)      -->
+    <!-- 1. PRIMERA PANTALLA: INICIO / HOME FLOTANTE (#screen-home) -->
     <!-- ====================================================== -->
     <div id="screen-home" class="onboarding-screen vibe-home-screen">
       <div class="vibe-home-hero-shell card card-3d-tilt">
@@ -56,7 +56,7 @@
           <span>VIBEENGLISH PRESENTA</span>
         </div>
 
-        <!-- Título Principal de Presentación en Dos Líneas -->
+        <!-- Título Principal de Presentación en Dos Líneas Ultra Llamativo -->
         <h1 class="vibe-home-main-title">
           <span class="vibe-home-title-primary">VIBEENGLISH</span>
           <span class="vibe-home-title-accent">APRENDE INGLÉS</span>
@@ -74,34 +74,68 @@
           </button>
         </div>
 
-        <!-- Imagen Principal de Presentación con Insignia Visual de VibeEnglish -->
-        <div class="vibe-home-visual-card">
-          <img src="assets/images/beginner.jpg" alt="Aprendizaje de inglés en VibeEnglish" class="vibe-home-visual-bg">
-          <div class="vibe-home-visual-overlay"></div>
+        <!-- Composición Visual Flotante: Tablet con Interfaz + Elementos 3D + Tarjeta Frontal -->
+        <div class="vibe-home-mockup-wrapper">
+          
+          <!-- Elementos decorativos 3D flotantes alrededor -->
+          <div class="vibe-float-decor float-star-left" aria-hidden="true">⭐</div>
+          <div class="vibe-float-decor float-headphone-left" aria-hidden="true">🎧</div>
+          <div class="vibe-float-decor float-apple-left" aria-hidden="true">🍎</div>
+          <div class="vibe-float-decor float-chat-right" aria-hidden="true">💬</div>
+          <div class="vibe-float-decor float-plane-right" aria-hidden="true">✈️</div>
+          <div class="vibe-float-decor float-star-right" aria-hidden="true">✨</div>
 
-          <div class="vibe-home-visual-top-brand">
-            <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-mini-logo">
-            <span>VibeEnglish</span>
-          </div>
-
-          <div class="vibe-home-sticker-badge">
-            <div class="vibe-home-sticker-icon-row">
-              <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-sticker-logo">
-              <div class="vibe-home-sticker-tags">
-                <span>🎧 Audio</span>
-                <span>💬 Conversación</span>
-                <span>🎙️ Pronunciación</span>
+          <!-- Tablet / Dispositivo en el fondo -->
+          <div class="vibe-home-device-frame">
+            <div class="vibe-device-header">
+              <span class="vibe-device-hamburger">☰</span>
+              <div class="vibe-device-brand">
+                <img src="assets/images/logo.jpg" alt="VibeEnglish" class="vibe-device-brand-icon">
+                <span>VibeEnglish</span>
+              </div>
+              <span class="vibe-device-bell">🔔</span>
+            </div>
+            
+            <div class="vibe-device-dashboard-preview">
+              <div class="vibe-device-preview-card">
+                <div class="vibe-device-ghost-line"></div>
+                <div class="vibe-device-ghost-box"></div>
+              </div>
+              <div class="vibe-device-preview-card">
+                <div class="vibe-device-ghost-line"></div>
+                <div class="vibe-device-ghost-box"></div>
+              </div>
+              <div class="vibe-device-preview-card">
+                <div class="vibe-device-ghost-line"></div>
+                <div class="vibe-device-ghost-box"></div>
               </div>
             </div>
-            <div class="vibe-home-sticker-title">VIBEENGLISH</div>
-            <div class="vibe-home-sticker-levels">
-              <span class="vibe-home-year">3 NIVELES</span>
-              <span class="vibe-home-levels-list">Principiante<br>Intermedio &amp; Avanzado</span>
-            </div>
-            <div class="vibe-home-sticker-ribbon">
-              Plataforma interactiva de aprendizaje de inglés
-            </div>
           </div>
+
+          <!-- Tarjeta Flotante Frontal Superpuesta (Estilo Mockup) -->
+          <div class="vibe-home-float-badge-card">
+            <div class="vibe-float-badge-icon-box">
+              <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-float-badge-img">
+            </div>
+
+            <div class="vibe-float-chips-row">
+              <span class="vibe-float-chip">🎧 Audio</span>
+              <span class="vibe-float-chip">💬 Conversación</span>
+              <span class="vibe-float-chip">🎙️ Pronunciación</span>
+            </div>
+
+            <div class="vibe-float-card-title">VIBEENGLISH</div>
+
+            <div class="vibe-float-card-sub-row">
+              <span class="vibe-float-card-num">3 NIVELES</span>
+              <span class="vibe-float-card-names">PRINCIPIANTE<br>INTERMEDIO &amp; AVANZADO</span>
+            </div>
+
+            <button type="button" class="btn btn-primary vibe-float-card-btn" onclick="EnglishApp.openOnboardingScreen('welcome')">
+              <span>COMENZAR</span>
+            </button>
+          </div>
+
         </div>
 
       </div>
@@ -1877,6 +1911,6 @@
   </div>
 
   <!-- Script Principal de Interfaz -->
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>
