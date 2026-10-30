@@ -347,7 +347,7 @@ var EnglishApp = (() => {
      ========================================================================== */
   let enteredPlatformOnce = false;
 
-  function openOnboardingScreen(screenName = 'welcome') {
+  function openOnboardingScreen(screenName = 'home') {
     const authSec = document.getElementById('auth-section');
     const platSec = document.getElementById('course-platform-section');
 
@@ -355,6 +355,7 @@ var EnglishApp = (() => {
     if (authSec) authSec.classList.remove('hidden');
 
     const screens = {
+      home: document.getElementById('screen-home'),
       welcome: document.getElementById('screen-welcome'),
       register: document.getElementById('screen-register'),
       login: document.getElementById('screen-login'),
