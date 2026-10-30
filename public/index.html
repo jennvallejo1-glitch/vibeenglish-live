@@ -39,12 +39,12 @@
   <!-- ======================================================== -->
   <!-- PANTALLAS INICIALES: BIENVENIDA, REGISTRO, LOGIN Y SUSCRIPCIÓN -->
   <!-- ======================================================== -->
-  <section id="auth-section" class="auth-section-wrapper duo-auth-section hidden">
+  <section id="auth-section" class="auth-section-wrapper duo-auth-section">
     
     <!-- ====================================================== -->
     <!-- 1. PANTALLA INICIAL DE BIENVENIDA (#screen-welcome)    -->
     <!-- ====================================================== -->
-    <div id="screen-welcome" class="onboarding-screen hidden">
+    <div id="screen-welcome" class="onboarding-screen">
       <div class="card welcome-card-shell card-3d-tilt">
         <div class="welcome-layout-grid">
           
@@ -113,7 +113,7 @@
             <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
             <h2 class="duo-form-title" style="margin: 0;">Crear cuenta</h2>
           </div>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.enterPlatform('inicio')">
+          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
             ← Volver
           </button>
         </div>
@@ -246,7 +246,7 @@
               <button type="button" class="btn btn-secondary" onclick="EnglishApp.openOnboardingScreen('login')">
                 Ya tengo una cuenta
               </button>
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.enterPlatform('inicio')">
+              <button type="button" class="btn btn-outline" onclick="EnglishApp.openOnboardingScreen('welcome')">
                 Volver
               </button>
             </div>
@@ -265,7 +265,7 @@
             <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
             <h2 class="duo-form-title" style="margin: 0;">Iniciar sesión</h2>
           </div>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.enterPlatform('inicio')">
+          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
             ← Volver
           </button>
         </div>
@@ -300,7 +300,7 @@
               Crear una cuenta
             </button>
 
-            <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.enterPlatform('inicio')">
+            <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.openOnboardingScreen('welcome')">
               Volver
             </button>
           </div>
@@ -512,11 +512,11 @@
   <!-- ======================================================== -->
   <!-- CONTENEDOR PRINCIPAL DE LA PLATAFORMA                    -->
   <!-- ======================================================== -->
-  <div id="course-platform-section" class="course-platform-wrapper">
+  <div id="course-platform-section" class="course-platform-wrapper hidden">
     
     <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
     <header class="platform-header duo-header">
-      <div class="platform-brand" style="cursor: pointer;" onclick="EnglishApp.switchPlatformTab('inicio')" title="Pantalla de inicio">
+      <div class="platform-brand" style="cursor: pointer;" onclick="EnglishApp.openOnboardingScreen('welcome')" title="Pantalla de bienvenida">
         <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
         <div class="brand-text-col">
           <span class="platform-name">VibeEnglish</span>
@@ -559,16 +559,16 @@
         </button>
       </nav>
 
-      <!-- ACCESOS A SUSCRIPCIÓN, INICIO DE SESIÓN Y CONFIGURACIÓN DE APARIENCIA -->
+      <!-- ACCESOS A SUSCRIPCIÓN, BIENVENIDA Y CONFIGURACIÓN DE APARIENCIA -->
       <div class="platform-actions duo-top-stats">
         <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('subscription')">
           <span>💎</span>
           <span>Suscripción</span>
         </button>
 
-        <button type="button" class="btn btn-outline btn-sm" id="header-btn-login" onclick="EnglishApp.openOnboardingScreen('login')">
+        <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
           <span>🔑</span>
-          <span>Iniciar sesión</span>
+          <span>Bienvenida</span>
         </button>
 
         <div class="header-dropdown-wrap" id="header-dropdown-wrap">
