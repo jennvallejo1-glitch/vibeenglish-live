@@ -9,12 +9,12 @@ Documento técnico descargable y compartible para el equipo de desarrollo del pr
 - **Nombre del proyecto:** VibeEnglish
 - **Descripción general:** La plataforma cuenta con una arquitectura frontend desarrollada por **Jennifer Suazo**, **Marcos Iván** y **Genesis Dessire**, quienes forman parte del equipo responsable del desarrollo del proyecto.
 
-### 🔗 Enlaces y Ejecución del Proyecto
+### 🔗 Enlaces Oficiales del Proyecto
 
-| Recurso | Acceso Oficial | Propósito |
+| Tipo de Enlace | URL Oficial | Propósito |
 | :--- | :--- | :--- |
-| **1. Repositorio Privado de Código (GitHub)** | https://github.com/jennvallejo1-glitch/VibeEnglish | Aloja el código fuente privado del proyecto y todas sus ramas (`main`, `front`, `backend`, `QA`, `produccion`). **Solo accesible para el equipo y los colaboradores autorizados en GitHub.** |
-| **2. Ejecución Directa en Entorno Local** | `http://localhost:3000` (`npm start` o `Iniciar VibeEnglish.bat`) | Ejecuta y muestra la plataforma **VibeEnglish** directamente en tu computadora desde Google Chrome sin depender de servicios externos. |
+| **1. Aplicación Frontend Desplegada (Iniciar de un solo)** | https://vibeenglish-paso-a-paso.netlify.app | Ejecuta y muestra la plataforma **VibeEnglish** en el navegador (Google Chrome en PC o móvil) sin instalar nada. |
+| **2. Repositorio Privado de Código (GitHub)** | https://github.com/jennvallejo1-glitch/VibeEnglish | Aloja el código fuente privado del proyecto y todas sus ramas (`main`, `front`, `backend`, `QA`, `produccion`). |
 
 ---
 

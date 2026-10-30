@@ -2,8 +2,8 @@
 
 Bienvenido al repositorio oficial y privado de **VibeEnglish**, una plataforma web interactiva diseñada para el aprendizaje progresivo del idioma inglés por niveles y unidades.
 
-> **🔒 Repositorio Privado Oficial:** https://github.com/jennvallejo1-glitch/VibeEnglish  
-> **💻 Ejecución Directa Local:** `http://localhost:3000` (`npm start` o `Iniciar VibeEnglish.bat`)
+> **🚀 Iniciar Plataforma Directamente (Enlace Público):** https://vibeenglish-paso-a-paso.netlify.app  
+> **🔒 Repositorio Privado Oficial:** https://github.com/jennvallejo1-glitch/VibeEnglish
 
 ---
 
@@ -40,7 +40,7 @@ Construir e integrar una plataforma web completa de aprendizaje de inglés que c
 | **Servidor Local** | Node.js (`server.js` con módulos nativos `http`, `fs`, `path` en puerto `3000`). |
 | **Backend (En integración)** | Node.js, APIs REST, Autenticación JWT / `bcrypt`, Base de Datos para usuarios, lecciones, foro y progreso, Web Speech API / `MediaRecorder` y servicios de IA/TTS. |
 | **Control de Versiones** | Git y GitHub (Repositorio privado con flujo de ramas por equipos y Pull Requests). |
-| **Ejecución Directa** | Servidor propio en Node.js (`server.js`), lanzador automático (`Iniciar VibeEnglish.bat`) o apertura directa de `index.html`. |
+| **Despliegue y Hosting** | Netlify (`netlify.toml`, publicación en vivo en https://vibeenglish-paso-a-paso.netlify.app). |
 
 ---
 
