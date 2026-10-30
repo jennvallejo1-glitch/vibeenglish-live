@@ -3325,3 +3325,365 @@ body.light-mode .diploma-course-name {
   }
 }
 
+/* ==========================================================================
+   ADAPTACIÓN RESPONSIVA PARA TELÉFONOS CELULARES (SIN ALTERAR VERSIÓN DE PC)
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  .card-3d-tilt,
+  .level-card,
+  .metric-card,
+  .audio-track-card,
+  .manual-uso-card,
+  .lesson-empty-card,
+  .achievement-card {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Contenedor de inicio de sesión, registro y suscripción en móviles */
+  .auth-section-wrapper,
+  .duo-auth-section {
+    padding: 18px 12px 100px 12px;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  .welcome-card-shell,
+  .auth-single-card,
+  .auth-login-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+    width: 100%;
+  }
+
+  .duo-mascot-row {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .duo-mascot-img {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+  }
+
+  .duo-brand-title {
+    font-size: 1.75rem;
+  }
+
+  .duo-form-title {
+    font-size: 1.4rem;
+  }
+
+  .welcome-illustration-slot {
+    min-height: 200px;
+    padding: 20px 16px;
+  }
+
+  /* Cabecera principal adaptada para pantallas de celular */
+  .duo-header,
+  .platform-header {
+    position: relative;
+    top: 0;
+    width: calc(100% - 20px);
+    margin: 10px auto 0 auto;
+    padding: 14px 12px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+
+  .platform-brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .duo-main-nav,
+  .course-main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 14px;
+  }
+
+  .main-nav-btn {
+    width: 100%;
+    height: 38px;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+
+  .duo-top-stats,
+  .platform-actions {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .platform-actions > .btn {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 130px;
+  }
+
+  .header-dropdown-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-dropdown-trigger {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-dropdown-menu {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(280px, calc(100vw - 28px));
+  }
+
+  /* Contenedor principal y tarjetas en teléfonos celulares */
+  .platform-main-container {
+    padding: 18px 12px 110px 12px;
+  }
+
+  .card,
+  .duo-learning-path-card,
+  .unit-guide-block,
+  .duo-manual-guide-card,
+  .manual-uso-card,
+  .audio-track-card,
+  .forum-thread-card,
+  .metric-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  /* Ruta de aprendizaje y niveles en Inicio */
+  .duo-unit-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .duo-unit-guide-btn {
+    width: 100%;
+  }
+
+  .levels-grid,
+  .unit-lessons-grid,
+  .audio-tracks-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .level-img-wrap {
+    height: 160px;
+  }
+
+  /* Guía de unidades y ejecutor de lecciones */
+  .unit-guide-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .unit-guide-header > div {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .lesson-runner-card {
+    padding: 20px 16px;
+  }
+
+  .lesson-runner-header {
+    padding: 12px 14px;
+  }
+
+  .runner-step-title {
+    font-size: 1.35rem;
+  }
+
+  .runner-sample-en,
+  .target-phrase-text {
+    font-size: 1.35rem;
+  }
+
+  /* Conversación y pronunciación en móviles */
+  .conv-partner-header > div {
+    width: 100%;
+  }
+
+  .conv-partner-header > div > div {
+    min-width: 0 !important;
+    flex: 1;
+  }
+
+  .conv-chat-stream {
+    min-height: 260px;
+    max-height: 380px;
+    padding: 14px !important;
+  }
+
+  .conv-msg-row {
+    max-width: 94%;
+  }
+
+  .conv-recording-bar {
+    padding: 14px !important;
+  }
+
+  /* Progreso, tabla y logros */
+  .metrics-dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .metric-big-num {
+    font-size: 1.85rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .modern-table th,
+  .modern-table td {
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Modales y barra flotante de temas */
+  .modal-backdrop {
+    padding: 12px;
+  }
+
+  .modal-dialog {
+    padding: 20px 16px;
+    border-radius: 18px;
+    max-height: 92vh;
+  }
+
+  .diploma-frame {
+    padding: 16px;
+  }
+
+  .diploma-inner-border {
+    padding: 20px 14px;
+  }
+
+  .diploma-title {
+    font-size: 1.5rem;
+  }
+
+  .diploma-student-name {
+    font-size: 1.65rem;
+  }
+
+  .toast-container {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+  }
+
+  .theme-floating-dock {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+  }
+
+  .theme-floating-dock > * {
+    pointer-events: auto;
+  }
+
+  .theme-floating-dock .theme-toggle-floating {
+    padding: 9px 14px;
+    font-size: 0.78rem;
+  }
+
+  .theme-pill-btn {
+    padding: 5px 9px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-actions-grid,
+  .metrics-dashboard-grid,
+  .achievements-grid,
+  .eval-metrics-grid,
+  .celebration-stats-grid,
+  .runner-vocab-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .duo-node-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 1.55rem;
+    border-radius: 18px;
+  }
+
+  #form-register .border-top,
+  #screen-subscription .border-top,
+  .runner-step-footer,
+  .conv-text-fallback,
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #form-register .border-top > div,
+  #screen-subscription .border-top > div {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  #form-register .border-top .btn,
+  #screen-subscription .border-top .btn,
+  .runner-step-footer .btn,
+  .conv-text-fallback .btn,
+  .modal-footer .btn {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .duo-audio-categories .btn,
+  .duo-forum-filter-bar .btn,
+  #scenario-pills-row .btn {
+    flex: 1 1 calc(50% - 6px);
+  }
+
+  .theme-floating-dock {
+    flex-direction: column;
+    align-items: flex-end;
+    left: auto;
+  }
+}
+
+

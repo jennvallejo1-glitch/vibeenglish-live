@@ -345,9 +345,9 @@ var EnglishApp = (() => {
   /* ==========================================================================
      5. NAVEGACIÓN ENTRE PANTALLAS DE BIENVENIDA, REGISTRO, LOGIN Y SUSCRIPCIÓN
      ========================================================================== */
-  let enteredPlatformOnce = false;
+  let enteredPlatformOnce = true;
 
-  function openOnboardingScreen(screenName = 'welcome') {
+  function openOnboardingScreen(screenName = 'login') {
     const authSec = document.getElementById('auth-section');
     const platSec = document.getElementById('course-platform-section');
 
@@ -458,7 +458,7 @@ var EnglishApp = (() => {
   }
 
   function logout() {
-    openOnboardingScreen('welcome');
+    openOnboardingScreen('login');
   }
 
   function closeModals() {
