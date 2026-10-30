@@ -24,10 +24,18 @@
  */
 
 var EnglishApp = (() => {
+  function safeGetTheme() {
+    try {
+      return localStorage.getItem('vibe_theme') || 'dark';
+    } catch (e) {
+      return 'dark';
+    }
+  }
+
   const state = {
     currentPlatformTab: 'inicio',
-    themeMode: localStorage.getItem('vibe_theme') || 'dark',
-    isDarkMode: (localStorage.getItem('vibe_theme') || 'dark') !== 'light',
+    themeMode: safeGetTheme(),
+    isDarkMode: safeGetTheme() !== 'light',
     currentLessonId: 1,
     currentLessonStep: 1,
     selectedChallengeOption: null,
@@ -618,7 +626,7 @@ var EnglishApp = (() => {
   }
 
   function init() {
-    const savedTheme = localStorage.getItem('vibe_theme') || 'dark';
+    const savedTheme = safeGetTheme();
     setThemeMode(VALID_THEMES.includes(savedTheme) ? savedTheme : 'dark');
     renderEmptyUnitsGuide();
     updateSnakePathUI();
