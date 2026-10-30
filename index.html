@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body class="dark-mode">
   <!-- Contenedor de Notificaciones Visuales -->
@@ -47,50 +47,63 @@
     <!-- ====================================================== -->
     <!-- 1. PRIMERA PANTALLA: INICIO / HOME (#screen-home)      -->
     <!-- ====================================================== -->
-    <div id="screen-home" class="onboarding-screen">
-      <div class="card welcome-card-shell card-3d-tilt">
-        <div class="welcome-layout-grid">
-          
-          <!-- Columna Izquierda: Logotipo, Presentación Inicial y Botón Principal «Iniciar» -->
-          <div class="d-flex flex-column justify-between gap-4">
-            <div>
-              <!-- Logotipo existente y nombre de la plataforma -->
-              <div class="duo-mascot-row mb-4">
-                <div class="duo-mascot-avatar-wrap">
-                  <img src="assets/images/logo.jpg" alt="Logo" class="duo-mascot-img">
-                </div>
-                <div class="duo-brand-header">
-                  <h1 class="duo-brand-title">VibeEnglish</h1>
-                </div>
-              </div>
-
-              <!-- Presentación inicial de la plataforma -->
-              <div class="card-subtle p-4 mb-4">
-                <div class="empty-slot-title mb-3"></div>
-                <div class="empty-slot-line mb-2"></div>
-                <div class="empty-slot-line mb-2"></div>
-                <div class="empty-slot-line short mb-3"></div>
-                <div class="empty-slot-box"></div>
-              </div>
-            </div>
-
-            <!-- Único Botón Principal de la Primera Pantalla: «Iniciar» -->
-            <div class="d-flex flex-column">
-              <button type="button" class="btn btn-primary btn-lg w-full" id="btn-home-iniciar" onclick="EnglishApp.openOnboardingScreen('welcome')">
-                <span>Iniciar</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Columna Derecha: Ilustración de presentación -->
-          <div class="welcome-illustration-slot" aria-label="Espacio para ilustración">
-            <img src="assets/images/logo.jpg" alt="Logo" class="duo-mascot-img" style="width: 96px; height: 96px; border-radius: 24px;">
-            <div class="empty-slot-title"></div>
-            <div class="empty-slot-line short"></div>
-            <div class="empty-slot-box"></div>
-          </div>
-
+    <div id="screen-home" class="onboarding-screen vibe-home-screen">
+      <div class="vibe-home-hero-shell card card-3d-tilt">
+        
+        <!-- Píldora Superior con Logo Integrado -->
+        <div class="vibe-home-top-pill">
+          <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-pill-logo">
+          <span>VIBEENGLISH PRESENTA</span>
         </div>
+
+        <!-- Título Principal de Presentación en Dos Líneas -->
+        <h1 class="vibe-home-main-title">
+          <span class="vibe-home-title-primary">VIBEENGLISH</span>
+          <span class="vibe-home-title-accent">APRENDE INGLÉS</span>
+        </h1>
+
+        <!-- Descripción Breve sobre el Aprendizaje del Inglés y lo que Ofrece VibeEnglish -->
+        <p class="vibe-home-description">
+          Explora, practica y domina el inglés paso a paso. Una plataforma interactiva con niveles guiados, lecciones dinámicas, audio, conversación y pronunciación creada para transformar tu aprendizaje.
+        </p>
+
+        <!-- Botón Principal Destacado «COMENZAR» -->
+        <div class="vibe-home-cta-wrap">
+          <button type="button" class="btn btn-primary btn-lg vibe-home-cta-btn" id="btn-home-iniciar" onclick="EnglishApp.openOnboardingScreen('welcome')">
+            <span>COMENZAR</span>
+          </button>
+        </div>
+
+        <!-- Imagen Principal de Presentación con Insignia Visual de VibeEnglish -->
+        <div class="vibe-home-visual-card">
+          <img src="assets/images/beginner.jpg" alt="Aprendizaje de inglés en VibeEnglish" class="vibe-home-visual-bg">
+          <div class="vibe-home-visual-overlay"></div>
+
+          <div class="vibe-home-visual-top-brand">
+            <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-mini-logo">
+            <span>VibeEnglish</span>
+          </div>
+
+          <div class="vibe-home-sticker-badge">
+            <div class="vibe-home-sticker-icon-row">
+              <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-sticker-logo">
+              <div class="vibe-home-sticker-tags">
+                <span>🎧 Audio</span>
+                <span>💬 Conversación</span>
+                <span>🎙️ Pronunciación</span>
+              </div>
+            </div>
+            <div class="vibe-home-sticker-title">VIBEENGLISH</div>
+            <div class="vibe-home-sticker-levels">
+              <span class="vibe-home-year">3 NIVELES</span>
+              <span class="vibe-home-levels-list">Principiante<br>Intermedio &amp; Avanzado</span>
+            </div>
+            <div class="vibe-home-sticker-ribbon">
+              Plataforma interactiva de aprendizaje de inglés
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     
@@ -1864,6 +1877,6 @@
   </div>
 
   <!-- Script Principal de Interfaz -->
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

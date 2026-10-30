@@ -3686,4 +3686,336 @@ body.light-mode .diploma-course-name {
   }
 }
 
+/* ==========================================================================
+   PRIMERA PANTALLA: PRESENTACIÓN VISUAL PRINCIPAL HOME (#screen-home)
+   ========================================================================== */
+.vibe-home-screen {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.vibe-home-hero-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 44px 36px 40px 36px;
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(99, 102, 241, 0.24) 0%, transparent 52%),
+    radial-gradient(circle at 50% 88%, rgba(6, 182, 212, 0.20) 0%, transparent 55%),
+    var(--bg-card);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.vibe-home-top-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-subtle);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.vibe-home-pill-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1.5px solid var(--primary);
+}
+
+.vibe-home-main-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.02;
+  margin: 0 0 22px 0;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.vibe-home-title-primary {
+  font-size: clamp(2.35rem, 6vw, 4rem);
+  color: var(--text-primary);
+}
+
+.vibe-home-title-accent {
+  font-size: clamp(2.05rem, 5.2vw, 3.45rem);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 55%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 4px;
+}
+
+.vibe-home-description {
+  max-width: 580px;
+  font-size: 1.06rem;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  margin: 0 auto 28px auto;
+  font-weight: 500;
+}
+
+.vibe-home-cta-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.vibe-home-cta-btn {
+  min-width: 260px;
+  min-height: 56px;
+  padding: 15px 42px;
+  border-radius: 16px;
+  font-family: 'Outfit', 'Space Grotesk', sans-serif;
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 32px -6px rgba(99, 102, 241, 0.65);
+}
+
+.vibe-home-visual-card {
+  width: 100%;
+  max-width: 560px;
+  min-height: 360px;
+  border-radius: 26px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 20px;
+  transform: rotate(-1.2deg);
+  transition: var(--transition);
+}
+
+.vibe-home-visual-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  border-color: var(--primary);
+}
+
+.vibe-home-visual-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.12) contrast(1.04);
+}
+
+.vibe-home-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 9, 19, 0.48) 0%,
+    rgba(15, 20, 36, 0.24) 45%,
+    rgba(7, 9, 19, 0.74) 100%
+  );
+  z-index: 1;
+}
+
+.vibe-home-visual-top-brand {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(15, 20, 36, 0.74);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+.vibe-home-mini-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.vibe-home-sticker-badge {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 390px;
+  margin-top: 28px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #0F172A;
+  border-radius: 24px;
+  padding: 20px 22px 18px 22px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.48);
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.vibe-home-sticker-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vibe-home-sticker-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid #4F46E5;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+.vibe-home-sticker-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.vibe-home-sticker-tags span {
+  background: #EEF2FF;
+  color: #4338CA;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(79, 70, 229, 0.25);
+}
+
+.vibe-home-sticker-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  line-height: 1;
+}
+
+.vibe-home-sticker-levels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.vibe-home-year {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #4F46E5;
+  letter-spacing: 0.02em;
+}
+
+.vibe-home-levels-list {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #0284C7;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.vibe-home-sticker-ribbon {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 55%, #06B6D4 100%);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+@media (max-width: 768px) {
+  .vibe-home-hero-shell {
+    padding: 28px 18px 26px 18px;
+    border-radius: 22px;
+  }
+
+  .vibe-home-top-pill {
+    padding: 7px 16px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+
+  .vibe-home-description {
+    font-size: 0.96rem;
+    margin-bottom: 22px;
+  }
+
+  .vibe-home-cta-wrap {
+    margin-bottom: 26px;
+  }
+
+  .vibe-home-cta-btn {
+    width: 100%;
+    max-width: 320px;
+    min-height: 52px;
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+
+  .vibe-home-visual-card {
+    min-height: 310px;
+    padding: 18px 14px;
+    border-radius: 20px;
+    transform: none;
+  }
+
+  .vibe-home-sticker-badge {
+    padding: 16px 14px;
+    border-radius: 18px;
+    margin-top: 20px;
+  }
+
+  .vibe-home-sticker-title {
+    font-size: 1.6rem;
+  }
+
+  .vibe-home-year {
+    font-size: 1.25rem;
+  }
+}
+
+
 
