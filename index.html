@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>VibeEnglish</title>
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
   
@@ -11,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body class="dark-mode">
   <!-- Contenedor de Notificaciones Visuales -->
@@ -559,15 +562,20 @@
         </button>
       </nav>
 
-      <!-- ACCESOS A SUSCRIPCIÓN, BIENVENIDA Y CONFIGURACIÓN DE APARIENCIA -->
+      <!-- ACCESOS A SUSCRIPCIÓN, INICIO DE SESIÓN, BIENVENIDA Y CONFIGURACIÓN DE APARIENCIA -->
       <div class="platform-actions duo-top-stats">
         <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('subscription')">
           <span>💎</span>
           <span>Suscripción</span>
         </button>
 
-        <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
+        <button type="button" class="btn btn-outline btn-sm" id="header-btn-login" onclick="EnglishApp.openOnboardingScreen('login')">
           <span>🔑</span>
+          <span>Iniciar sesión</span>
+        </button>
+
+        <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
+          <span>🏠</span>
           <span>Bienvenida</span>
         </button>
 
@@ -1796,6 +1804,6 @@
   </div>
 
   <!-- Script Principal de Interfaz -->
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
