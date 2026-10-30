@@ -11,7 +11,7 @@ Bienvenido al repositorio oficial y privado de **VibeEnglish**, una plataforma w
 
 **VibeEnglish** es una aplicación educativa moderna orientada a estudiantes de habla hispana que desean aprender y practicar inglés de manera estructurada e interactiva.
 
-La plataforma cuenta con una arquitectura **Frontend** completa desarrollada originalmente por **Jennifer Suazo**, que incluye:
+La plataforma cuenta con una arquitectura frontend desarrollada por **Jennifer Suazo**, **Marcos Iván** y **Genesis Dessire**, quienes forman parte del equipo responsable del desarrollo del proyecto:
 - **Flujo de Acceso y Suscripción**: Pantalla inicial de bienvenida, registro de usuarios, inicio de sesión, recuperación de contraseña, selección/gestión de planes de suscripción (Mensual, Trimestral y Anual) y barra de sesión activa.
 - **Navegación y Estructura Académica**: Pantalla de inicio con accesos rápidos, **Guía de Unidades** (6 Unidades × 6 Lecciones = 36 tarjetas de lecciones estructuradas) y acceso a los **3 niveles de inglés** (*Principiante*, *Intermedio* y *Avanzado*).
 - **Módulos de Aprendizaje y Práctica**: *Manual de uso*, *Laboratorio de Audio*, *Conversación*, *Pronunciación*, *Foro de estudiantes*, *Mi progreso* y *Mis logros* (con certificados por nivel).
@@ -50,11 +50,11 @@ El repositorio cuenta con **ramas reales de Git** organizadas según el rol de c
 
 | Rama | Propósito y Alcance | Equipo Responsable |
 | :--- | :--- | :--- |
-| **`main`** | **Rama principal y de coordinación general.** Contiene el `README.md` general, la documentación del proyecto, los objetivos, la distribución de roles y la versión consolidada del proyecto. | Coordinación General (`Jennifer Suazo`) |
-| **`front`** | **Rama principal de Frontend.** Conserva intacto el frontend desarrollado originalmente y concentra la integración de los módulos del equipo de interfaz visual. | Equipo Frontend (`Jennifer`, `Marcos`, `Desiree`) |
-| **`front-jennifer`** | Sub-rama de trabajo individual de Frontend para **Inicio, navegación, dashboard, niveles y guías de unidades**. | Jennifer (`@jennvallejo1-glitch`) |
-| **`front-marcos`** | Sub-rama de trabajo individual de Frontend para **Lecciones, manual teórico, vocabulario, ejercicios, listening y evaluaciones**. | Marcos (`@Marcosivan002`) |
-| **`front-desiree`** | Sub-rama de trabajo individual de Frontend para **Audio, pronunciación, conversación, foro, progreso, historial y perfil**. | Desiree (`@genesisguzman-dev`) |
+| **`main`** | **Rama principal y de coordinación general.** Contiene el `README.md` general, la documentación del proyecto, los objetivos, la distribución de roles y la versión consolidada del proyecto. | Coordinación General |
+| **`front`** | **Rama principal de Frontend.** Conserva intacto el frontend desarrollado por el equipo y concentra la integración de los módulos del equipo de interfaz visual. | Equipo Frontend (`Jennifer Suazo`, `Marcos Iván`, `Genesis Dessire`) |
+| **`front-jennifer`** | Sub-rama de trabajo individual de Frontend para **Inicio, navegación, dashboard, niveles y guías de unidades**. | Jennifer Suazo (`@jennvallejo1-glitch`) |
+| **`front-marcos`** | Sub-rama de trabajo individual de Frontend para **Lecciones, manual teórico, vocabulario, ejercicios, listening y evaluaciones**. | Marcos Iván (`@Marcosivan002`) |
+| **`front-desiree`** | Sub-rama de trabajo individual de Frontend para **Audio, pronunciación, conversación, foro, progreso, historial y perfil**. | Genesis Dessire (`@genesisguzman-dev`) |
 | **`backend`** | **Rama de Backend.** Destinada al desarrollo del servidor, endpoints de la API, lógica de negocio, autenticación, pagos y base de datos. | Equipo Backend |
 | **`QA`** | **Rama de Control de Calidad.** Destinada a pruebas funcionales, validación de integración entre `front` y `backend`, reporte de errores y aseguramiento de calidad. | Equipo QA |
 | **`produccion`** | **Rama de Producción.** Destinada a la integración y preparación de versiones estables listas para su publicación final en el entorno en vivo. | Equipo de Producción |
@@ -161,9 +161,9 @@ Responsable de las interfaces de práctica oral y de las funciones complementari
 
 | Nombre | Usuario de GitHub | Correo Institucional |
 | :--- | :--- | :--- |
-| **Jennifer Suazo** *(Propietaria / Coordinación y Frontend)* | `@jennvallejo1-glitch` | `jennifer.suazo3@ujcv.edu.hn` |
-| **Marcos Flores** *(Frontend — `front-marcos`)* | `@Marcosivan002` | `marcos.flores2@ujcv.edu.hn` |
-| **Desiree / Génesis Guzmán** *(Frontend — `front-desiree`)* | `@genesisguzman-dev` | `genesis.guzman@ujcv.edu.hn` |
+| **Jennifer Suazo** *(Frontend — `front-jennifer`)* | `@jennvallejo1-glitch` | `jennifer.suazo3@ujcv.edu.hn` |
+| **Marcos Iván** *(Frontend — `front-marcos`)* | `@Marcosivan002` | `marcos.flores2@ujcv.edu.hn` |
+| **Genesis Dessire** *(Frontend — `front-desiree`)* | `@genesisguzman-dev` | `genesis.guzman@ujcv.edu.hn` |
 | **Mariela Mejía** *(Colaboradora del Proyecto)* | `@marielamejia-a11y` | `mariela.mejia@ujcv.edu.hn` |
 | **Tania Zepeda** *(Colaboradora del Proyecto)* | `@LadyTani7` | `tania.zepeda@ujcv.edu.hn` |
 | **Enmanuel Fajardo** *(Colaborador del Proyecto)* | `@fajardo21` | `enmanuel.fajardo@ujcv.edu.hn` |
