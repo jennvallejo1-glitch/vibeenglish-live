@@ -91,7 +91,8 @@ var EnglishApp = (() => {
       if (view) view.classList.toggle('hidden', t !== tab);
     });
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const isMobile = window.innerWidth <= 768;
+    window.scrollTo({ top: 0, behavior: isMobile ? 'auto' : 'smooth' });
   }
 
   /* ==========================================================================
@@ -369,7 +370,8 @@ var EnglishApp = (() => {
       }
     });
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const isMobile = window.innerWidth <= 768;
+    window.scrollTo({ top: 0, behavior: isMobile ? 'auto' : 'smooth' });
   }
 
   function enterPlatform(targetTab = 'inicio') {
@@ -581,6 +583,7 @@ var EnglishApp = (() => {
     if (typeof window === 'undefined') return;
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
+    if (window.matchMedia && !window.matchMedia('(hover: hover)').matches) return; // Optimización móvil: evita listeners de mouse en pantallas táctiles
 
     const tiltSelector = '.card-3d-tilt, .level-card, .metric-card, .audio-track-card, .manual-uso-card, .lesson-empty-card, .achievement-card';
     document.addEventListener('mousemove', (e) => {

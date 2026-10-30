@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body class="dark-mode">
   <!-- Contenedor de Notificaciones Visuales -->
@@ -48,94 +48,74 @@
     <!-- 1. PRIMERA PANTALLA: INICIO / HOME FLOTANTE (#screen-home) -->
     <!-- ====================================================== -->
     <div id="screen-home" class="onboarding-screen vibe-home-screen">
-      <div class="vibe-home-hero-shell card card-3d-tilt">
+      <div class="vibe-home-hero-shell card">
         
-        <!-- Píldora Superior con Logo Integrado -->
-        <div class="vibe-home-top-pill">
-          <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-pill-logo">
-          <span>VIBEENGLISH PRESENTA</span>
+        <!-- En la parte superior: Solamente el nombre VibeEnglish con el logo oficial -->
+        <div class="vibe-home-brand-header">
+          <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-brand-logo">
+          <h1 class="vibe-home-main-title">VibeEnglish</h1>
         </div>
 
-        <!-- Título Principal de Presentación en Dos Líneas Ultra Llamativo -->
-        <h1 class="vibe-home-main-title">
-          <span class="vibe-home-title-primary">VIBEENGLISH</span>
-          <span class="vibe-home-title-accent">APRENDE INGLÉS</span>
-        </h1>
+        <!-- Debajo del nombre: Texto destacado «Aprende inglés» -->
+        <h2 class="vibe-home-subtitle-accent">Aprende inglés</h2>
 
-        <!-- Descripción Breve sobre el Aprendizaje del Inglés y lo que Ofrece VibeEnglish -->
+        <!-- Descripción breve -->
         <p class="vibe-home-description">
-          Explora, practica y domina el inglés paso a paso. Una plataforma interactiva con niveles guiados, lecciones dinámicas, audio, conversación y pronunciación creada para transformar tu aprendizaje.
+          Explora, practica y domina el inglés paso a paso con una plataforma interactiva diseñada para transformar tu fluidez y aprendizaje diario.
         </p>
 
-        <!-- Botón Principal Destacado «COMENZAR» -->
+        <!-- Funciones principales: Audio, Conversación y Pronunciación (visibles y organizadas) -->
+        <div class="vibe-home-features-bar" aria-label="Funciones principales">
+          <div class="vibe-feature-pill">
+            <span class="vibe-feature-icon" aria-hidden="true">🎧</span>
+            <span class="vibe-feature-text">Audio</span>
+          </div>
+          <div class="vibe-feature-pill">
+            <span class="vibe-feature-icon" aria-hidden="true">💬</span>
+            <span class="vibe-feature-text">Conversación</span>
+          </div>
+          <div class="vibe-feature-pill">
+            <span class="vibe-feature-icon" aria-hidden="true">🎙️</span>
+            <span class="vibe-feature-text">Pronunciación</span>
+          </div>
+        </div>
+
+        <!-- 3 Niveles de Aprendizaje (Principiante, Intermedio y Avanzado) colocados ANTES del botón Comenzar -->
+        <div class="vibe-home-levels-section" aria-label="Niveles de aprendizaje">
+          <div class="vibe-levels-header-badge">
+            <span class="vibe-levels-badge-tag">3 NIVELES</span>
+            <span class="vibe-levels-badge-sub">DE APRENDIZAJE</span>
+          </div>
+          <div class="vibe-levels-grid">
+            <div class="vibe-level-item level-beginner">
+              <span class="vibe-level-indicator" aria-hidden="true">🟢</span>
+              <div class="vibe-level-info">
+                <span class="vibe-level-name">Principiante</span>
+                <span class="vibe-level-sub">Bases y Vocabulario</span>
+              </div>
+            </div>
+            <div class="vibe-level-item level-intermediate">
+              <span class="vibe-level-indicator" aria-hidden="true">🟡</span>
+              <div class="vibe-level-info">
+                <span class="vibe-level-name">Intermedio</span>
+                <span class="vibe-level-sub">Gramática y Fluidez</span>
+              </div>
+            </div>
+            <div class="vibe-level-item level-advanced">
+              <span class="vibe-level-indicator" aria-hidden="true">🔵</span>
+              <div class="vibe-level-info">
+                <span class="vibe-level-name">Avanzado</span>
+                <span class="vibe-level-sub">Conversación Real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Único Botón Principal Destacado: «COMENZAR» -->
         <div class="vibe-home-cta-wrap">
           <button type="button" class="btn btn-primary btn-lg vibe-home-cta-btn" id="btn-home-iniciar" onclick="EnglishApp.openOnboardingScreen('welcome')">
             <span>COMENZAR</span>
           </button>
-        </div>
-
-        <!-- Composición Visual Flotante: Tablet con Interfaz + Elementos 3D + Tarjeta Frontal -->
-        <div class="vibe-home-mockup-wrapper">
-          
-          <!-- Elementos decorativos 3D flotantes alrededor -->
-          <div class="vibe-float-decor float-star-left" aria-hidden="true">⭐</div>
-          <div class="vibe-float-decor float-headphone-left" aria-hidden="true">🎧</div>
-          <div class="vibe-float-decor float-apple-left" aria-hidden="true">🍎</div>
-          <div class="vibe-float-decor float-chat-right" aria-hidden="true">💬</div>
-          <div class="vibe-float-decor float-plane-right" aria-hidden="true">✈️</div>
-          <div class="vibe-float-decor float-star-right" aria-hidden="true">✨</div>
-
-          <!-- Tablet / Dispositivo en el fondo -->
-          <div class="vibe-home-device-frame">
-            <div class="vibe-device-header">
-              <span class="vibe-device-hamburger">☰</span>
-              <div class="vibe-device-brand">
-                <img src="assets/images/logo.jpg" alt="VibeEnglish" class="vibe-device-brand-icon">
-                <span>VibeEnglish</span>
-              </div>
-              <span class="vibe-device-bell">🔔</span>
-            </div>
-            
-            <div class="vibe-device-dashboard-preview">
-              <div class="vibe-device-preview-card">
-                <div class="vibe-device-ghost-line"></div>
-                <div class="vibe-device-ghost-box"></div>
-              </div>
-              <div class="vibe-device-preview-card">
-                <div class="vibe-device-ghost-line"></div>
-                <div class="vibe-device-ghost-box"></div>
-              </div>
-              <div class="vibe-device-preview-card">
-                <div class="vibe-device-ghost-line"></div>
-                <div class="vibe-device-ghost-box"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta Flotante Frontal Superpuesta (Estilo Mockup) -->
-          <div class="vibe-home-float-badge-card">
-            <div class="vibe-float-badge-icon-box">
-              <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-float-badge-img">
-            </div>
-
-            <div class="vibe-float-chips-row">
-              <span class="vibe-float-chip">🎧 Audio</span>
-              <span class="vibe-float-chip">💬 Conversación</span>
-              <span class="vibe-float-chip">🎙️ Pronunciación</span>
-            </div>
-
-            <div class="vibe-float-card-title">VIBEENGLISH</div>
-
-            <div class="vibe-float-card-sub-row">
-              <span class="vibe-float-card-num">3 NIVELES</span>
-              <span class="vibe-float-card-names">PRINCIPIANTE<br>INTERMEDIO &amp; AVANZADO</span>
-            </div>
-
-            <button type="button" class="btn btn-primary vibe-float-card-btn" onclick="EnglishApp.openOnboardingScreen('welcome')">
-              <span>COMENZAR</span>
-            </button>
-          </div>
-
         </div>
 
       </div>
@@ -1911,6 +1891,6 @@
   </div>
 
   <!-- Script Principal de Interfaz -->
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
