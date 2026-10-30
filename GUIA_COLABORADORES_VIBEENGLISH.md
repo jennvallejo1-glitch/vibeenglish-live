@@ -13,7 +13,7 @@ Documento técnico descargable y compartible para el equipo de desarrollo del pr
 
 | Tipo de Enlace | URL Oficial | Propósito |
 | :--- | :--- | :--- |
-| **1. Aplicación Frontend Desplegada (Iniciar de un solo)** | https://vibeenglish-paso-a-paso.netlify.app | Ejecuta y muestra la plataforma **VibeEnglish** en el navegador (Google Chrome en PC o móvil) sin instalar nada. |
+| **1. Aplicación Frontend Desplegada (Iniciar de un solo)** | https://jennvallejo1-glitch.github.io/vibeenglish-live/ | Ejecuta y muestra la plataforma **VibeEnglish** en el navegador (Google Chrome en PC o móvil) sin instalar nada ni iniciar sesión. |
 | **2. Repositorio Privado de Código (GitHub)** | https://github.com/jennvallejo1-glitch/VibeEnglish | Aloja el código fuente privado del proyecto y todas sus ramas (`main`, `front`, `backend`, `QA`, `produccion`). |
 
 ---
