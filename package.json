@@ -1,10 +1,11 @@
 {
-  "name": "curso-ingles-frontend",
+  "name": "vibeenglish-frontend",
   "version": "1.0.0",
-  "description": "Plataforma interactiva de aprendizaje de inglés con niveles, práctica oral, pronunciación con IA y evaluaciones",
+  "description": "Plataforma interactiva de aprendizaje de inglés — VibeEnglish",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "open": "node server.js --open",
     "dev": "node server.js"
   },
   "keywords": [
@@ -14,6 +15,6 @@
     "pronunciation",
     "interactive"
   ],
-  "author": "",
+  "author": "Jennifer Suazo, Marcos Iván, Genesis Dessire",
   "license": "MIT"
 }

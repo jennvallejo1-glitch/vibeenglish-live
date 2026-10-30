@@ -3,7 +3,7 @@
 Bienvenido al repositorio oficial y privado de **VibeEnglish**, una plataforma web interactiva diseñada para el aprendizaje progresivo del idioma inglés por niveles y unidades.
 
 > **🔒 Repositorio Privado Oficial:** https://github.com/jennvallejo1-glitch/VibeEnglish  
-> **🌐 Aplicación Frontend Desplegada (Vista en Vivo):** https://vibeenglish-paso-a-paso.netlify.app
+> **💻 Ejecución Directa Local:** `http://localhost:3000` (`npm start` o `Iniciar VibeEnglish.bat`)
 
 ---
 
@@ -40,7 +40,7 @@ Construir e integrar una plataforma web completa de aprendizaje de inglés que c
 | **Servidor Local** | Node.js (`server.js` con módulos nativos `http`, `fs`, `path` en puerto `3000`). |
 | **Backend (En integración)** | Node.js, APIs REST, Autenticación JWT / `bcrypt`, Base de Datos para usuarios, lecciones, foro y progreso, Web Speech API / `MediaRecorder` y servicios de IA/TTS. |
 | **Control de Versiones** | Git y GitHub (Repositorio privado con flujo de ramas por equipos y Pull Requests). |
-| **Despliegue y Hosting** | Netlify (`netlify.toml`, publicación desde `public/`). |
+| **Ejecución Directa** | Servidor propio en Node.js (`server.js`), lanzador automático (`Iniciar VibeEnglish.bat`) o apertura directa de `index.html`. |
 
 ---
 
@@ -155,7 +155,7 @@ Responsable de las interfaces de práctica oral y de las funciones complementari
 | **Equipo Frontend** | `front` (`front-jennifer`, `front-marcos`, `front-desiree`) | Mantenimiento de la interfaz visual existente y conexión de eventos de UI por módulos asignados sin alterar el diseño base. |
 | **Equipo Backend** | `backend` | Construcción del servidor, base de datos, autenticación (`login`, `register`, `recover`), pasarela de suscripciones, API de lecciones/evaluaciones, servicios de audio/pronunciación, persistencia del foro y certificados. |
 | **Equipo QA (Calidad)** | `QA` | Ejecución de planes de prueba funcionales, validación de formularios, pruebas multi-dispositivo, verificación de integración Frontend-Backend y reporte de incidencias. |
-| **Equipo Producción** | `produccion` | Preparación de versiones estables (*releases*), verificación de variables de entorno seguras, control del despliegue en Netlify/servidor y monitoreo en vivo. |
+| **Equipo Producción** | `produccion` | Preparación de versiones estables (*releases*), verificación de variables de entorno seguras, control del entorno de ejecución y monitoreo. |
 
 ### 👥 Directorio de Colaboradores Autorizados en el Repositorio Privado
 

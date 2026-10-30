@@ -1,13 +1,14 @@
 @echo off
+cd /d "%~dp0"
 title VibeEnglish - Plataforma de Ingles
 echo ======================================================
-echo   Iniciando VibeEnglish...
+echo   Iniciando VibeEnglish en tu entorno local...
 echo ======================================================
-start "" "http://localhost:3000"
 where node >nul 2>nul
 if %errorlevel% equ 0 (
-  node server.js
+  node server.js --open
 ) else (
-  start "" "index.html"
+  echo Abriendo index.html directamente en el navegador...
+  start "" "%~dp0index.html"
 )
 pause
