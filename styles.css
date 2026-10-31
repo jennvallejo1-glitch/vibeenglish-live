@@ -3659,3 +3659,10 @@ body.light-mode .diploma-course-name { color: #4338CA; }
   .vibe-badge-brand { font-size: 0.95rem; }
   .vibe-badge-levels { font-size: 0.72rem; }
 }
+
+.vibe-home-mockup-wrapper { height: 88px; }
+@media (max-width: 600px) { .vibe-home-mockup-wrapper { height: 74px; } }
+.vibe-home-cta-btn { letter-spacing: 0.02em; text-transform: none; }
+
+.vibe-home-center-logo { width: 88px; height: 88px; border-radius: 20px; object-fit: cover; border: 2px solid var(--primary); box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35); position: relative; z-index: 5; }
+@media (max-width: 600px) { .vibe-home-center-logo { width: 72px; height: 72px; border-radius: 16px; } }
