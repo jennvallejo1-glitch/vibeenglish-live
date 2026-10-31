@@ -18,8 +18,8 @@
  *      - Oscuro ('dark')
  *      - Colorido ('colorful')
  *   3. Efectos interactivos 3D sutiles, filtros visuales y apertura de modales.
- *   4. Puntos de extensión vacíos (stubs) para que otros desarrolladores
- *      integren posteriormente los contenidos, audios y funcionalidades.
+ *   4. Puntos de integración pendientes: sus acciones informan cuando todavía
+ *      no hay un backend o servicio conectado y no simulan su funcionamiento.
  * ============================================================================
  */
 
@@ -55,7 +55,7 @@ var EnglishApp = (() => {
 
     const toast = document.createElement('div');
     toast.className = `toast-msg toast-${type}`;
-    toast.innerHTML = message;
+    toast.textContent = message;
     container.appendChild(toast);
 
     setTimeout(() => {
@@ -125,8 +125,8 @@ var EnglishApp = (() => {
             </div>
 
             <!-- Indicador visual de progreso vacío -->
-            <div class="progress-bar-wrap" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
 
             <!-- Espacios vacíos para futuras actividades de la lección -->
@@ -138,7 +138,7 @@ var EnglishApp = (() => {
             </div>
 
             <!-- Botón para comenzar cada lección -->
-            <button type="button" class="btn btn-primary btn-sm w-full mt-auto" onclick="EnglishApp.startLessonStepRunner(${lessonNum})">
+            <button type="button" class="btn btn-primary btn-sm w-full mt-auto" data-action="startLessonStepRunner" data-action-args='[${lessonNum}]'>
               ▶ Comenzar lección
             </button>
           </div>
@@ -150,14 +150,14 @@ var EnglishApp = (() => {
           <div class="unit-guide-header">
             <div class="d-flex align-center gap-3 flex-1">
               <span class="badge badge-accent">Unidad ${u}</span>
-              <div class="flex-1" style="max-width: 340px;">
+              <div class="flex-1 unit-title-width">
                 <div class="empty-slot-title mb-1"></div>
                 <div class="empty-slot-line short"></div>
               </div>
             </div>
-            <div style="min-width: 160px;">
-              <div class="progress-bar-wrap" style="height: 8px;">
-                <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="unit-progress-column">
+              <div class="progress-bar-wrap progress-8">
+                <div class="progress-bar-fill"></div>
               </div>
             </div>
           </div>
@@ -190,7 +190,7 @@ var EnglishApp = (() => {
       const btnClass = isFirst ? 'duo-node-btn node-active pulse-ring' : 'duo-node-btn node-available';
       html += `
         <div class="duo-node-wrapper node-pos-${n.pos}" id="snake-node-wrap-${n.id}">
-          <button type="button" class="${btnClass}" id="snake-node-btn-${n.id}" onclick="EnglishApp.clickLessonNode(${n.id})">
+          <button type="button" class="${btnClass}" id="snake-node-btn-${n.id}" data-action="clickLessonNode" data-action-args='[${n.id}]'>
             <span class="duo-node-icon">${n.id}</span>
           </button>
         </div>
@@ -346,8 +346,6 @@ var EnglishApp = (() => {
   /* ==========================================================================
      5. NAVEGACIÓN ENTRE PANTALLAS DE BIENVENIDA, REGISTRO, LOGIN Y SUSCRIPCIÓN
      ========================================================================== */
-  let enteredPlatformOnce = false;
-
   function openOnboardingScreen(screenName = 'home') {
     const authSec = document.getElementById('auth-section');
     const platSec = document.getElementById('course-platform-section');
@@ -374,15 +372,6 @@ var EnglishApp = (() => {
     window.scrollTo({ top: 0, behavior: isMobile ? 'auto' : 'smooth' });
   }
 
-  function enterPlatform(targetTab = 'inicio') {
-    enteredPlatformOnce = true;
-    const authSec = document.getElementById('auth-section');
-    const platSec = document.getElementById('course-platform-section');
-    if (authSec) authSec.classList.add('hidden');
-    if (platSec) platSec.classList.remove('hidden');
-    switchPlatformTab(targetTab);
-  }
-
   function switchAuthTab(tab) {
     if (tab === 'register') {
       openOnboardingScreen('register');
@@ -406,19 +395,81 @@ var EnglishApp = (() => {
     togglePasswordVisibility('reg-password-confirm');
   }
 
+  function getValidationMessage(control) {
+    const validity = control.validity;
+    if (validity.customError) return control.validationMessage;
+    if (validity.valueMissing) {
+      if (control.type === 'checkbox') {
+        return control.id === 'reg-terms'
+          ? 'Debes aceptar los términos y condiciones.'
+          : 'Debes aceptar la política de privacidad.';
+      }
+      return 'Este campo es obligatorio.';
+    }
+    if (validity.typeMismatch) return 'Ingresa un correo electrónico válido.';
+    if (validity.tooShort) return `Ingresa al menos ${control.minLength} caracteres.`;
+    if (validity.rangeOverflow) return 'La fecha no puede ser futura.';
+    return 'Revisa este campo.';
+  }
+
+  function validateAuthForm(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return false;
+
+    const password = form.querySelector('#reg-password');
+    const passwordConfirm = form.querySelector('#reg-password-confirm');
+    if (password && passwordConfirm) {
+      passwordConfirm.setCustomValidity(
+        passwordConfirm.value && passwordConfirm.value !== password.value
+          ? 'Las contraseñas no coinciden.'
+          : ''
+      );
+    }
+
+    let isValid = true;
+    const controls = form.querySelectorAll('input, select');
+    controls.forEach(control => {
+      const error = form.querySelector(`[data-error-for="${control.id}"]`);
+      const message = getValidationMessage(control);
+      if (!control.checkValidity()) {
+        isValid = false;
+        control.setAttribute('aria-invalid', 'true');
+        if (error) {
+          error.textContent = message;
+          error.hidden = false;
+        }
+      } else {
+        control.removeAttribute('aria-invalid');
+        if (error) {
+          error.textContent = '';
+          error.hidden = true;
+        }
+      }
+    });
+
+    if (!isValid) {
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) firstInvalid.focus();
+    }
+    return isValid;
+  }
+
   function handleLogin() {
-    // Integración pendiente: Conectar con el servicio de autenticación real (API / Backend).
-    enterPlatform('inicio');
+    if (!validateAuthForm('form-login')) return;
+    // TODO [BACKEND]: autenticar al usuario y crear una sesión.
+    showToast('El servicio de autenticación aún no está disponible. No se inició sesión.', 'error');
   }
 
   function handleRegister() {
-    // Integración pendiente: Conectar el envío del formulario de registro con el backend de usuarios.
-    openOnboardingScreen('subscription');
+    if (!validateAuthForm('form-register')) return;
+    // TODO [BACKEND]: crear la cuenta y persistir los datos validados.
+    showToast('El registro aún no está disponible porque falta conectar el servicio de autenticación.', 'error');
   }
 
   function handlePasswordRecovery() {
-    // Integración pendiente: Conectar con el servicio de recuperación de contraseña.
-    openOnboardingScreen('login');
+    if (!validateAuthForm('form-recover')) return;
+    // TODO [BACKEND]: solicitar la recuperación de contraseña.
+    showToast('La recuperación de contraseña aún no está disponible.', 'error');
   }
 
   function selectSubscriptionPlan(planNumber) {
@@ -429,51 +480,66 @@ var EnglishApp = (() => {
   }
 
   function subscribeToPlan() {
-    // Integración pendiente: Conectar pasarela de pagos y activación de suscripción.
+    // TODO [BACKEND]: conectar la pasarela de pagos y activar la suscripción.
+    notifyBackendUnavailable('la suscripción y el procesamiento de pagos');
   }
 
   function manageSubscription() {
-    // Integración pendiente: Conectar panel de administración de suscripción del usuario.
+    // TODO [BACKEND]: cargar la suscripción del usuario y habilitar su gestión.
+    notifyBackendUnavailable('la gestión de suscripciones');
   }
 
   function changeSubscriptionPlan() {
-    // Integración pendiente: Conectar actualización o cambio de plan activo.
+    // TODO [BACKEND]: actualizar el plan de suscripción activo.
+    notifyBackendUnavailable('el cambio de plan');
   }
 
   function cancelSubscription() {
-    // Integración pendiente: Conectar cancelación de suscripción con el backend.
+    // TODO [BACKEND]: cancelar la suscripción del usuario en el backend.
+    notifyBackendUnavailable('la cancelación de suscripciones');
   }
 
   function goBackFromSubscription() {
-    if (enteredPlatformOnce) {
-      enterPlatform(state.currentPlatformTab || 'inicio');
-    } else {
-      openOnboardingScreen('welcome');
-    }
-  }
-
-  function quickDemoAccess() {
-    enterPlatform('inicio');
-  }
-
-  function transitionToPlatform() {
-    enterPlatform('inicio');
-  }
-
-  function logout() {
     openOnboardingScreen('welcome');
   }
 
+  function logout() {
+    // TODO [BACKEND]: invalidar la sesión del usuario cuando exista autenticación real.
+    notifyBackendUnavailable('el cierre de sesión; no se invalidó ninguna sesión');
+    openOnboardingScreen('welcome');
+  }
+
+  let modalTrigger = null;
+  let activeModal = null;
+
+  function openModal(modal) {
+    if (!modal) return;
+    modalTrigger = document.activeElement;
+    activeModal = modal;
+    modal.classList.remove('hidden');
+
+    const dialog = modal.querySelector('[role="dialog"]');
+    if (!dialog) return;
+    const firstFocusable = dialog.querySelector(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    (firstFocusable || dialog).focus();
+  }
+
   function closeModals() {
-    document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.add('hidden'));
+    document.querySelectorAll('.modal-backdrop').forEach(modal => modal.classList.add('hidden'));
+    activeModal = null;
+    if (modalTrigger && modalTrigger.isConnected) modalTrigger.focus();
+    modalTrigger = null;
   }
 
   function openLevelTestModal() {
-    const m = document.getElementById('modal-level-test');
-    if (m) m.classList.remove('hidden');
+    openModal(document.getElementById('modal-level-test'));
   }
 
   function finishLevelTest() {
+    // TODO [BACKEND]: evaluar la prueba de nivel y guardar el resultado.
+    notifyBackendUnavailable('la evaluación de la prueba de nivel');
     closeModals();
   }
 
@@ -482,8 +548,7 @@ var EnglishApp = (() => {
   }
 
   function openCertificateModal() {
-    const modal = document.getElementById('modal-certificate');
-    if (modal) modal.classList.remove('hidden');
+    openModal(document.getElementById('modal-certificate'));
   }
 
   function startLevel() {
@@ -491,10 +556,148 @@ var EnglishApp = (() => {
     switchPlatformTab('manual');
   }
 
+  function handleModalKeyboard(event) {
+    if (!activeModal) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeModals();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+    const dialog = activeModal.querySelector('[role="dialog"]');
+    if (!dialog) return;
+    const focusable = Array.from(dialog.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(element => !element.hidden);
+
+    if (focusable.length === 0) {
+      event.preventDefault();
+      dialog.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   /* ==========================================================================
-     6. STUBS VACÍOS PREPARADOS PARA EL EQUIPO DE DESARROLLO
+     6. AVISOS EXPLÍCITOS PARA INTEGRACIONES PENDIENTES
      ========================================================================== */
-  function noop() {}
+  function notifyBackendUnavailable(feature) {
+    showToast(
+      `No se puede completar ${feature}: la integración con el backend o servicio aún no está configurada.`,
+      'error'
+    );
+  }
+
+  // TODO [BACKEND]: conectar con la evaluación de respuestas de lección.
+  function checkRunnerChallenge() {
+    notifyBackendUnavailable('la evaluación del reto de lección');
+  }
+
+  // TODO [BACKEND]: conectar el catálogo de audio y el control de velocidad.
+  function playAudioDialogue() {
+    notifyBackendUnavailable('la reproducción de diálogos de audio');
+  }
+
+  // TODO [BACKEND]: solicitar permisos y conectar la grabación de conversación.
+  function toggleConversationRecording() {
+    notifyBackendUnavailable('la grabación de conversación');
+  }
+
+  // TODO [BACKEND]: enviar la respuesta al servicio de conversación.
+  function sendConversationAnswer() {
+    notifyBackendUnavailable('el envío de respuestas de conversación');
+  }
+
+  // TODO [BACKEND]: persistir el reinicio de la conversación.
+  function resetConversation() {
+    notifyBackendUnavailable('el reinicio de la conversación');
+  }
+
+  // TODO [BACKEND]: conectar el servicio de síntesis de voz.
+  function speak() {
+    notifyBackendUnavailable('la síntesis de voz');
+  }
+
+  // TODO [BACKEND]: conectar la reproducción del ejemplo de pronunciación.
+  function listenExample() {
+    notifyBackendUnavailable('la reproducción del ejemplo de pronunciación');
+  }
+
+  // TODO [BACKEND]: conectar la reproducción del audio de referencia.
+  function playReferenceAudio() {
+    notifyBackendUnavailable('la reproducción del audio de referencia');
+  }
+
+  // TODO [BACKEND]: solicitar permisos y grabar la voz del usuario.
+  function startVoiceRecording() {
+    notifyBackendUnavailable('la grabación de voz');
+  }
+
+  // TODO [BACKEND]: detener y conservar la grabación de voz.
+  function stopVoiceRecording() {
+    notifyBackendUnavailable('la detención y conservación de la grabación');
+  }
+
+  // TODO [BACKEND]: conectar la reproducción de la grabación del usuario.
+  function playMyRecording() {
+    notifyBackendUnavailable('la reproducción de la grabación propia');
+  }
+
+  // TODO [BACKEND]: evaluar la pronunciación con el servicio correspondiente.
+  function evaluatePronunciation() {
+    notifyBackendUnavailable('la evaluación de pronunciación');
+  }
+
+  // TODO [BACKEND]: presentar los errores detectados por la evaluación.
+  function showErrors() {
+    notifyBackendUnavailable('el análisis de errores de pronunciación');
+  }
+
+  // TODO [BACKEND]: conectar la reproducción de la pronunciación correcta.
+  function listenCorrectPronunciation() {
+    notifyBackendUnavailable('la reproducción de la pronunciación correcta');
+  }
+
+  // TODO [BACKEND]: reiniciar el intento de pronunciación.
+  function tryAgainPronunciation() {
+    notifyBackendUnavailable('el reinicio del intento de pronunciación');
+  }
+
+  // TODO [BACKEND]: guardar los votos del foro por usuario.
+  function upvoteForum() {
+    notifyBackendUnavailable('los votos del foro');
+  }
+
+  // TODO [BACKEND]: publicar respuestas de foro de forma persistente.
+  function replyToForum() {
+    notifyBackendUnavailable('las respuestas del foro');
+  }
+
+  // TODO [BACKEND]: abrir y validar el formulario para una nueva publicación.
+  function openNewForumModal() {
+    notifyBackendUnavailable('la creación de publicaciones del foro');
+  }
+
+  // TODO [BACKEND]: cargar el historial de práctica oral del usuario.
+  function viewSpeakingHistory() {
+    notifyBackendUnavailable('el historial de práctica oral');
+  }
+
+  // TODO [BACKEND]: generar y descargar el certificado del usuario.
+  function downloadCertificate() {
+    notifyBackendUnavailable('la generación y descarga de certificados');
+  }
 
   function nextPronunciationActivity() {
     const nextIdx = (state.currentPhraseIndex + 1) % 4;
@@ -629,12 +832,98 @@ var EnglishApp = (() => {
     }
   }
 
+  function dispatchAction(event) {
+    const target = event.target instanceof Element ? event.target : event.target.parentElement;
+    if (!target) return;
+
+    const backdrop = target.closest('[data-close-modal-on-backdrop]');
+    if (backdrop && target === backdrop) {
+      closeModals();
+      return;
+    }
+
+    const trigger = target.closest('[data-action]');
+    if (!trigger) return;
+
+    const actionName = trigger.getAttribute('data-action');
+    const action = EnglishApp[actionName];
+    if (typeof action !== 'function') {
+      console.error(`Unknown VibeEnglish action: ${actionName}`);
+      return;
+    }
+
+    const args = trigger.hasAttribute('data-action-args')
+      ? JSON.parse(trigger.getAttribute('data-action-args'))
+      : [];
+    action(...args.map(arg => {
+      if (arg === '$event') return event;
+      if (arg === '$currentTarget') return trigger;
+      return arg;
+    }));
+  }
+
   function init() {
     const savedTheme = safeGetTheme();
     setThemeMode(VALID_THEMES.includes(savedTheme) ? savedTheme : 'dark');
     renderEmptyUnitsGuide();
     updateSnakePathUI();
     init3DTiltCards();
+    document.addEventListener('click', dispatchAction);
+    document.addEventListener('submit', event => {
+      event.preventDefault();
+      dispatchAction(event);
+    });
+    document.addEventListener('keydown', handleModalKeyboard);
+    document.addEventListener('keydown', event => {
+      const target = event.target;
+      if (
+        target &&
+        target.matches &&
+        target.matches('[role="button"][tabindex="0"]') &&
+        (event.key === 'Enter' || event.key === ' ')
+      ) {
+        event.preventDefault();
+        target.click();
+      }
+    });
+
+    const birthdate = document.getElementById('reg-birthdate');
+    if (birthdate) {
+      const today = new Date();
+      birthdate.max = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    }
+
+    document.querySelectorAll('.auth-form input, .auth-form select').forEach(control => {
+      control.addEventListener('input', () => {
+        const form = control.closest('form');
+        if (form && form.id === 'form-register') {
+          const password = form.querySelector('#reg-password');
+          const confirmation = form.querySelector('#reg-password-confirm');
+          if (password && confirmation) {
+            confirmation.setCustomValidity(
+              confirmation.value && confirmation.value !== password.value
+                ? 'Las contraseñas no coinciden.'
+                : ''
+            );
+          }
+        }
+
+        const error = form && form.querySelector(`[data-error-for="${control.id}"]`);
+        if (control.checkValidity()) {
+          control.removeAttribute('aria-invalid');
+          if (error) {
+            error.textContent = '';
+            error.hidden = true;
+          }
+        } else {
+          control.setAttribute('aria-invalid', 'true');
+          if (error) {
+            error.textContent = getValidationMessage(control);
+            error.hidden = false;
+          }
+        }
+      });
+    });
 
     document.addEventListener('click', (e) => {
       const wrap = document.getElementById('header-dropdown-wrap');
@@ -660,7 +949,6 @@ var EnglishApp = (() => {
     toggleHeaderDropdown,
     closeHeaderDropdown,
     openOnboardingScreen,
-    enterPlatform,
     switchAuthTab,
     togglePasswordVisibility,
     toggleRegisterPasswords,
@@ -673,7 +961,6 @@ var EnglishApp = (() => {
     changeSubscriptionPlan,
     cancelSubscription,
     goBackFromSubscription,
-    quickDemoAccess,
     closeModals,
     logout,
     switchPlatformTab,
@@ -690,37 +977,36 @@ var EnglishApp = (() => {
     prevLessonStep,
     exitLessonToMap,
     selectRunnerOption,
-    checkRunnerChallenge: noop,
-    playAudioDialogue: noop,
+    checkRunnerChallenge,
+    playAudioDialogue,
     toggleTranscript,
     filterAudios,
     selectScenario,
-    toggleConversationRecording: noop,
-    sendConversationAnswer: noop,
-    resetConversation: noop,
-    speak: noop,
+    toggleConversationRecording,
+    sendConversationAnswer,
+    resetConversation,
+    speak,
     selectSpecificPhrase,
-    listenExample: noop,
-    playReferenceAudio: noop,
-    startVoiceRecording: noop,
-    stopVoiceRecording: noop,
-    playMyRecording: noop,
-    evaluatePronunciation: noop,
-    showErrors: noop,
-    listenCorrectPronunciation: noop,
-    tryAgainPronunciation: noop,
+    listenExample,
+    playReferenceAudio,
+    startVoiceRecording,
+    stopVoiceRecording,
+    playMyRecording,
+    evaluatePronunciation,
+    showErrors,
+    listenCorrectPronunciation,
+    tryAgainPronunciation,
     nextPronunciationActivity,
     filterForumPosts,
-    upvoteForum: noop,
-    replyToForum: noop,
-    openNewForumModal: noop,
+    upvoteForum,
+    replyToForum,
+    openNewForumModal,
     viewDetailedProgress,
     viewGrades,
-    viewSpeakingHistory: noop,
+    viewSpeakingHistory,
     checkCertificates: openCertificateModal,
     openCertificateModal,
-    downloadCertificate: noop,
-    transitionToPlatform
+    downloadCertificate
   };
 })();
 

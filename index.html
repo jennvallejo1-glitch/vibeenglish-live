@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+  <meta name="description" content="Aprendé inglés a tu ritmo con VibeEnglish: práctica, lecciones y seguimiento para todos los niveles.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
   <title>VibeEnglish</title>
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
   
@@ -14,26 +13,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body class="dark-mode">
   <!-- Contenedor de Notificaciones Visuales -->
-  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <!-- Barra Flotante de Configuración de Apariencia (Claro / Oscuro / Colorido) -->
   <div class="theme-floating-dock" id="theme-floating-dock" role="region" aria-label="Configuración de apariencia">
-    <button type="button" id="theme-toggle-floating-btn" class="theme-toggle-floating" onclick="EnglishApp.cycleTheme()" title="Configuración de apariencia">
+    <button type="button" id="theme-toggle-floating-btn" class="theme-toggle-floating" data-action="cycleTheme" title="Configuración de apariencia">
       <span id="theme-floating-icon">🌙</span>
       <span id="theme-floating-text">Oscuro</span>
     </button>
     <div class="theme-quick-pills" role="group" aria-label="Temas de apariencia">
-      <button type="button" class="theme-pill-btn" data-theme-choice="light" onclick="EnglishApp.setThemeMode('light')">
+      <button type="button" class="theme-pill-btn" data-theme-choice="light" data-action="setThemeMode" data-action-args='["light"]'>
         ☀️ Claro
       </button>
-      <button type="button" class="theme-pill-btn active" data-theme-choice="dark" onclick="EnglishApp.setThemeMode('dark')">
+      <button type="button" class="theme-pill-btn active" data-theme-choice="dark" data-action="setThemeMode" data-action-args='["dark"]'>
         🌙 Oscuro
       </button>
-      <button type="button" class="theme-pill-btn" data-theme-choice="colorful" onclick="EnglishApp.setThemeMode('colorful')">
+      <button type="button" class="theme-pill-btn" data-theme-choice="colorful" data-action="setThemeMode" data-action-args='["colorful"]'>
         🎨 Colorido
       </button>
     </div>
@@ -52,31 +51,19 @@
 
         <!-- Título principal: SOLO VibeEnglish -->
         <h1 class="vibe-home-main-title">VibeEnglish</h1>
+        <p class="vibe-home-description">
+          ¡Tu aventura con el inglés comienza aquí! Aprendé a tu ritmo, practicá sin miedo y descubrí todo lo que sos capaz de lograr. Cada palabra que aprendás te acerca más a tu meta. ¿Estás listo para comenzar?
+        </p>
 
-        <!-- Mockup visual: logo + elementos flotantes + badge -->
+        <!-- Logo central y adornos flotantes -->
         <div class="vibe-home-mockup-wrapper">
-          <!-- Decoradores flotantes -->
+          <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-center-logo">
           <span class="vibe-float-decor vibe-float-decor-1" aria-hidden="true">⭐</span>
           <span class="vibe-float-decor vibe-float-decor-2" aria-hidden="true">🎧</span>
           <span class="vibe-float-decor vibe-float-decor-3" aria-hidden="true">🍎</span>
           <span class="vibe-float-decor vibe-float-decor-4" aria-hidden="true">💬</span>
           <span class="vibe-float-decor vibe-float-decor-5" aria-hidden="true">✈️</span>
           <span class="vibe-float-decor vibe-float-decor-6" aria-hidden="true">✨</span>
-
-          <!-- Marco del dispositivo -->
-          <div class="vibe-home-device-frame">
-            <!-- Badge card flotante -->
-            <div class="vibe-home-float-badge-card">
-              <img src="assets/images/logo.jpg" alt="Logo VibeEnglish" class="vibe-home-badge-logo">
-              <div class="vibe-badge-chips">
-                <span class="vibe-badge-chip">🎧 Audio</span>
-                <span class="vibe-badge-chip">💬 Conversación</span>
-                <span class="vibe-badge-chip">🎙️ Pronunciación</span>
-              </div>
-              <p class="vibe-badge-brand">VibeEnglish</p>
-              <p class="vibe-badge-levels">3 NIVELES &nbsp; <small>PRINCIPIANTE · INTERMEDIO · AVANZADO</small></p>
-            </div>
-          </div>
         </div>
 
         <!-- Funciones principales: Audio, Conversación y Pronunciación -->
@@ -102,21 +89,21 @@
             <span class="vibe-levels-badge-sub">DE APRENDIZAJE</span>
           </div>
           <div class="vibe-levels-grid">
-            <div class="vibe-level-item level-beginner" style="cursor:pointer" onclick="EnglishApp.openOnboardingScreen('welcome')" role="button" tabindex="0" aria-label="Nivel Principiante">
+            <div class="vibe-level-item level-beginner" data-action="openOnboardingScreen" data-action-args='["welcome"]' role="button" tabindex="0" aria-label="Nivel Principiante">
               <span class="vibe-level-indicator" aria-hidden="true">🟢</span>
               <div class="vibe-level-info">
                 <span class="vibe-level-name">Principiante</span>
                 <span class="vibe-level-sub">Bases y Vocabulario</span>
               </div>
             </div>
-            <div class="vibe-level-item level-intermediate" style="cursor:pointer" onclick="EnglishApp.openOnboardingScreen('welcome')" role="button" tabindex="0" aria-label="Nivel Intermedio">
+            <div class="vibe-level-item level-intermediate" data-action="openOnboardingScreen" data-action-args='["welcome"]' role="button" tabindex="0" aria-label="Nivel Intermedio">
               <span class="vibe-level-indicator" aria-hidden="true">🟡</span>
               <div class="vibe-level-info">
                 <span class="vibe-level-name">Intermedio</span>
                 <span class="vibe-level-sub">Gramática y Fluidez</span>
               </div>
             </div>
-            <div class="vibe-level-item level-advanced" style="cursor:pointer" onclick="EnglishApp.openOnboardingScreen('welcome')" role="button" tabindex="0" aria-label="Nivel Avanzado">
+            <div class="vibe-level-item level-advanced" data-action="openOnboardingScreen" data-action-args='["welcome"]' role="button" tabindex="0" aria-label="Nivel Avanzado">
               <span class="vibe-level-indicator" aria-hidden="true">🔵</span>
               <div class="vibe-level-info">
                 <span class="vibe-level-name">Avanzado</span>
@@ -124,6 +111,12 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="vibe-home-cta-wrap">
+          <button type="button" class="vibe-home-cta-btn" data-action="openOnboardingScreen" data-action-args='["welcome"]'>
+            Estoy listo
+          </button>
         </div>
 
       </div>
@@ -137,9 +130,9 @@
         <div class="d-flex justify-between align-center mb-4 flex-wrap gap-2">
           <div class="d-flex align-center gap-3">
             <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
-            <h2 class="duo-form-title" style="margin: 0;">VibeEnglish</h2>
+            <h2 class="duo-form-title compact-heading">VibeEnglish</h2>
           </div>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('home')">
+          <button type="button" class="btn btn-outline btn-sm" data-action="openOnboardingScreen" data-action-args='["home"]'>
             ← Volver
           </button>
         </div>
@@ -154,17 +147,13 @@
 
             <!-- Botones de Opciones de Acceso, Autenticación y Suscripción -->
             <div class="welcome-actions-grid">
-              <button type="button" class="btn btn-outline" id="btn-welcome-inicio" onclick="EnglishApp.enterPlatform('inicio')">
-                <span>🏠 Inicio</span>
-              </button>
-
-              <button type="button" class="btn btn-secondary" id="btn-welcome-registro" onclick="EnglishApp.openOnboardingScreen('register')">
+              <button type="button" class="btn btn-secondary" id="btn-welcome-registro" data-action="openOnboardingScreen" data-action-args='["register"]'>
                 <span>✨ Crear cuenta</span>
               </button>
-              <button type="button" class="btn btn-outline" id="btn-welcome-login" onclick="EnglishApp.openOnboardingScreen('login')">
+              <button type="button" class="btn btn-outline" id="btn-welcome-login" data-action="openOnboardingScreen" data-action-args='["login"]'>
                 <span>🔑 Iniciar sesión</span>
               </button>
-              <button type="button" class="btn btn-accent" id="btn-welcome-suscripcion" onclick="EnglishApp.openOnboardingScreen('subscription')">
+              <button type="button" class="btn btn-accent" id="btn-welcome-suscripcion" data-action="openOnboardingScreen" data-action-args='["subscription"]'>
                 <span>💎 Suscripción</span>
               </button>
             </div>
@@ -172,7 +161,7 @@
 
           <!-- Columna Derecha: Espacio visual para una ilustración -->
           <div class="welcome-illustration-slot" id="welcome-illustration-container" aria-label="Espacio para ilustración">
-            <img src="assets/images/logo.jpg" alt="Logo" class="duo-mascot-img" style="width: 96px; height: 96px; border-radius: 24px;">
+            <img src="assets/images/logo.jpg" alt="Logo" class="duo-mascot-img welcome-mascot">
             <div class="empty-slot-title"></div>
             <div class="empty-slot-line short"></div>
             <div class="empty-slot-box"></div>
@@ -190,61 +179,67 @@
         <div class="d-flex justify-between align-center mb-4 flex-wrap gap-2">
           <div class="d-flex align-center gap-3">
             <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
-            <h2 class="duo-form-title" style="margin: 0;">Crear cuenta</h2>
+            <h2 class="duo-form-title compact-heading">Crear cuenta</h2>
           </div>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
+          <button type="button" class="btn btn-outline btn-sm" data-action="openOnboardingScreen" data-action-args='["welcome"]'>
             ← Volver
           </button>
         </div>
 
-        <!-- TODO [DEV]: Conectar validación y registro de usuario con el servicio de autenticación -->
-        <form id="form-register" class="auth-form" onsubmit="event.preventDefault(); EnglishApp.handleRegister();">
+        <!-- TODO [BACKEND]: Conectar el registro validado con el servicio de autenticación. -->
+        <form id="form-register" class="auth-form" novalidate data-action="handleRegister">
           <div class="register-fields-grid">
             
             <!-- 1. Nombre -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-name">Nombre</label>
-              <input type="text" id="reg-name" class="input-modern duo-input input-no-icon" value="" autocomplete="given-name">
+              <input type="text" id="reg-name" class="input-modern duo-input input-no-icon" autocomplete="given-name" required aria-describedby="reg-name-error">
+              <p class="form-field-error" id="reg-name-error" data-error-for="reg-name" hidden></p>
             </div>
 
             <!-- 2. Apellido -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-lastname">Apellido</label>
-              <input type="text" id="reg-lastname" class="input-modern duo-input input-no-icon" value="" autocomplete="family-name">
+              <input type="text" id="reg-lastname" class="input-modern duo-input input-no-icon" autocomplete="family-name" required aria-describedby="reg-lastname-error">
+              <p class="form-field-error" id="reg-lastname-error" data-error-for="reg-lastname" hidden></p>
             </div>
 
             <!-- 3. Correo electrónico -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-email">Correo electrónico</label>
-              <input type="email" id="reg-email" class="input-modern duo-input input-no-icon" value="" autocomplete="email">
+              <input type="email" id="reg-email" class="input-modern duo-input input-no-icon" autocomplete="email" required aria-describedby="reg-email-error">
+              <p class="form-field-error" id="reg-email-error" data-error-for="reg-email" hidden></p>
             </div>
 
             <!-- 6. Edad o fecha de nacimiento -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-birthdate">Edad o fecha de nacimiento</label>
-              <input type="date" id="reg-birthdate" class="input-modern duo-input input-no-icon" value="" autocomplete="bday">
+              <input type="date" id="reg-birthdate" class="input-modern duo-input input-no-icon" autocomplete="bday" required aria-describedby="reg-birthdate-error">
+              <p class="form-field-error" id="reg-birthdate-error" data-error-for="reg-birthdate" hidden></p>
             </div>
 
             <!-- 4. Contraseña -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-password">Contraseña</label>
               <div class="input-with-icon duo-input-wrap">
-                <input type="password" id="reg-password" class="input-modern duo-input input-no-icon" value="" autocomplete="new-password">
+                <input type="password" id="reg-password" class="input-modern duo-input input-no-icon" autocomplete="new-password" minlength="8" required aria-describedby="reg-password-error">
               </div>
+              <p class="form-field-error" id="reg-password-error" data-error-for="reg-password" hidden></p>
             </div>
 
             <!-- 5. Confirmar contraseña -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-password-confirm">Confirmar contraseña</label>
               <div class="input-with-icon duo-input-wrap">
-                <input type="password" id="reg-password-confirm" class="input-modern duo-input input-no-icon" value="" autocomplete="new-password">
+                <input type="password" id="reg-password-confirm" class="input-modern duo-input input-no-icon" autocomplete="new-password" minlength="8" required aria-describedby="reg-password-confirm-error">
               </div>
+              <p class="form-field-error" id="reg-password-confirm-error" data-error-for="reg-password-confirm" hidden></p>
             </div>
 
             <!-- 7. País de residencia (Selector desplegable de países disponibles) -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-country">País de residencia</label>
-              <select id="reg-country" class="select-modern duo-select">
+              <select id="reg-country" class="select-modern duo-select" required aria-describedby="reg-country-error">
                 <option value="" selected></option>
                 <option value="AR">Argentina</option>
                 <option value="BO">Bolivia</option>
@@ -270,28 +265,40 @@
                 <option value="UY">Uruguay</option>
                 <option value="VE">Venezuela</option>
               </select>
+              <p class="form-field-error" id="reg-country-error" data-error-for="reg-country" hidden></p>
             </div>
 
             <!-- 8. Idioma nativo -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-native-lang">Idioma nativo</label>
-              <input type="text" id="reg-native-lang" class="input-modern duo-input input-no-icon" value="">
+              <input type="text" id="reg-native-lang" class="input-modern duo-input input-no-icon" required aria-describedby="reg-native-lang-error">
+              <p class="form-field-error" id="reg-native-lang-error" data-error-for="reg-native-lang" hidden></p>
             </div>
 
             <!-- 9. Nivel actual de inglés (Selector vacío sin opciones precargadas de ejemplo) -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-level">Nivel actual de inglés</label>
-              <select id="reg-level" class="select-modern duo-select">
+              <select id="reg-level" class="select-modern duo-select" required aria-describedby="reg-level-error">
                 <option value="" selected></option>
+                <option value="beginner">Principiante</option>
+                <option value="intermediate">Intermedio</option>
+                <option value="advanced">Avanzado</option>
               </select>
+              <p class="form-field-error" id="reg-level-error" data-error-for="reg-level" hidden></p>
             </div>
 
             <!-- 10. Objetivo de aprendizaje (Selector vacío sin opciones precargadas de ejemplo) -->
             <div class="form-group mb-0">
               <label class="form-label duo-form-label" for="reg-goal">Objetivo de aprendizaje</label>
-              <select id="reg-goal" class="select-modern duo-select">
+              <select id="reg-goal" class="select-modern duo-select" required aria-describedby="reg-goal-error">
                 <option value="" selected></option>
+                <option value="study">Estudios</option>
+                <option value="work">Trabajo</option>
+                <option value="travel">Viajes</option>
+                <option value="conversation">Conversación</option>
+                <option value="exams">Preparar exámenes</option>
               </select>
+              <p class="form-field-error" id="reg-goal-error" data-error-for="reg-goal" hidden></p>
             </div>
 
           </div>
@@ -299,16 +306,18 @@
           <!-- Espacios para aceptar términos y condiciones y política de privacidad (sin inventar textos) -->
           <div class="d-flex flex-column gap-2 mt-4 mb-4">
             <label class="legal-check-row" for="reg-terms">
-              <input type="checkbox" id="reg-terms">
+              <input type="checkbox" id="reg-terms" required aria-describedby="reg-terms-error">
               <span class="text-sm font-bold">Términos y condiciones</span>
               <span class="empty-slot-line short flex-1"></span>
             </label>
+            <p class="form-field-error" id="reg-terms-error" data-error-for="reg-terms" hidden></p>
 
             <label class="legal-check-row" for="reg-privacy">
-              <input type="checkbox" id="reg-privacy">
+              <input type="checkbox" id="reg-privacy" required aria-describedby="reg-privacy-error">
               <span class="text-sm font-bold">Política de privacidad</span>
               <span class="empty-slot-line short flex-1"></span>
             </label>
+            <p class="form-field-error" id="reg-privacy-error" data-error-for="reg-privacy" hidden></p>
           </div>
 
           <!-- Botones del Formulario de Registro -->
@@ -317,15 +326,15 @@
               <button type="submit" class="btn btn-primary" id="btn-crear-cuenta">
                 Crear cuenta
               </button>
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.toggleRegisterPasswords()">
+              <button type="button" class="btn btn-outline" data-action="toggleRegisterPasswords">
                 👁️ Mostrar u ocultar contraseña
               </button>
             </div>
             <div class="d-flex flex-wrap gap-2">
-              <button type="button" class="btn btn-secondary" onclick="EnglishApp.openOnboardingScreen('login')">
+              <button type="button" class="btn btn-secondary" data-action="openOnboardingScreen" data-action-args='["login"]'>
                 Ya tengo una cuenta
               </button>
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.openOnboardingScreen('welcome')">
+              <button type="button" class="btn btn-outline" data-action="openOnboardingScreen" data-action-args='["welcome"]'>
                 Volver
               </button>
             </div>
@@ -342,23 +351,25 @@
         <div class="d-flex justify-between align-center mb-4 flex-wrap gap-2">
           <div class="d-flex align-center gap-3">
             <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
-            <h2 class="duo-form-title" style="margin: 0;">Iniciar sesión</h2>
+            <h2 class="duo-form-title compact-heading">Iniciar sesión</h2>
           </div>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
+          <button type="button" class="btn btn-outline btn-sm" data-action="openOnboardingScreen" data-action-args='["welcome"]'>
             ← Volver
           </button>
         </div>
 
-        <!-- TODO [DEV]: Conectar inicio de sesión con el servicio de autenticación -->
-        <form id="form-login" class="auth-form" onsubmit="event.preventDefault(); EnglishApp.handleLogin();">
+        <!-- TODO [BACKEND]: Conectar el formulario con el servicio de autenticación. -->
+        <form id="form-login" class="auth-form" novalidate data-action="handleLogin">
           <div class="form-group mb-3">
             <label class="form-label duo-form-label" for="login-email">Correo electrónico</label>
-            <input type="email" id="login-email" class="input-modern duo-input input-no-icon" value="" autocomplete="email">
+            <input type="email" id="login-email" class="input-modern duo-input input-no-icon" autocomplete="email" required aria-describedby="login-email-error">
+            <p class="form-field-error" id="login-email-error" data-error-for="login-email" hidden></p>
           </div>
 
           <div class="form-group mb-4">
             <label class="form-label duo-form-label" for="login-password">Contraseña</label>
-            <input type="password" id="login-password" class="input-modern duo-input input-no-icon" value="" autocomplete="current-password">
+            <input type="password" id="login-password" class="input-modern duo-input input-no-icon" autocomplete="current-password" minlength="8" required aria-describedby="login-password-error">
+            <p class="form-field-error" id="login-password-error" data-error-for="login-password" hidden></p>
           </div>
 
           <!-- Botones del Formulario de Inicio de Sesión -->
@@ -367,19 +378,19 @@
               Iniciar sesión
             </button>
 
-            <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.togglePasswordVisibility('login-password')">
+            <button type="button" class="btn btn-outline w-full" data-action="togglePasswordVisibility" data-action-args='["login-password"]'>
               👁️ Mostrar u ocultar contraseña
             </button>
 
-            <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.openOnboardingScreen('recover')">
+            <button type="button" class="btn btn-outline w-full" data-action="openOnboardingScreen" data-action-args='["recover"]'>
               Olvidé mi contraseña
             </button>
 
-            <button type="button" class="btn btn-secondary w-full" onclick="EnglishApp.openOnboardingScreen('register')">
+            <button type="button" class="btn btn-secondary w-full" data-action="openOnboardingScreen" data-action-args='["register"]'>
               Crear una cuenta
             </button>
 
-            <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.openOnboardingScreen('welcome')">
+            <button type="button" class="btn btn-outline w-full" data-action="openOnboardingScreen" data-action-args='["welcome"]'>
               Volver
             </button>
           </div>
@@ -393,21 +404,22 @@
     <div id="screen-recover" class="onboarding-screen hidden">
       <div class="card auth-login-card">
         <div class="d-flex justify-between align-center mb-4">
-          <h3 class="duo-form-title" style="margin: 0;">Olvidé mi contraseña</h3>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('login')">
+          <h3 class="duo-form-title compact-heading">Olvidé mi contraseña</h3>
+          <button type="button" class="btn btn-outline btn-sm" data-action="openOnboardingScreen" data-action-args='["login"]'>
             ← Volver
           </button>
         </div>
-        <form id="form-recover" class="auth-form" onsubmit="event.preventDefault(); EnglishApp.handlePasswordRecovery();">
+        <form id="form-recover" class="auth-form" novalidate data-action="handlePasswordRecovery">
           <div class="form-group mb-4">
             <label class="form-label duo-form-label" for="recover-email">Correo electrónico</label>
-            <input type="email" id="recover-email" class="input-modern duo-input input-no-icon" value="">
+            <input type="email" id="recover-email" class="input-modern duo-input input-no-icon" required aria-describedby="recover-email-error">
+            <p class="form-field-error" id="recover-email-error" data-error-for="recover-email" hidden></p>
           </div>
           <div class="d-flex flex-column gap-2">
             <button type="submit" class="btn btn-primary w-full" id="btn-recuperar-contrasena">
               Enviar
             </button>
-            <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.openOnboardingScreen('login')">
+            <button type="button" class="btn btn-outline w-full" data-action="openOnboardingScreen" data-action-args='["login"]'>
               Volver
             </button>
           </div>
@@ -423,9 +435,9 @@
         <div class="d-flex justify-between align-center mb-4 flex-wrap gap-2">
           <div class="d-flex align-center gap-3">
             <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
-            <h2 class="duo-form-title" style="margin: 0;">Suscripción</h2>
+            <h2 class="duo-form-title compact-heading">Suscripción</h2>
           </div>
-          <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.goBackFromSubscription()">
+          <button type="button" class="btn btn-outline btn-sm" data-action="goBackFromSubscription">
             ← Volver
           </button>
         </div>
@@ -458,10 +470,10 @@
               <div class="empty-slot-line short"></div>
             </div>
             <div class="d-flex flex-column gap-2 mt-auto pt-2">
-              <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.selectSubscriptionPlan(1)">
+              <button type="button" class="btn btn-outline w-full" data-action="selectSubscriptionPlan" data-action-args='[1]'>
                 Seleccionar plan
               </button>
-              <button type="button" class="btn btn-primary w-full" onclick="EnglishApp.subscribeToPlan(1)">
+              <button type="button" class="btn btn-primary w-full" data-action="subscribeToPlan" data-action-args='[1]'>
                 Suscribirse
               </button>
             </div>
@@ -492,10 +504,10 @@
               <div class="empty-slot-line short"></div>
             </div>
             <div class="d-flex flex-column gap-2 mt-auto pt-2">
-              <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.selectSubscriptionPlan(2)">
+              <button type="button" class="btn btn-outline w-full" data-action="selectSubscriptionPlan" data-action-args='[2]'>
                 Seleccionar plan
               </button>
-              <button type="button" class="btn btn-primary w-full" onclick="EnglishApp.subscribeToPlan(2)">
+              <button type="button" class="btn btn-primary w-full" data-action="subscribeToPlan" data-action-args='[2]'>
                 Suscribirse
               </button>
             </div>
@@ -526,10 +538,10 @@
               <div class="empty-slot-line short"></div>
             </div>
             <div class="d-flex flex-column gap-2 mt-auto pt-2">
-              <button type="button" class="btn btn-outline w-full" onclick="EnglishApp.selectSubscriptionPlan(3)">
+              <button type="button" class="btn btn-outline w-full" data-action="selectSubscriptionPlan" data-action-args='[3]'>
                 Seleccionar plan
               </button>
-              <button type="button" class="btn btn-primary w-full" onclick="EnglishApp.subscribeToPlan(3)">
+              <button type="button" class="btn btn-primary w-full" data-action="subscribeToPlan" data-action-args='[3]'>
                 Suscribirse
               </button>
             </div>
@@ -561,24 +573,24 @@
         <!-- Botones de Administración y Navegación de Suscripción -->
         <div class="d-flex flex-wrap justify-between align-center gap-2 pt-3 border-top">
           <div class="d-flex flex-wrap gap-2">
-            <button type="button" class="btn btn-secondary" onclick="EnglishApp.selectSubscriptionPlan(1)">
+            <button type="button" class="btn btn-secondary" data-action="selectSubscriptionPlan" data-action-args='[1]'>
               Seleccionar plan
             </button>
-            <button type="button" class="btn btn-primary" onclick="EnglishApp.subscribeToPlan()">
+            <button type="button" class="btn btn-primary" data-action="subscribeToPlan">
               Suscribirse
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.manageSubscription()">
+            <button type="button" class="btn btn-outline" data-action="manageSubscription">
               Administrar suscripción
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.changeSubscriptionPlan()">
+            <button type="button" class="btn btn-outline" data-action="changeSubscriptionPlan">
               Cambiar de plan
             </button>
-            <button type="button" class="btn btn-danger" onclick="EnglishApp.cancelSubscription()">
+            <button type="button" class="btn btn-danger" data-action="cancelSubscription">
               Cancelar suscripción
             </button>
           </div>
 
-          <button type="button" class="btn btn-outline" onclick="EnglishApp.goBackFromSubscription()">
+          <button type="button" class="btn btn-outline" data-action="goBackFromSubscription">
             Volver
           </button>
         </div>
@@ -595,7 +607,7 @@
     
     <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
     <header class="platform-header duo-header">
-      <div class="platform-brand" style="cursor: pointer;" onclick="EnglishApp.openOnboardingScreen('welcome')" title="Pantalla de bienvenida">
+      <div class="platform-brand" data-action="openOnboardingScreen" data-action-args='["welcome"]' title="Pantalla de bienvenida" role="button" tabindex="0" aria-label="Volver a la pantalla de bienvenida">
         <img src="assets/images/logo.jpg" alt="Logo" class="platform-logo-img">
         <div class="brand-text-col">
           <span class="platform-name">VibeEnglish</span>
@@ -604,35 +616,35 @@
 
       <!-- BOTONES DE NAVEGACIÓN PRINCIPAL ESPECIFICADOS -->
       <nav class="course-main-nav duo-main-nav" aria-label="Navegación principal">
-        <button type="button" class="main-nav-btn active" id="nav-btn-inicio" onclick="EnglishApp.switchPlatformTab('inicio')">
+        <button type="button" class="main-nav-btn active" id="nav-btn-inicio" data-action="switchPlatformTab" data-action-args='["inicio"]'>
           <span class="nav-icon">🏠</span>
           <span>Inicio</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-manual-uso" onclick="EnglishApp.switchPlatformTab('manual-uso')">
+        <button type="button" class="main-nav-btn" id="nav-btn-manual-uso" data-action="switchPlatformTab" data-action-args='["manual-uso"]'>
           <span class="nav-icon">📘</span>
           <span>Manual de uso</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-audios" onclick="EnglishApp.switchPlatformTab('audios')">
+        <button type="button" class="main-nav-btn" id="nav-btn-audios" data-action="switchPlatformTab" data-action-args='["audios"]'>
           <span class="nav-icon">🎧</span>
           <span>Audio</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-conversacion" onclick="EnglishApp.switchPlatformTab('conversacion')">
+        <button type="button" class="main-nav-btn" id="nav-btn-conversacion" data-action="switchPlatformTab" data-action-args='["conversacion"]'>
           <span class="nav-icon">💬</span>
           <span>Conversación</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-pronunciacion" onclick="EnglishApp.switchPlatformTab('pronunciacion')">
+        <button type="button" class="main-nav-btn" id="nav-btn-pronunciacion" data-action="switchPlatformTab" data-action-args='["pronunciacion"]'>
           <span class="nav-icon">🎙️</span>
           <span>Pronunciación</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-foros" onclick="EnglishApp.switchPlatformTab('foros')">
+        <button type="button" class="main-nav-btn" id="nav-btn-foros" data-action="switchPlatformTab" data-action-args='["foros"]'>
           <span class="nav-icon">👥</span>
           <span>Foro</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-progreso" onclick="EnglishApp.switchPlatformTab('progreso')">
+        <button type="button" class="main-nav-btn" id="nav-btn-progreso" data-action="switchPlatformTab" data-action-args='["progreso"]'>
           <span class="nav-icon">📊</span>
           <span>Mi progreso</span>
         </button>
-        <button type="button" class="main-nav-btn" id="nav-btn-logros" onclick="EnglishApp.switchPlatformTab('logros')">
+        <button type="button" class="main-nav-btn" id="nav-btn-logros" data-action="switchPlatformTab" data-action-args='["logros"]'>
           <span class="nav-icon">🏆</span>
           <span>Mis logros</span>
         </button>
@@ -640,23 +652,23 @@
 
       <!-- ACCESOS A SUSCRIPCIÓN, INICIO DE SESIÓN, BIENVENIDA Y CONFIGURACIÓN DE APARIENCIA -->
       <div class="platform-actions duo-top-stats">
-        <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('subscription')">
+        <button type="button" class="btn btn-outline btn-sm" data-action="openOnboardingScreen" data-action-args='["subscription"]'>
           <span>💎</span>
           <span>Suscripción</span>
         </button>
 
-        <button type="button" class="btn btn-outline btn-sm" id="header-btn-login" onclick="EnglishApp.openOnboardingScreen('login')">
+        <button type="button" class="btn btn-outline btn-sm" id="header-btn-login" data-action="openOnboardingScreen" data-action-args='["login"]'>
           <span>🔑</span>
           <span>Iniciar sesión</span>
         </button>
 
-        <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.openOnboardingScreen('welcome')">
+        <button type="button" class="btn btn-outline btn-sm" data-action="openOnboardingScreen" data-action-args='["welcome"]'>
           <span>🏠</span>
           <span>Bienvenida</span>
         </button>
 
         <div class="header-dropdown-wrap" id="header-dropdown-wrap">
-          <button type="button" class="btn btn-outline btn-sm header-dropdown-trigger" id="header-stats-dropdown-btn" onclick="EnglishApp.toggleHeaderDropdown(event)" aria-expanded="false" title="Configuración de apariencia">
+          <button type="button" class="btn btn-outline btn-sm header-dropdown-trigger" id="header-stats-dropdown-btn" data-action="toggleHeaderDropdown" data-action-args='["$event"]' aria-expanded="false" title="Configuración de apariencia">
             <span>🎨</span>
             <span>Configuración de apariencia</span>
             <span class="dropdown-caret" id="header-dropdown-caret">▾</span>
@@ -665,15 +677,15 @@
           <div class="header-dropdown-menu hidden" id="header-stats-dropdown-menu">
             <div class="header-dropdown-title">🎨 Configuración de apariencia</div>
             <div class="theme-dropdown-selector" role="group" aria-label="Temas de apariencia">
-              <button type="button" class="theme-option-chip" data-theme-choice="light" onclick="EnglishApp.setThemeMode('light')">
+              <button type="button" class="theme-option-chip" data-theme-choice="light" data-action="setThemeMode" data-action-args='["light"]'>
                 <span>☀️</span>
                 <span>Claro</span>
               </button>
-              <button type="button" class="theme-option-chip active" data-theme-choice="dark" onclick="EnglishApp.setThemeMode('dark')">
+              <button type="button" class="theme-option-chip active" data-theme-choice="dark" data-action="setThemeMode" data-action-args='["dark"]'>
                 <span>🌙</span>
                 <span>Oscuro</span>
               </button>
-              <button type="button" class="theme-option-chip" data-theme-choice="colorful" onclick="EnglishApp.setThemeMode('colorful')">
+              <button type="button" class="theme-option-chip" data-theme-choice="colorful" data-action="setThemeMode" data-action-args='["colorful"]'>
                 <span>🎨</span>
                 <span>Colorido</span>
               </button>
@@ -695,7 +707,7 @@
         <div class="duo-learning-path-card card mb-4">
           <div class="duo-unit-banner d-flex justify-between align-center p-3">
             <span class="duo-unit-badge">Guía de unidades</span>
-            <button type="button" class="btn btn-outline duo-unit-guide-btn" onclick="EnglishApp.switchPlatformTab('manual')">
+            <button type="button" class="btn btn-outline duo-unit-guide-btn" data-action="switchPlatformTab" data-action-args='["manual"]'>
               📖 Guía de unidades
             </button>
           </div>
@@ -703,31 +715,31 @@
           <!-- Ruta Visual de Nodos Vacíos -->
           <div class="duo-path-snake" id="snake-path-container">
             <div class="duo-node-wrapper node-pos-center" id="snake-node-wrap-1">
-              <button type="button" class="duo-node-btn node-active pulse-ring" id="snake-node-btn-1" onclick="EnglishApp.clickLessonNode(1)">
+              <button type="button" class="duo-node-btn node-active pulse-ring" id="snake-node-btn-1" data-action="clickLessonNode" data-action-args='[1]'>
                 <span class="duo-node-icon">1</span>
               </button>
             </div>
             <div class="duo-connector conn-right"></div>
             <div class="duo-node-wrapper node-pos-right" id="snake-node-wrap-2">
-              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-2" onclick="EnglishApp.clickLessonNode(2)">
+              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-2" data-action="clickLessonNode" data-action-args='[2]'>
                 <span class="duo-node-icon">2</span>
               </button>
             </div>
             <div class="duo-connector conn-center"></div>
             <div class="duo-node-wrapper node-pos-center" id="snake-node-wrap-3">
-              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-3" onclick="EnglishApp.clickLessonNode(3)">
+              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-3" data-action="clickLessonNode" data-action-args='[3]'>
                 <span class="duo-node-icon">3</span>
               </button>
             </div>
             <div class="duo-connector conn-left"></div>
             <div class="duo-node-wrapper node-pos-left" id="snake-node-wrap-4">
-              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-4" onclick="EnglishApp.clickLessonNode(4)">
+              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-4" data-action="clickLessonNode" data-action-args='[4]'>
                 <span class="duo-node-icon">4</span>
               </button>
             </div>
             <div class="duo-connector conn-center"></div>
             <div class="duo-node-wrapper node-pos-center" id="snake-node-wrap-5">
-              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-5" onclick="EnglishApp.clickLessonNode(5)">
+              <button type="button" class="duo-node-btn node-available" id="snake-node-btn-5" data-action="clickLessonNode" data-action-args='[5]'>
                 <span class="duo-node-icon">5</span>
               </button>
             </div>
@@ -737,16 +749,16 @@
         <!-- BOTONES PRINCIPALES DE LA PANTALLA DE INICIO -->
         <div class="card mb-4 p-3 duo-dashboard-card">
           <div class="chatgpt-dashboard-buttons-grid duo-buttons-grid">
-            <button type="button" class="btn btn-primary" onclick="EnglishApp.switchPlatformTab('manual')">
+            <button type="button" class="btn btn-primary" data-action="switchPlatformTab" data-action-args='["manual"]'>
               ▶ Comenzar a aprender
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.openLevelTestModal()">
+            <button type="button" class="btn btn-outline" data-action="openLevelTestModal">
               📝 Realizar prueba de nivel
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.switchPlatformTab('progreso')">
+            <button type="button" class="btn btn-outline" data-action="switchPlatformTab" data-action-args='["progreso"]'>
               📊 Ver mi progreso
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.switchPlatformTab('logros')">
+            <button type="button" class="btn btn-outline" data-action="switchPlatformTab" data-action-args='["logros"]'>
               🏆 Ver mis logros
             </button>
           </div>
@@ -759,7 +771,7 @@
             <!-- 1. Nivel principiante -->
             <div class="level-card card card-3d-tilt" id="level-card-beginner">
               <div class="level-img-wrap">
-                <img src="assets/images/beginner.jpg" alt="Nivel principiante" class="level-cover">
+                <img src="assets/images/beginner.jpg" alt="Nivel principiante" class="level-cover" loading="lazy" decoding="async">
                 <span class="level-pill badge-success">Nivel 1</span>
               </div>
               <div class="level-info p-3">
@@ -767,12 +779,12 @@
                   <h4 class="level-card-title mb-2">Nivel principiante</h4>
                   <div class="empty-slot-line mb-2"></div>
                   <div class="empty-slot-line short mb-2"></div>
-                  <div class="progress-bar-wrap" style="height: 7px;">
-                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                  <div class="progress-bar-wrap progress-7">
+                    <div class="progress-bar-fill"></div>
                   </div>
                 </div>
                 <div class="d-flex flex-column gap-2 mt-auto">
-                  <button type="button" class="btn btn-primary w-full" onclick="EnglishApp.startLevel('beginner')">
+                  <button type="button" class="btn btn-primary w-full" data-action="startLevel" data-action-args='["beginner"]'>
                     Nivel principiante
                   </button>
                 </div>
@@ -782,7 +794,7 @@
             <!-- 2. Nivel intermedio -->
             <div class="level-card card card-3d-tilt" id="level-card-intermediate">
               <div class="level-img-wrap">
-                <img src="assets/images/intermediate.jpg" alt="Nivel intermedio" class="level-cover">
+                <img src="assets/images/intermediate.jpg" alt="Nivel intermedio" class="level-cover" loading="lazy" decoding="async">
                 <span class="level-pill badge-warning">Nivel 2</span>
               </div>
               <div class="level-info p-3">
@@ -790,12 +802,12 @@
                   <h4 class="level-card-title mb-2">Nivel intermedio</h4>
                   <div class="empty-slot-line mb-2"></div>
                   <div class="empty-slot-line short mb-2"></div>
-                  <div class="progress-bar-wrap" style="height: 7px;">
-                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                  <div class="progress-bar-wrap progress-7">
+                    <div class="progress-bar-fill"></div>
                   </div>
                 </div>
                 <div class="d-flex flex-column gap-2 mt-auto">
-                  <button type="button" class="btn btn-secondary w-full" onclick="EnglishApp.startLevel('intermediate')">
+                  <button type="button" class="btn btn-secondary w-full" data-action="startLevel" data-action-args='["intermediate"]'>
                     Nivel intermedio
                   </button>
                 </div>
@@ -805,7 +817,7 @@
             <!-- 3. Nivel avanzado -->
             <div class="level-card card card-3d-tilt" id="level-card-advanced">
               <div class="level-img-wrap">
-                <img src="assets/images/advanced.jpg" alt="Nivel avanzado" class="level-cover">
+                <img src="assets/images/advanced.jpg" alt="Nivel avanzado" class="level-cover" loading="lazy" decoding="async">
                 <span class="level-pill badge-primary">Nivel 3</span>
               </div>
               <div class="level-info p-3">
@@ -813,12 +825,12 @@
                   <h4 class="level-card-title mb-2">Nivel avanzado</h4>
                   <div class="empty-slot-line mb-2"></div>
                   <div class="empty-slot-line short mb-2"></div>
-                  <div class="progress-bar-wrap" style="height: 7px;">
-                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                  <div class="progress-bar-wrap progress-7">
+                    <div class="progress-bar-fill"></div>
                   </div>
                 </div>
                 <div class="d-flex flex-column gap-2 mt-auto">
-                  <button type="button" class="btn btn-accent w-full" onclick="EnglishApp.startLevel('advanced')">
+                  <button type="button" class="btn btn-accent w-full" data-action="startLevel" data-action-args='["advanced"]'>
                     Nivel avanzado
                   </button>
                 </div>
@@ -840,7 +852,7 @@
             <h2 class="section-title">📖 Guía de unidades</h2>
           </div>
           <div class="d-flex gap-2">
-            <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.switchPlatformTab('inicio')">
+            <button type="button" class="btn btn-outline btn-sm" data-action="switchPlatformTab" data-action-args='["inicio"]'>
               ← Volver a Inicio
             </button>
           </div>
@@ -852,14 +864,14 @@
             <div class="unit-guide-header">
               <div class="d-flex align-center gap-3 flex-1">
                 <span class="badge badge-accent">Unidad 1</span>
-                <div class="flex-1" style="max-width: 340px;">
+                <div class="flex-1 unit-title-width">
                   <div class="empty-slot-title mb-1"></div>
                   <div class="empty-slot-line short"></div>
                 </div>
               </div>
-              <div style="min-width: 160px;">
-                <div class="progress-bar-wrap" style="height: 8px;">
-                  <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="unit-progress-column">
+                <div class="progress-bar-wrap progress-8">
+                  <div class="progress-bar-fill"></div>
                 </div>
               </div>
             </div>
@@ -874,8 +886,8 @@
                   <div class="empty-slot-line"></div>
                   <div class="empty-slot-line short"></div>
                 </div>
-                <div class="progress-bar-wrap" style="height: 6px;">
-                  <div class="progress-bar-fill" style="width: 0%;"></div>
+                <div class="progress-bar-wrap progress-6">
+                  <div class="progress-bar-fill"></div>
                 </div>
                 <div class="lesson-activity-slots">
                   <div class="activity-empty-slot">📖</div>
@@ -883,7 +895,7 @@
                   <div class="activity-empty-slot">✍️</div>
                   <div class="activity-empty-slot">🎙️</div>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm w-full mt-auto" onclick="EnglishApp.startLessonStepRunner(1)">
+                <button type="button" class="btn btn-primary btn-sm w-full mt-auto" data-action="startLessonStepRunner" data-action-args='[1]'>
                   ▶ Comenzar lección
                 </button>
               </div>
@@ -895,12 +907,12 @@
         <div class="lesson-runner-card card mb-4 hidden" id="lesson-runner-card">
           <div class="lesson-runner-header mb-4">
             <div class="d-flex align-center justify-between gap-3">
-              <button type="button" class="btn-icon duo-exit-lesson-btn" onclick="EnglishApp.closeLessonWorkspace()" title="Cerrar">
+              <button type="button" class="btn-icon duo-exit-lesson-btn" data-action="closeLessonWorkspace" title="Cerrar">
                 ✕
               </button>
               <div class="lesson-progress-wrap flex-1">
                 <div class="lesson-progress-bar-track">
-                  <div class="lesson-progress-bar-fill" id="lesson-runner-progress-fill" style="width: 0%;">
+                  <div class="lesson-progress-bar-fill" id="lesson-runner-progress-fill">
                     <div class="progress-bar-highlight"></div>
                   </div>
                 </div>
@@ -916,10 +928,10 @@
             <div class="empty-slot-box mb-4"></div>
             <div class="empty-slot-box mb-4"></div>
             <div class="runner-step-footer">
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.closeLessonWorkspace()">
+              <button type="button" class="btn btn-outline" data-action="closeLessonWorkspace">
                 ← Volver a Guía de unidades
               </button>
-              <button type="button" class="btn duo-btn-continue" onclick="EnglishApp.nextLessonStep()">
+              <button type="button" class="btn duo-btn-continue" data-action="nextLessonStep">
                 Siguiente →
               </button>
             </div>
@@ -934,10 +946,10 @@
               <div class="runner-vocab-card"><div class="empty-slot-title"></div><div class="empty-slot-line"></div></div>
             </div>
             <div class="runner-step-footer">
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.prevLessonStep()">
+              <button type="button" class="btn btn-outline" data-action="prevLessonStep">
                 ← Anterior
               </button>
-              <button type="button" class="btn duo-btn-continue" onclick="EnglishApp.nextLessonStep()">
+              <button type="button" class="btn duo-btn-continue" data-action="nextLessonStep">
                 Siguiente →
               </button>
             </div>
@@ -947,10 +959,10 @@
             <div class="empty-slot-title mb-3"></div>
             <div class="empty-slot-box mb-4"></div>
             <div class="runner-step-footer">
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.prevLessonStep()">
+              <button type="button" class="btn btn-outline" data-action="prevLessonStep">
                 ← Anterior
               </button>
-              <button type="button" class="btn duo-btn-continue" onclick="EnglishApp.nextLessonStep()">
+              <button type="button" class="btn duo-btn-continue" data-action="nextLessonStep">
                 Siguiente →
               </button>
             </div>
@@ -959,21 +971,21 @@
           <div id="runner-step-4" class="runner-step-block hidden">
             <div class="empty-slot-title mb-3"></div>
             <div class="runner-options-list" id="runner-challenge-options">
-              <button type="button" class="runner-option-btn" onclick="EnglishApp.selectRunnerOption(0, this)">
+              <button type="button" class="runner-option-btn" data-action="selectRunnerOption" data-action-args='[0,"$currentTarget"]'>
                 <span class="empty-slot-line"></span>
               </button>
-              <button type="button" class="runner-option-btn" onclick="EnglishApp.selectRunnerOption(1, this)">
+              <button type="button" class="runner-option-btn" data-action="selectRunnerOption" data-action-args='[1,"$currentTarget"]'>
                 <span class="empty-slot-line"></span>
               </button>
-              <button type="button" class="runner-option-btn" onclick="EnglishApp.selectRunnerOption(2, this)">
+              <button type="button" class="runner-option-btn" data-action="selectRunnerOption" data-action-args='[2,"$currentTarget"]'>
                 <span class="empty-slot-line"></span>
               </button>
             </div>
             <div class="runner-step-footer">
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.prevLessonStep()">
+              <button type="button" class="btn btn-outline" data-action="prevLessonStep">
                 ← Anterior
               </button>
-              <button type="button" class="btn duo-btn-check" id="btn-check-runner" onclick="EnglishApp.checkRunnerChallenge()">
+              <button type="button" class="btn duo-btn-check" id="btn-check-runner" data-action="checkRunnerChallenge">
                 Comprobar
               </button>
             </div>
@@ -983,10 +995,10 @@
             <div class="empty-slot-title mb-3"></div>
             <div class="empty-slot-box mb-4"></div>
             <div class="runner-step-footer">
-              <button type="button" class="btn btn-outline" onclick="EnglishApp.prevLessonStep()">
+              <button type="button" class="btn btn-outline" data-action="prevLessonStep">
                 ← Anterior
               </button>
-              <button type="button" class="btn duo-btn-continue" onclick="EnglishApp.closeLessonWorkspace()">
+              <button type="button" class="btn duo-btn-continue" data-action="closeLessonWorkspace">
                 Finalizar
               </button>
             </div>
@@ -1007,16 +1019,16 @@
 
         <!-- Filtros Visuales de Categoría -->
         <div class="duo-audio-categories mb-4 d-flex flex-wrap gap-2">
-          <button type="button" class="btn btn-sm btn-primary audio-cat-filter active" onclick="EnglishApp.filterAudios('all', this)">
+          <button type="button" class="btn btn-sm btn-primary audio-cat-filter active" data-action="filterAudios" data-action-args='["all","$currentTarget"]'>
             Todos
           </button>
-          <button type="button" class="btn btn-sm btn-outline audio-cat-filter" onclick="EnglishApp.filterAudios('cat1', this)">
+          <button type="button" class="btn btn-sm btn-outline audio-cat-filter" data-action="filterAudios" data-action-args='["cat1","$currentTarget"]'>
             Categoría 1
           </button>
-          <button type="button" class="btn btn-sm btn-outline audio-cat-filter" onclick="EnglishApp.filterAudios('cat2', this)">
+          <button type="button" class="btn btn-sm btn-outline audio-cat-filter" data-action="filterAudios" data-action-args='["cat2","$currentTarget"]'>
             Categoría 2
           </button>
-          <button type="button" class="btn btn-sm btn-outline audio-cat-filter" onclick="EnglishApp.filterAudios('cat3', this)">
+          <button type="button" class="btn btn-sm btn-outline audio-cat-filter" data-action="filterAudios" data-action-args='["cat3","$currentTarget"]'>
             Categoría 3
           </button>
         </div>
@@ -1032,13 +1044,13 @@
             <div class="empty-slot-title mb-2"></div>
             <div class="empty-slot-line mb-3"></div>
             <div class="audio-player-controls d-flex flex-wrap gap-2 align-center mb-2">
-              <button type="button" class="btn btn-primary btn-sm" onclick="EnglishApp.playAudioDialogue('1', 1.0)">
+              <button type="button" class="btn btn-primary btn-sm" data-action="playAudioDialogue" data-action-args='["1",1]'>
                 ▶ Reproducir
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.playAudioDialogue('1', 0.8)">
+              <button type="button" class="btn btn-outline btn-sm" data-action="playAudioDialogue" data-action-args='["1",0.8]'>
                 🐢 Lento
               </button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="EnglishApp.toggleTranscript('1')">
+              <button type="button" class="btn btn-secondary btn-sm" data-action="toggleTranscript" data-action-args='["1"]'>
                 📜 Transcripción
               </button>
             </div>
@@ -1055,13 +1067,13 @@
             <div class="empty-slot-title mb-2"></div>
             <div class="empty-slot-line mb-3"></div>
             <div class="audio-player-controls d-flex flex-wrap gap-2 align-center mb-2">
-              <button type="button" class="btn btn-primary btn-sm" onclick="EnglishApp.playAudioDialogue('2', 1.0)">
+              <button type="button" class="btn btn-primary btn-sm" data-action="playAudioDialogue" data-action-args='["2",1]'>
                 ▶ Reproducir
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.playAudioDialogue('2', 0.8)">
+              <button type="button" class="btn btn-outline btn-sm" data-action="playAudioDialogue" data-action-args='["2",0.8]'>
                 🐢 Lento
               </button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="EnglishApp.toggleTranscript('2')">
+              <button type="button" class="btn btn-secondary btn-sm" data-action="toggleTranscript" data-action-args='["2"]'>
                 📜 Transcripción
               </button>
             </div>
@@ -1078,13 +1090,13 @@
             <div class="empty-slot-title mb-2"></div>
             <div class="empty-slot-line mb-3"></div>
             <div class="audio-player-controls d-flex flex-wrap gap-2 align-center mb-2">
-              <button type="button" class="btn btn-primary btn-sm" onclick="EnglishApp.playAudioDialogue('3', 1.0)">
+              <button type="button" class="btn btn-primary btn-sm" data-action="playAudioDialogue" data-action-args='["3",1]'>
                 ▶ Reproducir
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.playAudioDialogue('3', 0.8)">
+              <button type="button" class="btn btn-outline btn-sm" data-action="playAudioDialogue" data-action-args='["3",0.8]'>
                 🐢 Lento
               </button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="EnglishApp.toggleTranscript('3')">
+              <button type="button" class="btn btn-secondary btn-sm" data-action="toggleTranscript" data-action-args='["3"]'>
                 📜 Transcripción
               </button>
             </div>
@@ -1101,13 +1113,13 @@
             <div class="empty-slot-title mb-2"></div>
             <div class="empty-slot-line mb-3"></div>
             <div class="audio-player-controls d-flex flex-wrap gap-2 align-center mb-2">
-              <button type="button" class="btn btn-primary btn-sm" onclick="EnglishApp.playAudioDialogue('4', 1.0)">
+              <button type="button" class="btn btn-primary btn-sm" data-action="playAudioDialogue" data-action-args='["4",1]'>
                 ▶ Reproducir
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.playAudioDialogue('4', 0.8)">
+              <button type="button" class="btn btn-outline btn-sm" data-action="playAudioDialogue" data-action-args='["4",0.8]'>
                 🐢 Lento
               </button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="EnglishApp.toggleTranscript('4')">
+              <button type="button" class="btn btn-secondary btn-sm" data-action="toggleTranscript" data-action-args='["4"]'>
                 📜 Transcripción
               </button>
             </div>
@@ -1124,13 +1136,13 @@
             <div class="empty-slot-title mb-2"></div>
             <div class="empty-slot-line mb-3"></div>
             <div class="audio-player-controls d-flex flex-wrap gap-2 align-center mb-2">
-              <button type="button" class="btn btn-primary btn-sm" onclick="EnglishApp.playAudioDialogue('5', 1.0)">
+              <button type="button" class="btn btn-primary btn-sm" data-action="playAudioDialogue" data-action-args='["5",1]'>
                 ▶ Reproducir
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.playAudioDialogue('5', 0.8)">
+              <button type="button" class="btn btn-outline btn-sm" data-action="playAudioDialogue" data-action-args='["5",0.8]'>
                 🐢 Lento
               </button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="EnglishApp.toggleTranscript('5')">
+              <button type="button" class="btn btn-secondary btn-sm" data-action="toggleTranscript" data-action-args='["5"]'>
                 📜 Transcripción
               </button>
             </div>
@@ -1147,13 +1159,13 @@
             <div class="empty-slot-title mb-2"></div>
             <div class="empty-slot-line mb-3"></div>
             <div class="audio-player-controls d-flex flex-wrap gap-2 align-center mb-2">
-              <button type="button" class="btn btn-primary btn-sm" onclick="EnglishApp.playAudioDialogue('6', 1.0)">
+              <button type="button" class="btn btn-primary btn-sm" data-action="playAudioDialogue" data-action-args='["6",1]'>
                 ▶ Reproducir
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.playAudioDialogue('6', 0.8)">
+              <button type="button" class="btn btn-outline btn-sm" data-action="playAudioDialogue" data-action-args='["6",0.8]'>
                 🐢 Lento
               </button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="EnglishApp.toggleTranscript('6')">
+              <button type="button" class="btn btn-secondary btn-sm" data-action="toggleTranscript" data-action-args='["6"]'>
                 📜 Transcripción
               </button>
             </div>
@@ -1174,7 +1186,7 @@
             <h2 class="section-title">💬 Conversación</h2>
           </div>
           <div class="d-flex gap-2 align-center">
-            <button type="button" class="btn btn-sm btn-outline" onclick="EnglishApp.resetConversation()">
+            <button type="button" class="btn btn-sm btn-outline" data-action="resetConversation">
               🔄 Reiniciar
             </button>
           </div>
@@ -1183,16 +1195,16 @@
         <!-- Selector de Escenarios Vacíos -->
         <div class="card mb-4 p-3 duo-scenario-selector-card">
           <div class="d-flex flex-wrap gap-2" id="scenario-pills-row">
-            <button type="button" class="btn btn-sm btn-primary conv-scenario-pill active" onclick="EnglishApp.selectScenario('1', this)">
+            <button type="button" class="btn btn-sm btn-primary conv-scenario-pill active" data-action="selectScenario" data-action-args='["1","$currentTarget"]'>
               Escenario 1
             </button>
-            <button type="button" class="btn btn-sm btn-outline conv-scenario-pill" onclick="EnglishApp.selectScenario('2', this)">
+            <button type="button" class="btn btn-sm btn-outline conv-scenario-pill" data-action="selectScenario" data-action-args='["2","$currentTarget"]'>
               Escenario 2
             </button>
-            <button type="button" class="btn btn-sm btn-outline conv-scenario-pill" onclick="EnglishApp.selectScenario('3', this)">
+            <button type="button" class="btn btn-sm btn-outline conv-scenario-pill" data-action="selectScenario" data-action-args='["3","$currentTarget"]'>
               Escenario 3
             </button>
-            <button type="button" class="btn btn-sm btn-outline conv-scenario-pill" onclick="EnglishApp.selectScenario('4', this)">
+            <button type="button" class="btn btn-sm btn-outline conv-scenario-pill" data-action="selectScenario" data-action-args='["4","$currentTarget"]'>
               Escenario 4
             </button>
           </div>
@@ -1203,7 +1215,7 @@
           <div class="conv-partner-header d-flex justify-between align-center p-3 border-bottom">
             <div class="d-flex align-center gap-3">
               <div class="conv-partner-avatar" id="conv-partner-avatar">💬</div>
-              <div style="min-width: 180px;">
+              <div class="audio-controls-width">
                 <div class="empty-slot-title mb-1"></div>
                 <div class="empty-slot-line short"></div>
               </div>
@@ -1219,19 +1231,20 @@
           <!-- Controles de Interacción de Conversación -->
           <div class="conv-recording-bar p-4 border-top" id="conv-recording-bar">
             <div class="conv-action-buttons-row d-flex flex-wrap gap-3 align-center">
-              <button type="button" class="btn btn-primary btn-lg flex-1 duo-conv-record-btn" id="btn-conv-record" onclick="EnglishApp.toggleConversationRecording()">
+              <button type="button" class="btn btn-primary btn-lg flex-1 duo-conv-record-btn" id="btn-conv-record" data-action="toggleConversationRecording">
                 <span class="conv-record-icon" id="conv-record-icon">🎙️</span>
                 <span id="conv-record-text">Grabar audio</span>
               </button>
 
-              <button type="button" class="btn btn-secondary btn-lg duo-conv-send-btn" id="btn-conv-send" onclick="EnglishApp.sendConversationAnswer()">
+              <button type="button" class="btn btn-secondary btn-lg duo-conv-send-btn" id="btn-conv-send" data-action="sendConversationAnswer">
                 <span>🚀 Enviar</span>
               </button>
             </div>
 
             <div class="conv-text-fallback mt-3 d-flex gap-2">
+              <label class="visually-hidden" for="conv-user-input-text">Escribe tu respuesta en inglés</label>
               <input type="text" id="conv-user-input-text" class="input-modern flex-1 text-sm" placeholder="">
-              <button type="button" class="btn btn-outline btn-sm" onclick="EnglishApp.speak()">
+              <button type="button" class="btn btn-outline btn-sm" data-action="speak">
                 🔊 Escuchar
               </button>
             </div>
@@ -1252,16 +1265,16 @@
         <!-- Selector de Espacios de Práctica -->
         <div class="card mb-4">
           <div class="d-flex flex-wrap gap-2">
-            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip active" onclick="EnglishApp.selectSpecificPhrase(0, this)">
+            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip active" data-action="selectSpecificPhrase" data-action-args='[0,"$currentTarget"]'>
               Actividad 1
             </button>
-            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip" onclick="EnglishApp.selectSpecificPhrase(1, this)">
+            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip" data-action="selectSpecificPhrase" data-action-args='[1,"$currentTarget"]'>
               Actividad 2
             </button>
-            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip" onclick="EnglishApp.selectSpecificPhrase(2, this)">
+            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip" data-action="selectSpecificPhrase" data-action-args='[2,"$currentTarget"]'>
               Actividad 3
             </button>
-            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip" onclick="EnglishApp.selectSpecificPhrase(3, this)">
+            <button type="button" class="btn btn-sm btn-outline duo-phrase-chip" data-action="selectSpecificPhrase" data-action-args='[3,"$currentTarget"]'>
               Actividad 4
             </button>
           </div>
@@ -1276,7 +1289,7 @@
 
         <!-- Visualizador y Micrófono -->
         <div class="mic-status-box text-center p-4 mb-4">
-          <div class="mic-pulse-ring" id="pron-mic-pulse" onclick="EnglishApp.startVoiceRecording()">
+          <div class="mic-pulse-ring" id="pron-mic-pulse" data-action="startVoiceRecording" role="button" tabindex="0" aria-label="Iniciar grabación">
             <span>🎙️</span>
           </div>
           <div class="audio-wave-visualizer mt-3" id="pron-wave-visualizer">
@@ -1287,34 +1300,34 @@
         <!-- Botones de Control de Pronunciación -->
         <div class="card mb-4">
           <div class="chatgpt-10-buttons-grid">
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.listenExample()">
+            <button type="button" class="btn btn-outline" data-action="listenExample">
               1. Escuchar ejemplo
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.playReferenceAudio()">
+            <button type="button" class="btn btn-outline" data-action="playReferenceAudio">
               2. Reproducir audio
             </button>
-            <button type="button" class="btn btn-primary" onclick="EnglishApp.startVoiceRecording()">
+            <button type="button" class="btn btn-primary" data-action="startVoiceRecording">
               3. Grabar mi voz
             </button>
-            <button type="button" class="btn btn-danger" onclick="EnglishApp.stopVoiceRecording()">
+            <button type="button" class="btn btn-danger" data-action="stopVoiceRecording">
               4. Detener grabación
             </button>
-            <button type="button" class="btn btn-secondary" onclick="EnglishApp.playMyRecording()">
+            <button type="button" class="btn btn-secondary" data-action="playMyRecording">
               5. Escuchar mi grabación
             </button>
-            <button type="button" class="btn btn-accent" onclick="EnglishApp.evaluatePronunciation()">
+            <button type="button" class="btn btn-accent" data-action="evaluatePronunciation">
               6. Evaluar pronunciación
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.showErrors()">
+            <button type="button" class="btn btn-outline" data-action="showErrors">
               7. Ver errores
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.listenCorrectPronunciation()">
+            <button type="button" class="btn btn-outline" data-action="listenCorrectPronunciation">
               8. Escuchar pronunciación correcta
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.tryAgainPronunciation()">
+            <button type="button" class="btn btn-outline" data-action="tryAgainPronunciation">
               9. Intentar nuevamente
             </button>
-            <button type="button" class="btn btn-success" onclick="EnglishApp.nextPronunciationActivity()">
+            <button type="button" class="btn btn-success" data-action="nextPronunciationActivity">
               10. Siguiente actividad
             </button>
           </div>
@@ -1347,23 +1360,23 @@
           <div>
             <h2 class="section-title">👥 Foro</h2>
           </div>
-          <button type="button" class="btn btn-primary" onclick="EnglishApp.openNewForumModal()">
+          <button type="button" class="btn btn-primary" data-action="openNewForumModal">
             ➕ Nueva publicación
           </button>
         </div>
 
         <!-- Filtros del Foro -->
         <div class="duo-forum-filter-bar mb-4 d-flex flex-wrap gap-2 align-center">
-          <button type="button" class="btn btn-sm btn-primary forum-cat-btn active" onclick="EnglishApp.filterForumPosts('all', this)">
+          <button type="button" class="btn btn-sm btn-primary forum-cat-btn active" data-action="filterForumPosts" data-action-args='["all","$currentTarget"]'>
             Todos
           </button>
-          <button type="button" class="btn btn-sm btn-outline forum-cat-btn" onclick="EnglishApp.filterForumPosts('cat1', this)">
+          <button type="button" class="btn btn-sm btn-outline forum-cat-btn" data-action="filterForumPosts" data-action-args='["cat1","$currentTarget"]'>
             Categoría 1
           </button>
-          <button type="button" class="btn btn-sm btn-outline forum-cat-btn" onclick="EnglishApp.filterForumPosts('cat2', this)">
+          <button type="button" class="btn btn-sm btn-outline forum-cat-btn" data-action="filterForumPosts" data-action-args='["cat2","$currentTarget"]'>
             Categoría 2
           </button>
-          <button type="button" class="btn btn-sm btn-outline forum-cat-btn" onclick="EnglishApp.filterForumPosts('cat3', this)">
+          <button type="button" class="btn btn-sm btn-outline forum-cat-btn" data-action="filterForumPosts" data-action-args='["cat3","$currentTarget"]'>
             Categoría 3
           </button>
         </div>
@@ -1374,7 +1387,7 @@
           <div class="card forum-thread-card" data-cat="cat1">
             <div class="d-flex justify-between align-center mb-3">
               <span class="badge badge-outline">Espacio de publicación 1</span>
-              <button type="button" class="btn btn-sm btn-outline forum-vote-btn" onclick="EnglishApp.upvoteForum(this)">
+              <button type="button" class="btn btn-sm btn-outline forum-vote-btn" data-action="upvoteForum" data-action-args='["$currentTarget"]'>
                 👍 <span class="vote-count">0</span>
               </button>
             </div>
@@ -1382,14 +1395,14 @@
             <div class="empty-slot-line mb-2"></div>
             <div class="empty-slot-line short mb-3"></div>
             <div class="d-flex justify-end pt-2 border-top">
-              <button type="button" class="btn btn-sm btn-outline" onclick="EnglishApp.replyToForum()">Responder</button>
+              <button type="button" class="btn btn-sm btn-outline" data-action="replyToForum">Responder</button>
             </div>
           </div>
 
           <div class="card forum-thread-card" data-cat="cat2">
             <div class="d-flex justify-between align-center mb-3">
               <span class="badge badge-outline">Espacio de publicación 2</span>
-              <button type="button" class="btn btn-sm btn-outline forum-vote-btn" onclick="EnglishApp.upvoteForum(this)">
+              <button type="button" class="btn btn-sm btn-outline forum-vote-btn" data-action="upvoteForum" data-action-args='["$currentTarget"]'>
                 👍 <span class="vote-count">0</span>
               </button>
             </div>
@@ -1397,14 +1410,14 @@
             <div class="empty-slot-line mb-2"></div>
             <div class="empty-slot-line short mb-3"></div>
             <div class="d-flex justify-end pt-2 border-top">
-              <button type="button" class="btn btn-sm btn-outline" onclick="EnglishApp.replyToForum()">Responder</button>
+              <button type="button" class="btn btn-sm btn-outline" data-action="replyToForum">Responder</button>
             </div>
           </div>
 
           <div class="card forum-thread-card" data-cat="cat3">
             <div class="d-flex justify-between align-center mb-3">
               <span class="badge badge-outline">Espacio de publicación 3</span>
-              <button type="button" class="btn btn-sm btn-outline forum-vote-btn" onclick="EnglishApp.upvoteForum(this)">
+              <button type="button" class="btn btn-sm btn-outline forum-vote-btn" data-action="upvoteForum" data-action-args='["$currentTarget"]'>
                 👍 <span class="vote-count">0</span>
               </button>
             </div>
@@ -1412,7 +1425,7 @@
             <div class="empty-slot-line mb-2"></div>
             <div class="empty-slot-line short mb-3"></div>
             <div class="d-flex justify-end pt-2 border-top">
-              <button type="button" class="btn btn-sm btn-outline" onclick="EnglishApp.replyToForum()">Responder</button>
+              <button type="button" class="btn btn-sm btn-outline" data-action="replyToForum">Responder</button>
             </div>
           </div>
 
@@ -1433,22 +1446,22 @@
         <!-- Botones de Mi Progreso -->
         <div class="card mb-4">
           <div class="chatgpt-progress-buttons-grid">
-            <button type="button" class="btn btn-primary" onclick="EnglishApp.viewDetailedProgress()">
+            <button type="button" class="btn btn-primary" data-action="viewDetailedProgress">
               Ver mi progreso
             </button>
-            <button type="button" class="btn btn-secondary" onclick="EnglishApp.viewGrades()">
+            <button type="button" class="btn btn-secondary" data-action="viewGrades">
               Consultar calificaciones
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.viewSpeakingHistory()">
+            <button type="button" class="btn btn-outline" data-action="viewSpeakingHistory">
               Ver historial
             </button>
-            <button type="button" class="btn btn-accent" onclick="EnglishApp.switchPlatformTab('logros')">
+            <button type="button" class="btn btn-accent" data-action="switchPlatformTab" data-action-args='["logros"]'>
               Ver mis logros
             </button>
-            <button type="button" class="btn btn-outline" onclick="EnglishApp.checkCertificates()">
+            <button type="button" class="btn btn-outline" data-action="checkCertificates">
               Consultar certificados
             </button>
-            <button type="button" class="btn btn-success" onclick="EnglishApp.openCertificateModal()">
+            <button type="button" class="btn btn-success" data-action="openCertificateModal">
               🎓 Descargar certificado
             </button>
           </div>
@@ -1463,7 +1476,7 @@
             </div>
             <div class="metric-big-num" id="metric-percent-display">--</div>
             <div class="progress-bar-wrap">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1473,7 +1486,7 @@
             </div>
             <div class="metric-big-num">--</div>
             <div class="progress-bar-wrap">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1483,7 +1496,7 @@
             </div>
             <div class="metric-big-num">--</div>
             <div class="progress-bar-wrap">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1493,7 +1506,7 @@
             </div>
             <div class="metric-big-num">--</div>
             <div class="progress-bar-wrap">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1503,7 +1516,7 @@
             </div>
             <div class="metric-big-num">--</div>
             <div class="progress-bar-wrap">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1513,7 +1526,7 @@
             </div>
             <div class="metric-big-num">--</div>
             <div class="progress-bar-wrap">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1522,7 +1535,7 @@
         <!-- Espacio Visual Vacío para Gráficos -->
         <div class="card mb-4 p-4">
           <div class="empty-slot-title mb-3"></div>
-          <div class="empty-slot-box" style="min-height: 180px;"></div>
+          <div class="empty-slot-box empty-slot-box-tall"></div>
         </div>
 
         <!-- Tabla de Registros Vacía -->
@@ -1582,8 +1595,8 @@
             <div class="badge-icon mb-2">🏆</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1591,8 +1604,8 @@
             <div class="badge-icon mb-2">⭐</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1600,8 +1613,8 @@
             <div class="badge-icon mb-2">🎖️</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1609,8 +1622,8 @@
             <div class="badge-icon mb-2">👑</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1618,8 +1631,8 @@
             <div class="badge-icon mb-2">🔥</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1627,8 +1640,8 @@
             <div class="badge-icon mb-2">💎</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1636,8 +1649,8 @@
             <div class="badge-icon mb-2">🎯</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
 
@@ -1645,8 +1658,8 @@
             <div class="badge-icon mb-2">🏅</div>
             <div class="empty-slot-title mx-auto mb-2"></div>
             <div class="empty-slot-line mb-2"></div>
-            <div class="progress-bar-wrap mt-2" style="height: 6px;">
-              <div class="progress-bar-fill" style="width: 0%;"></div>
+            <div class="progress-bar-wrap mt-2 progress-6">
+              <div class="progress-bar-fill"></div>
             </div>
           </div>
         </div>
@@ -1663,10 +1676,10 @@
               <h2 class="section-title mb-0">📘 Manual de uso</h2>
             </div>
             <div class="d-flex flex-wrap gap-2">
-              <button type="button" class="btn btn-primary" onclick="EnglishApp.switchPlatformTab('inicio')">
+              <button type="button" class="btn btn-primary" data-action="switchPlatformTab" data-action-args='["inicio"]'>
                 🏠 Inicio
               </button>
-              <button type="button" class="btn btn-secondary" onclick="EnglishApp.switchPlatformTab('manual')">
+              <button type="button" class="btn btn-secondary" data-action="switchPlatformTab" data-action-args='["manual"]'>
                 📖 Guía de unidades
               </button>
             </div>
@@ -1753,19 +1766,19 @@
 
             <div class="manual-themes-showcase-grid mt-2">
               <div class="manual-theme-preview-box">
-                <button type="button" class="btn btn-sm btn-outline w-full theme-option-chip" data-theme-choice="light" onclick="EnglishApp.setThemeMode('light')">
+                <button type="button" class="btn btn-sm btn-outline w-full theme-option-chip" data-theme-choice="light" data-action="setThemeMode" data-action-args='["light"]'>
                   ☀️ Claro
                 </button>
               </div>
 
               <div class="manual-theme-preview-box">
-                <button type="button" class="btn btn-sm btn-primary w-full theme-option-chip active" data-theme-choice="dark" onclick="EnglishApp.setThemeMode('dark')">
+                <button type="button" class="btn btn-sm btn-primary w-full theme-option-chip active" data-theme-choice="dark" data-action="setThemeMode" data-action-args='["dark"]'>
                   🌙 Oscuro
                 </button>
               </div>
 
               <div class="manual-theme-preview-box">
-                <button type="button" class="btn btn-sm btn-accent w-full theme-option-chip" data-theme-choice="colorful" onclick="EnglishApp.setThemeMode('colorful')">
+                <button type="button" class="btn btn-sm btn-accent w-full theme-option-chip" data-theme-choice="colorful" data-action="setThemeMode" data-action-args='["colorful"]'>
                   🎨 Colorido
                 </button>
               </div>
@@ -1781,11 +1794,11 @@
   <!-- ======================================================== -->
   <!-- MODAL: CERTIFICADO (PLANTILLA VISUAL VACÍA)              -->
   <!-- ======================================================== -->
-  <div id="modal-certificate" class="modal-backdrop hidden" onclick="if(event.target === this) EnglishApp.closeModals()">
-    <div class="modal-dialog card certificate-modal-dialog">
+  <div id="modal-certificate" class="modal-backdrop hidden" data-close-modal-on-backdrop>
+    <div class="modal-dialog card certificate-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-certificate-title" tabindex="-1">
       <div class="modal-header">
-        <h3 class="modal-title">Certificado</h3>
-        <button type="button" class="btn-icon" onclick="EnglishApp.closeModals()">✕</button>
+        <h3 class="modal-title" id="modal-certificate-title">Certificado</h3>
+        <button type="button" class="btn-icon" aria-label="Cerrar" data-action="closeModals">✕</button>
       </div>
 
       <div class="modal-body text-center">
@@ -1802,8 +1815,8 @@
       </div>
 
       <div class="modal-footer d-flex justify-end gap-2">
-        <button type="button" class="btn btn-outline" onclick="EnglishApp.closeModals()">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="EnglishApp.downloadCertificate()">
+        <button type="button" class="btn btn-outline" data-action="closeModals">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-action="downloadCertificate">
           📥 Descargar
         </button>
       </div>
@@ -1813,11 +1826,11 @@
   <!-- ======================================================== -->
   <!-- MODAL: PRUEBA DE NIVEL (ESTRUCTURA VISUAL VACÍA)         -->
   <!-- ======================================================== -->
-  <div id="modal-level-test" class="modal-backdrop hidden" onclick="if(event.target === this) EnglishApp.closeModals()">
-    <div class="modal-dialog card">
+  <div id="modal-level-test" class="modal-backdrop hidden" data-close-modal-on-backdrop>
+    <div class="modal-dialog card" role="dialog" aria-modal="true" aria-labelledby="modal-level-test-title" tabindex="-1">
       <div class="modal-header">
-        <h3 class="modal-title">Prueba de nivel</h3>
-        <button type="button" class="btn-icon" onclick="EnglishApp.closeModals()">✕</button>
+        <h3 class="modal-title" id="modal-level-test-title">Prueba de nivel</h3>
+        <button type="button" class="btn-icon" aria-label="Cerrar" data-action="closeModals">✕</button>
       </div>
       <div class="modal-body">
         <div class="card-subtle p-3 mb-3">
@@ -1832,8 +1845,8 @@
         </div>
       </div>
       <div class="modal-footer d-flex justify-between">
-        <button type="button" class="btn btn-outline" onclick="EnglishApp.closeModals()">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="EnglishApp.finishLevelTest()">
+        <button type="button" class="btn btn-outline" data-action="closeModals">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-action="finishLevelTest">
           Finalizar
         </button>
       </div>
@@ -1843,11 +1856,11 @@
   <!-- ======================================================== -->
   <!-- MODAL: MIS LOGROS (ESTRUCTURA VISUAL VACÍA)              -->
   <!-- ======================================================== -->
-  <div id="modal-achievements" class="modal-backdrop hidden" onclick="if(event.target === this) EnglishApp.closeModals()">
-    <div class="modal-dialog card">
+  <div id="modal-achievements" class="modal-backdrop hidden" data-close-modal-on-backdrop>
+    <div class="modal-dialog card" role="dialog" aria-modal="true" aria-labelledby="modal-achievements-title" tabindex="-1">
       <div class="modal-header">
-        <h3 class="modal-title">Mis logros</h3>
-        <button type="button" class="btn-icon" onclick="EnglishApp.closeModals()">✕</button>
+        <h3 class="modal-title" id="modal-achievements-title">Mis logros</h3>
+        <button type="button" class="btn-icon" aria-label="Cerrar" data-action="closeModals">✕</button>
       </div>
       <div class="modal-body">
         <div class="achievements-grid">
@@ -1874,12 +1887,12 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary w-full" onclick="EnglishApp.closeModals()">Cerrar</button>
+        <button type="button" class="btn btn-primary w-full" data-action="closeModals">Cerrar</button>
       </div>
     </div>
   </div>
 
   <!-- Script Principal de Interfaz -->
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

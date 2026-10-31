@@ -3425,8 +3425,7 @@ body.light-mode .diploma-course-name { color: #4338CA; }
   font-family: 'Outfit', 'Space Grotesk', sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow:
     0 12px 30px -4px rgba(37, 99, 235, 0.60),
@@ -3514,10 +3513,22 @@ body.light-mode .diploma-course-name { color: #4338CA; }
   position: relative;
   width: 100%;
   max-width: 360px;
+  height: 88px;
   margin: 12px auto 20px auto;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.vibe-home-center-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  position: relative;
+  z-index: 5;
 }
 
 /* Decoradores emoji flotantes */
@@ -3648,8 +3659,10 @@ body.light-mode .diploma-course-name { color: #4338CA; }
 @media (max-width: 600px) {
   .vibe-home-mockup-wrapper {
     max-width: 280px;
+    height: 74px;
     margin: 8px auto 16px auto;
   }
+  .vibe-home-center-logo { width: 72px; height: 72px; border-radius: 16px; }
   .vibe-float-decor { font-size: 1.2rem; }
   .vibe-float-decor-2 { font-size: 1.4rem; left: -20px; }
   .vibe-float-decor-4 { font-size: 1.3rem; right: -18px; }
@@ -3658,4 +3671,83 @@ body.light-mode .diploma-course-name { color: #4338CA; }
   .vibe-badge-chip { font-size: 0.65rem; padding: 3px 8px; }
   .vibe-badge-brand { font-size: 0.95rem; }
   .vibe-badge-levels { font-size: 0.72rem; }
+}
+
+.form-field-error {
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin: 0.35rem 0 0;
+}
+
+.form-field-error[hidden] {
+  display: none;
+}
+
+[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--secondary, #06B6D4);
+  outline-offset: 3px;
+}
+
+.compact-heading {
+  margin: 0;
+}
+
+.vibe-level-item,
+.platform-brand {
+  cursor: pointer;
+}
+
+.welcome-mascot {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+}
+
+.progress-bar-fill,
+.lesson-progress-bar-fill {
+  width: 0;
+}
+
+.progress-bar-wrap.progress-6 {
+  height: 6px;
+}
+
+.progress-bar-wrap.progress-7 {
+  height: 7px;
+}
+
+.progress-bar-wrap.progress-8 {
+  height: 8px;
+}
+
+.unit-title-width {
+  max-width: 340px;
+}
+
+.unit-progress-column {
+  min-width: 160px;
+}
+
+.audio-controls-width {
+  min-width: 180px;
+}
+
+.empty-slot-box-tall {
+  min-height: 180px;
 }
