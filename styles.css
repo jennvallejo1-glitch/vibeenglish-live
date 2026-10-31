@@ -3659,3 +3659,7 @@ body.light-mode .diploma-course-name { color: #4338CA; }
   .vibe-badge-brand { font-size: 0.95rem; }
   .vibe-badge-levels { font-size: 0.72rem; }
 }
+
+.vibe-home-mockup-wrapper { height: 88px; }
+@media (max-width: 600px) { .vibe-home-mockup-wrapper { height: 74px; } }
+.vibe-home-cta-btn { letter-spacing: 0.02em; text-transform: none; }
