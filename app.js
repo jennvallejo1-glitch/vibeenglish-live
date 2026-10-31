@@ -40,11 +40,46 @@ var EnglishApp = (() => {
     currentLessonStep: 1,
     selectedChallengeOption: null,
     currentPhraseIndex: 0,
-    activeScenario: '1'
+    activeScenario: '1',
+    pilotMode: false
   };
 
   const TOTAL_UNITS = 6;
   const LESSONS_PER_UNIT = 6;
+
+  function enterPilotMode() {
+    state.pilotMode = true;
+    const authSection = document.getElementById('auth-section');
+    const platform = document.getElementById('course-platform-section');
+    const notice = document.getElementById('pilot-mode-notice');
+    const name = document.getElementById('header-user-name');
+    if (authSection) authSection.classList.add('hidden');
+    if (platform) platform.classList.remove('hidden');
+    if (notice) notice.classList.remove('hidden');
+    if (name) name.textContent = 'Modo piloto';
+    setPilotControlsDisabled(true);
+    switchPlatformTab('inicio');
+    showToast('Modo piloto: podés recorrer las secciones, pero no usar las actividades ni guardar progreso.', 'info');
+  }
+
+  function setPilotControlsDisabled(disabled) {
+    const main = document.querySelector('#course-platform-section .platform-main-container');
+    if (!main) return;
+
+    if (disabled) {
+      main.querySelectorAll('button, input, select, textarea').forEach(control => {
+        if (control.matches('button[data-action="switchPlatformTab"]') || control.disabled) return;
+        control.disabled = true;
+        control.dataset.pilotDisabled = 'true';
+      });
+      return;
+    }
+
+    main.querySelectorAll('[data-pilot-disabled="true"]').forEach(control => {
+      control.disabled = false;
+      delete control.dataset.pilotDisabled;
+    });
+  }
 
   /* ==========================================================================
      1. NOTIFICACIONES VISUALES DE INTERFAZ
@@ -347,6 +382,15 @@ var EnglishApp = (() => {
      5. NAVEGACIÓN ENTRE PANTALLAS DE BIENVENIDA, REGISTRO, LOGIN Y SUSCRIPCIÓN
      ========================================================================== */
   function openOnboardingScreen(screenName = 'home') {
+    if (state.pilotMode) {
+      state.pilotMode = false;
+      setPilotControlsDisabled(false);
+      const notice = document.getElementById('pilot-mode-notice');
+      const name = document.getElementById('header-user-name');
+      if (notice) notice.classList.add('hidden');
+      if (name) name.textContent = '';
+    }
+
     const authSec = document.getElementById('auth-section');
     const platSec = document.getElementById('course-platform-section');
 
@@ -846,6 +890,21 @@ var EnglishApp = (() => {
     if (!trigger) return;
 
     const actionName = trigger.getAttribute('data-action');
+    if (
+      state.pilotMode &&
+      ![
+        'switchPlatformTab',
+        'openOnboardingScreen',
+        'goBackFromSubscription',
+        'setThemeMode',
+        'cycleTheme',
+        'toggleHeaderDropdown'
+      ].includes(actionName)
+    ) {
+      showToast('Modo piloto: esta función requiere una cuenta con suscripción activa.', 'info');
+      return;
+    }
+
     const action = EnglishApp[actionName];
     if (typeof action !== 'function') {
       console.error(`Unknown VibeEnglish action: ${actionName}`);
@@ -949,6 +1008,7 @@ var EnglishApp = (() => {
     toggleHeaderDropdown,
     closeHeaderDropdown,
     openOnboardingScreen,
+    enterPilotMode,
     switchAuthTab,
     togglePasswordVisibility,
     toggleRegisterPasswords,

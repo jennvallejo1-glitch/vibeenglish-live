@@ -156,7 +156,11 @@
               <button type="button" class="btn btn-accent" id="btn-welcome-suscripcion" data-action="openOnboardingScreen" data-action-args='["subscription"]'>
                 <span>💎 Suscripción</span>
               </button>
+              <button type="button" class="btn btn-outline" id="btn-welcome-pilot" data-action="enterPilotMode">
+                <span>👀 Ver plataforma (prueba piloto)</span>
+              </button>
             </div>
+            <p class="text-sm text-secondary mt-2">La prueba piloto permite recorrer las secciones, pero no usar las actividades ni guardar progreso.</p>
           </div>
 
           <!-- Columna Derecha: Espacio visual para una ilustración -->
@@ -694,6 +698,17 @@
         </div>
       </div>
     </header>
+
+    <div id="pilot-mode-notice" class="card-subtle p-3 mb-4 hidden" role="status" aria-live="polite">
+      <p class="text-sm text-secondary mb-2">
+        <strong>Prueba piloto, solo lectura.</strong>
+        Podés ver las secciones, pero las actividades y el guardado de progreso requieren una suscripción.
+        El sistema de pagos todavía no está habilitado.
+      </p>
+      <button type="button" class="btn btn-primary btn-sm" data-action="openOnboardingScreen" data-action-args='["subscription"]'>
+        Ver opciones de suscripción
+      </button>
+    </div>
 
     <!-- CONTENEDOR DE SECCIONES DE LA APLICACIÓN -->
     <main class="platform-main-container">
@@ -1893,6 +1908,6 @@
   </div>
 
   <!-- Script Principal de Interfaz -->
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>
